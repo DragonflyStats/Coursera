@@ -1,0 +1,5 @@
+### Google Looker
+
+Google Looker is a business intelligence platform that helps you explore, analyze, and share data insights
+* It provides tools for creating interactive dashboards and reports, making it easier to make data-driven decisions
+* Looker integrates with various data sources and offers a user-friendly interface for both technical and non-technical users
