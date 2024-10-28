@@ -1,0 +1,35 @@
+Which data sources can be utilized with Apache Spark SQL?
+
+Apache Spark SQL supports a variety of data sources through the DataFrame interface
+
+Here are some of the key data sources you can utilize with Apache Spark SQL:
+
+CSV Files: Load and save data in comma-separated values format
+.
+
+JSON Files: Load and save data in JavaScript Object Notation format
+.
+
+Parquet Files: Load and save data in Parquet format, which is optimized for columnar storage
+.
+
+ORC Files: Load and save data in Optimized Row Columnar format
+.
+
+Text Files: Load and save plain-text files2
+.
+
+Hive Tables: Read and write data stored in Apache Hive tables
+.
+
+JDBC/ODBC Connections: Connect to and interact with other databases using JDBC or ODBC connections2
+.
+
+Avro Files: Load and save data in Avro format
+.
+
+Protobuf Files: Load and save data in Protocol Buffers format
+.
+
+These data sources allow you to perform a wide range of data processing and analysis tasks using Spark SQL1
+.

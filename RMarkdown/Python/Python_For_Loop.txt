@@ -1,0 +1,25 @@
+```python
+for number in range(1, 6):
+    print(number)
+```
+
+This code will print the numbers from 1 to 5, each on a new line:
+
+```
+1
+2
+3
+4
+5
+```
+
+**Explanation:**
+
+1. **`for number in range(1, 6):`:** This line starts a `for` loop.
+   - `number`: This is a variable that will take on each value in the range.
+   - `range(1, 6)`: This function generates a sequence of numbers from 1 up to, but not including, 6.
+
+2. **`print(number)`:** Inside the loop, this line prints the current value of `number`.
+
+So, the loop iterates over the numbers 1, 2, 3, 4, and 5, printing each one.
+-
