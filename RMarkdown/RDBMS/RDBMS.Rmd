@@ -1,0 +1,25 @@
+RDBMS stands for **Relational Database Management System**. It's a type of database management system (DBMS) that stores and organizes data in tables, with rows representing records and columns representing fields. 
+
+**SQL (Structured Query Language)** is the standard language used to interact with RDBMS. It allows you to:
+
+* **Define** the structure of the database (create tables, define relationships between tables)
+* **Manipulate** the data (insert, update, delete records)
+* **Query** the data (retrieve specific information from the database)
+
+**Key characteristics of RDBMS:**
+
+* **Tables:** Data is organized into tables with rows and columns.
+* **Relationships:** Tables can be linked together using relationships (one-to-one, one-to-many, many-to-many) to represent real-world entities and their connections.
+* **SQL:** Used to interact with the database.
+* **Data Integrity:** RDBMS ensures data consistency and accuracy through features like constraints (primary keys, foreign keys, unique constraints).
+* **Security:** RDBMS provides mechanisms for controlling access to data and protecting sensitive information.
+
+**Popular RDBMS examples:**
+
+* MySQL
+* PostgreSQL
+* Oracle Database
+* Microsoft SQL Server
+* SQLite
+
+In essence, RDBMS and SQL work together to provide a structured and efficient way to store, manage, and retrieve data.
