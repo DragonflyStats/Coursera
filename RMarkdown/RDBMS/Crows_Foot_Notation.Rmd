@@ -1,0 +1,15 @@
+Crow's foot notation is a graphical notation used to represent relationships between entities in an Entity-Relationship (ER) diagram. It's a visual way to illustrate how different entities are connected in a database schema. 
+
+**Key components of Crow's foot notation:**
+
+* **Entities:** Represented by rectangles, each representing a specific type of object or concept. 
+* **Relationships:** Represented by lines connecting entities. 
+* **Cardinality:** Indicates the number of instances of one entity that can be associated with an instance of another entity. Crow's foot notation uses specific symbols to represent different cardinality relationships:
+    * **One-to-one:** A single instance of one entity is related to exactly one instance of another entity.
+    * **One-to-many:** A single instance of one entity can be related to multiple instances of another entity.
+    * **Many-to-many:** Multiple instances of one entity can be related to multiple instances of another entity.
+
+**Here's a visual example:**
+[Image of Crow's foot notation]
+
+Crow's foot notation is a valuable tool for database designers as it helps to visualize the structure of a database and understand how different entities are related. It's often used in conjunction with SQL to create well-structured and efficient databases. 
