@@ -1,0 +1,219 @@
+### Question 1
+
+Data classification depends on the degree of structure and its flexibility. Which data type is often stored in SQL databases?
+
+
+A. Regulated data
+
+B. Semi-structured data
+
+C. Structured data
+
+D. Unstructured data
+
+
+The answer is **C. Structured data**.
+
+Structured data is highly organized and easily searchable. It's perfect for relational databases like SQL, where data is stored in tables with defined rows and columns. This makes it efficient to query and analyze. 
+
+* **Regulated data** is data that is subject to specific regulations and compliance standards.
+* **Semi-structured data** has some structure but lacks a rigid format, often stored in XML or JSON.
+* **Unstructured data** is raw data without a predefined format, like text documents or images.
+
+---------------------------------------------------------------
+
+### Question 2
+Which of the following categories belong to the Information models?
+
+
+A. Root
+
+B. Tree
+
+C. Organization
+
+D. Hierarchical
+
+
+The answer is **D. Hierarchical**.
+
+Hierarchical models are a common type of information model that represent data in a tree-like structure, with a root node at the top and child nodes branching off. This structure is useful for organizing data with hierarchical relationships, such as organizational structures or file systems.
+
+The other options are not directly related to information models:
+
+* **Root** is a term often used in hierarchical structures to refer to the topmost node.
+* **Tree** is a data structure that can be used to represent hierarchical data, but it's not a category of information models.
+* **Organization** is a broader concept that can refer to various types of structures, including hierarchical ones.
+
+---------------------------------------------------------------
+
+3.
+### Question 3
+How is a one-to-many relationship depicted using Crow’s foot notation?
+
+A. Greater-than symbol
+B. Less-than symbol
+C. Equal sign
+D. Asterisk
+
+
+The answer is (INCORRECT **D. Asterisk**.)
+
+In Crow's Foot notation, a one-to-many relationship is depicted using an asterisk (*) on the "many" side of the relationship. 
+This indicates that one instance of the entity on the "one" side can be associated with many instances of the entity on the "many" side.
+
+Here's a visual example:
+
+[Image of Crow's Foot notation for one-to-many relationship]
+
+In this example, one "Customer" can be associated with many "Orders."
+
+
+---------------------------------------------------------------
+
+
+### Question 4
+When converting an ERD into a table, the entity transforms into the table itself. What do the attributes represent?
+
+
+A. Relationships
+B. Columns
+C. Rows
+D. Cells
+
+The answer is **B. Columns**.
+
+In an ERD, attributes define the characteristics of an entity. When converting this to a table, these attributes become the columns of the table. Each column represents a specific piece of information about the entity. 
+
+For example, if you have an entity "Customer" with attributes "Customer ID," "Name," and "Address," the corresponding table would have columns for each of these attributes.
+
+---------------------------------------------------------------
+
+### Question 5
+
+Which data type is suitable for storing a variable-length string with a maximum length of 100 characters?  
+
+
+A. VARCHAR(100)
+B. TEXT(100)
+C. ENUM
+D. CHAR(100)
+
+
+The answer is **A. VARCHAR(100)**.
+
+Here's why:
+
+* **VARCHAR(100)** is specifically designed for storing variable-length strings, making it the most suitable option for strings that can vary in length up to 100 characters.
+* **TEXT(100)** is not a standard SQL data type and might not be supported by all database systems.
+* **ENUM** is used to define a list of fixed values, which is not suitable for storing variable-length strings.
+* **CHAR(100)** is a fixed-length character data type, which would waste storage space for strings shorter than 100 characters.
+
+Therefore, **VARCHAR(100)** is the most efficient and flexible choice for storing variable-length strings with a maximum length of 100 characters.
+
+---------------------------------------------------------------
+
+
+Kevin O'Brien <kobriendublin@gmail.com>
+Mon 25 Nov, 15:47 (18 hours ago)
+to me
+
+### Question 1
+What is the purpose of database replication in a distributed database architecture?
+
+A. High availability
+B. Improved performance
+C. Disaster recovery
+D. All of the above
+
+The answer is **D. All of the above**.
+
+Database replication is a powerful technique that offers multiple benefits:
+
+1. **High Availability:** By creating multiple copies of the database on different servers, replication ensures that if one server fails, another can take over, minimizing downtime and maintaining service availability.
+2. **Improved Performance:** By distributing the read load across multiple servers, replication can significantly improve query performance, especially for read-heavy workloads.
+3. **Disaster Recovery:** Replication can be used to create backups of the database on remote servers. In case of a disaster at the primary site, the database can be restored from these backups, ensuring data recovery.
+
+By combining these advantages, database replication plays a crucial role in building robust, scalable, and resilient distributed database architectures.
+
+
+----------------------------------------------------------
+
+### Question 2
+Which of the following classes of database users are more likely to use Object Relational Mapping (ORM) in their workloads?
+
+
+A. Database Administrators
+B. Data Engineers
+C. Data Scientists
+D. Application Developers
+
+The answer is **D. Application Developers**.
+
+Object-Relational Mapping (ORM) is a programming technique that maps object-oriented concepts to relational database systems. It simplifies database interactions for developers by allowing them to work with objects in their programming language instead of directly with SQL queries.
+
+Here's a breakdown of why application developers are the primary users of ORM:
+
+* **Simplified Database Interactions:** ORM frameworks abstract away the complexities of SQL, making it easier for developers to perform CRUD (Create, Read, Update, Delete) operations on database data.
+* **Increased Productivity:** By reducing the amount of SQL code that needs to be written, ORM can significantly increase developer productivity.
+* **Improved Code Maintainability:** ORM can help to improve the maintainability of database-driven applications by providing a consistent way to interact with the database.
+
+While Database Administrators, Data Engineers, and Data Scientists may use SQL directly for specific tasks, application developers are more likely to benefit from the productivity and simplicity offered by ORM frameworks.
+
+----------------------------------------------------------
+
+### Question 3
+MySQL facilitates various storage engines. Among the options provided, which storage engines that MySQL supports employ table-level locking?
+
+A. Falcon 
+B. MyISAM
+C. InnoDB
+D. NDB
+
+The answer is **B. MyISAM**.
+
+MySQL uses table-level locking for all storage engines except InnoDB. This means that when a session wants to update a table using MyISAM, it must first acquire an exclusive lock on the entire table. This prevents other sessions from reading or writing to the table until the update is complete. 
+
+While table-level locking can be efficient for read-heavy workloads, it can significantly impact performance for write-heavy workloads, as it can lead to contention and blocking.
+
+
+----------------------------------------------------------
+
+### Question 4
+
+PostgreSQL is a database management system with an object-relational architecture. What significance does the "object" aspect hold within PostgreSQL?
+
+
+A. Uses Postgres source code
+B. Supports high availability and scalability
+C. Database management
+D. Supports inheritance and overloading
+
+The answer is **D. Supports inheritance and overloading**.
+
+The "object" aspect of PostgreSQL refers to its support for object-oriented concepts like inheritance and polymorphism. This allows for more flexible and expressive data modeling, enabling you to create hierarchical relationships between tables and define complex data types.
+
+Here's a breakdown:
+
+* **Inheritance:** You can create child tables that inherit attributes and behaviors from parent tables, promoting code reuse and data consistency.
+* **Overloading:** You can define functions with the same name but different parameters, allowing for more concise and intuitive code.
+
+These object-oriented features make PostgreSQL a powerful tool for building complex and scalable database applications.
+
+----------------------------------------------------------
+
+### Question 5
+A relation consists of columns and rows, with columns representing attributes or fields. What is the term used to describe the individual entries in the rows of a table? 
+
+
+A. Tuples
+B. Data values
+C. Struct
+D. Degree
+
+The answer is **A. Tuples**.
+
+In relational databases, a tuple refers to a single row in a table. It represents a specific instance of the data within the table. Each tuple contains values for all the attributes defined in the table's schema.
+
+
+----------------------------------------------------------
