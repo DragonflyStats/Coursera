@@ -1,0 +1,26 @@
+### Database Normalization. 
+
+SQL normal forms are a set of rules for designing relational databases to reduce data redundancy and improve data integrity. Here's a brief overview:
+
+**First Normal Form (1NF)**
+* Each table cell should contain only a single value.
+* Each record (row) should be unique.
+
+**Second Normal Form (2NF)**
+* The table must be in 1NF.
+* Every non-prime attribute must depend on the whole primary key.
+
+**Third Normal Form (3NF)**
+* The table must be in 2NF.
+* Every non-prime attribute must depend on the whole primary key and not on any part of it.
+
+**Boyce-Codd Normal Form (BCNF)**
+* A stricter version of 3NF.
+* Every determinant must be a candidate key.
+
+**Higher Normal Forms (4NF, 5NF, etc.)**
+* These forms address more complex normalization issues, such as multi-valued dependencies and join dependencies.
+
+By following these normal forms, you can design databases that are more efficient, reliable, and easier to maintain.
+
+---------------------------------------------------------------
