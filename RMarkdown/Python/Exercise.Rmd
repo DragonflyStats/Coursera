@@ -1,0 +1,43 @@
+Project Scenario
+A multi-national firm has hired you as a data engineer. Your job is to access and process data as per requirements.
+
+Your boss asked you to compile the list of the top 10 largest banks in the world ranked by market capitalization in billion USD. Further, you need to transform the data and store it in USD, GBP, EUR, and INR per the exchange rate information made available to you as a CSV file. You should save the processed information table locally in a CSV format and as a database table. Managers from different countries will query the database table to extract the list and note the market capitalization value in their own currency.
+
+Directions
+1. Write a function to extract the tabular information from the given URL under the heading By Market Capitalization, and save it to a data frame.
+
+2. Write a function to transform the data frame by adding columns for Market Capitalization in GBP, EUR, and INR, rounded to 2 decimal places, based on the exchange rate information shared as a CSV file.
+
+3. Write a function to load the transformed data frame to an output CSV file.
+
+4. Write a function to load the transformed data frame to an SQL database server as a table.
+Write a function to run queries on the database table.
+Run the following queries on the database table:
+a. Extract the information for the London office, that is Name and MC_GBP_Billion
+b. Extract the information for the Berlin office, that is Name and MC_EUR_Billion
+c. Extract the information for New Delhi office, that is Name and MC_INR_Billion
+Write a function to log the progress of the code.
+While executing the data initialization commands and function calls, maintain appropriate log entries.
+
+
+There is a total of 10 points possible for the final project. 
+
+Upload the image ‘Task_1_log_function.png’. This should show the code for the function `log_progress()` used in the project. (1 point)
+
+Upload the image ‘Task_2a_extract.png’. This should be the snapshot of the html code obtained by inspecting the table on the webpage. The contents of the first row should be expanded and visible. (1 point)
+
+Upload the image ‘Task_2b_extract.png’. This should show the code for the function ‘extract()’ used in the project. (1 point)
+
+Upload the image ‘Task_2c_extract.png’. This should be the output obtained by executing the function call. (1 point)
+
+Upload the image ‘Task_3a_transform.png’. This should show the code for the function ‘transform’ used in the project. (1 point)
+
+Upload the image ‘Task_3b_transform.png’. This should be the output of the final transformed dataframe. (1 point)
+
+Upload the image ‘Task_4_CSV.png’. This should be the contents of the CSV file created from the final table. (1 point)
+
+Upload the image ‘Task_4_5_save_file.png’. This should show the code for both `load_to_csv()` and `load_to_db()` functions used in the project. (1 point)
+
+Upload the image ‘Task_6_SQL.png’. This should be the output of the SQL queries run on the database table. (1 point)
+
+Upload the image ‘Task_7_log_content.png’. This should be the contents of the log file ‘code_log.txt’. (1 point)
