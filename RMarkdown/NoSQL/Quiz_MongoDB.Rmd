@@ -1,0 +1,71 @@
+Graded Quiz: Basics of MongoDB
+
+1.
+Question 1
+Fill in the blank. ___________ provided by MongoDB means as your data needs grow, you can partition your data.
+
+
+A. Sharding
+B. Projection
+C. Aggregation
+D. Replication
+
+A. Sharding
+
+---------------------------------------------------------------
+
+2.
+Question 2
+MongoDB is schema-less. What does that mean?
+
+A. Create the table structures that will hold your data.
+B. MongoDB does not require that you create the schema and the table structures before writing the data.
+C. With MongoDB, you alter your tables to store additional fields.
+D. You can only store structured data in MongoDB.
+
+B. MongoDB does not require that you create the schema and the table structures before writing the data.
+
+---------------------------------------------------------------
+
+3.
+Question 3
+MongoDB follows a code-first approach. Select the statement that describes a code-first approach. 
+
+
+A. Generate the database first.
+B. Define the alter table commands in code.
+C. You can start writing your data as soon as you connect to the database.
+D. Create sample data first.
+
+**C. You can start writing your data as soon as you connect to the database.**
+
+In a code-first approach, you define your data structure and operations directly within your application code. MongoDB's schema-less nature allows you to start inserting documents without explicitly defining a schema beforehand. This flexibility makes it ideal for rapid development and evolving data structures.
+
+---------------------------------------------------------------
+
+4.
+Question 4
+Fill in the blank. Typical MongoDB setups are a three-node replica set. The ________________ process keeps a copy of your data on the primary node on the other data-bearing nodes in the cluster.
+
+
+A. Replication
+B. Redundancy
+C. Clustering
+D. Aggregation
+
+A. Replication
+
+
+---------------------------------------------------------------
+
+5.
+Question 5
+Fill in the blank. The “Many Sources One View” use case of MongoDB suggests that __________.
+
+
+A. MongoDB can store data of different types and formats.
+B. MongoDB can store data collected from multiple sources as long as they are in the same format.
+C. MongoDB can ingest several types of data from various sources and consolidate the data into one view of all data.
+D. MongoDB can collect vast amounts of data.
+
+C. MongoDB can ingest several types of data from various sources and consolidate the data into one view of all data.

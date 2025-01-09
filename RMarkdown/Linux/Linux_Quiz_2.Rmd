@@ -1,0 +1,197 @@
+1.
+### Question 1
+Which shell is usually the default on Linux systems?
+
+
+A. zsh
+B. Bourne again shell
+C. ksh
+D. Bourne shell
+
+The answer is **B. Bourne again shell (Bash)**.
+
+Bash is the most commonly used shell on Linux systems and is often the default choice for most distributions. It offers a wide range of features, customization options, and scripting capabilities. 
+
+------------------------------------------------------------
+
+2.
+Question 2
+Which of the following statements would print the paths stored in your system’s PATH variable?
+
+
+A. echo $PATH
+B. man $PATH
+C. echo PATH
+D. ps PATH
+
+The correct answer is **A. echo $PATH**.
+
+This command will print the contents of the PATH environment variable, which is a list of directories where the shell looks for executable programs.
+
+------------------------------------------------------------
+
+3.
+Question 3
+Which one of the following is a Linux command for viewing file contents?
+
+
+A. page
+B. append
+C. top
+D. cat
+
+The correct answer is **D. cat**.
+
+The `cat` command is a simple but powerful tool for displaying the contents of a file in the terminal. It's commonly used to view text files, log files, and other plain-text content. 
+
+Here's a breakdown of the other options:
+
+* **page:** This is not a standard Linux command.
+* **append:** This command is used to append text to the end of a file, not to view its contents.
+* **top:** This command displays system information, such as CPU usage, memory usage, and process information. 
+
+------------------------------------------------------------
+
+4.
+Question 4
+Which command can you use to create a view of a text file which excludes consecutively repeated lines?
+
+
+A. uniq
+B. grep
+C. sort
+D. cut
+
+The answer is **A. uniq**.
+
+The `uniq` command is specifically designed to filter out adjacent duplicate lines in a text file. However, it's important to note that `uniq` only works on sorted input. So, if your file isn't sorted, you'll need to use the `sort` command first.
+
+Here's a common command pipeline to achieve the desired result:
+
+```bash
+sort file.txt | uniq
+```
+
+This will first sort the file `file.txt` and then remove adjacent duplicate lines using `uniq`.
+
+
+
+------------------------------------------------------------
+
+5.
+Question 5
+Fill in the blank. The cd command enables you to change directories with either an absolute path to the directory, which always starts from the base or “slash” directory, or as relative path, which starts from your ___________________.
+
+
+A. present working directory
+B. user directory
+C. home directory
+D. root directory
+
+The answer is **A. present working directory**.
+
+A relative path starts from the directory you are currently in, which is known as the present working directory (PWD). For example, if you're in the `/home/user` directory and want to go to the `/home/user/Documents` directory, you can use the relative path `cd Documents`.
+
+
+------------------------------------------------------------
+
+6.
+Question 6
+Which of the following common shell commands for managing directories is used to delete an empty directory?
+
+
+A. chmod
+B. mkdir
+C. mv
+D. rmdir
+
+The answer is **D. rmdir**.
+
+The `rmdir` command is specifically designed to remove empty directories. It's important to note that `rmdir` will only work on directories that are completely empty. If there are any files or subdirectories within the directory, `rmdir` will fail.
+
+Here are brief explanations of the other options:
+
+* **chmod:** This command is used to change the permissions of files and directories.
+* **mkdir:** This command is used to create new directories.
+* **mv:** This command is used to move or rename files and directories.
+------------------------------------------------------------
+
+7.
+Question 7
+Which of the following common shell commands for managing files or directories can be used to create an empty file or updates a file's timestamp?
+
+
+A. chmod 
+B. touch 
+C. mkdir
+D. cp
+
+The answer is **B. touch**.
+
+The `touch` command is primarily used to update the timestamp of a file. However, if the specified file doesn't exist, `touch` will create an empty file with that name.
+
+
+------------------------------------------------------------
+
+8.
+Question 8
+Which statement regarding file archiving and compression is true?
+
+
+A. Archiving and compression are distinct processes that are usually combined. 
+B. You would archive your file if you want it to fit on your hard drive.
+C. File compression involves reducing the size of a set of files by saving them as a single file.
+D. An archive file is a collection of data files and directories that are stored as a network packet.
+
+The correct answer is **A. Archiving and compression are distinct processes that are usually combined.**
+
+While archiving and compression are often used together, they are distinct processes:
+
+* **Archiving:** This involves collecting multiple files and directories into a single archive file. This is useful for organizing files, backing up data, and transferring large amounts of data.
+* **Compression:** This involves reducing the size of a file or set of files. This is useful for saving storage space, reducing transfer times, and improving performance.
+
+Commonly, these two processes are combined to create compressed archive files, such as ZIP, RAR, or 7Z files. These files are smaller than the original files and can be easily transferred and stored. 
+
+The other options are incorrect:
+
+* **B:** Archiving is typically used to organize and back up files, not necessarily to make them fit on a hard drive.
+* **C:** File compression involves reducing the size of a single file or multiple files, but it doesn't necessarily combine them into a single file.
+* **D:** An archive file is a collection of files and directories, not network packets.
+
+------------------------------------------------------------
+
+9.
+Question 9
+Which common networking command displays information regarding your system’s communication devices?
+
+
+A. wget
+B. ifconfig
+C. curl
+D. ping
+
+The answer is **B. ifconfig**.
+
+The `ifconfig` command is used to display and configure network interfaces on a Linux system. It provides information about the network interfaces, including their IP addresses, MAC addresses, and other network settings.
+
+------------------------------------------------------------
+
+10.
+Question 10
+Which one of the following statement is false?
+
+
+A. The hostname command is used to get or set the host name and other information, such as the packet transmission rate, which uniquely identifies your computer.
+B. The ping command sends packets known as ICMP (Internet Control Message Protocol) requests to the server, listens for a response, and prints a result.
+C. Entering "curl www.google.com" returns the entire HTML content of the landing page at www.google.com, using the default HTTP protocol.
+D. The curl command is a powerful tool that enables you to transfer data to and from URLs and supports many different protocols.
+
+The false statement is  **A. The hostname command is used to get or set the host name and other information, such as the packet transmission rate, which uniquely identifies your computer.**
+
+Here's why the other statements are true:
+
+  * **B. The ping command sends packets known as ICMP (Internet Control Message Protocol) requests to the server, listens for a response, and prints a result.** - This is a correct description of the `ping` command, which is used to test network connectivity by sending ICMP echo requests and waiting for replies.
+  * **C. Entering "curl [www.google.com](https://www.google.com/url?sa=E&source=gmail&q=https://www.google.com)" returns the entire HTML content of the landing page at [www.google.com](https://www.google.com/url?sa=E&source=gmail&q=https://www.google.com), using the default HTTP protocol.** - This is a correct description of the `curl` command when used with a URL. By default, `curl` retrieves the content from the specified URL and displays it in the terminal.
+  * **D. The curl command is a powerful tool that enables you to transfer data to and from URLs and supports many different protocols.** - This is true. `curl` is a versatile tool for transferring data over various protocols like HTTP, HTTPS, FTP, and more.
+
+The hostname command retrieves or sets the hostname of the system, which is a unique identifier within a network but doesn't provide information about packet transmission rates.

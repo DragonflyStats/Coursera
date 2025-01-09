@@ -1,0 +1,183 @@
+1.
+### Question 1
+Which one of the following statements about Linux distributions is true?
+
+
+A. Debian is stable, reliable, and fully open source.
+B. Every Linux distribution is based on the Bash kernel.
+C. Red Hat Enterprise Linux is the largest community-run distro.
+D. There are only three types of Linux distribution: core, desktop, and server.
+
+The correct answer is **A. Debian is stable, reliable, and fully open source.**
+
+Here's a breakdown of why the other options are incorrect:
+
+* **B. Every Linux distribution is based on the Bash kernel.** This is incorrect. Linux distributions are based on the Linux kernel, not the Bash shell. Bash is a command-line interpreter that runs on top of the Linux kernel.
+* **C. Red Hat Enterprise Linux is the largest community-run distro.** This is incorrect. While Red Hat Enterprise Linux is a popular distribution, it's primarily a commercial product, not a community-driven one. Ubuntu, for example, is a much larger community-driven distribution.
+* **D. There are only three types of Linux distribution: core, desktop, and server.** This is an oversimplification. While many distributions focus on one of these areas, there are numerous other types, such as embedded, mobile, and specialized distributions for specific tasks.
+
+Therefore, the only accurate statement is that Debian is known for its stability, reliability, and adherence to open-source principles.
+
+------------------------------------------------
+
+### Question 2
+Which layer of the Linux system contains system daemons and shells? 
+
+
+A. Operating system 
+B. Kernel 
+C. Hardware 
+D. Application
+
+The answer is **D. Application**.
+
+System daemons and shells are part of the application layer. Daemons are background processes that run continuously, such as the network service daemon or the print spooler daemon. Shells, like Bash, are user interfaces that allow users to interact with the system. 
+
+------------------------------------------------
+
+3.
+Question 3
+Which layer of the Linux system assigns software to users, helps detect errors, and performs file management tasks? 
+
+
+A. Operating system 
+B. Kernel 
+C. Hardware 
+D. Application 
+
+The answer is **A. Operating System**.
+
+The operating system layer in Linux is responsible for managing system resources, interacting with hardware, and providing a user interface. This includes tasks like assigning software to users, detecting and handling errors, and managing files and directories. 
+
+------------------------------------------------
+
+4.
+Question 4
+Which layer of the Linux system is responsible for memory management, process management, device driver management, system calls and security? 
+
+
+A. Application 
+B. Kernel 
+C. Hardware 
+D. Operating system 
+
+The answer is **B. Kernel**.
+
+The kernel is the core component of the Linux system. It directly interacts with the hardware and manages system resources. Its responsibilities include:
+
+* **Memory management:** Allocating and deallocating memory to processes.
+* **Process management:** Creating, scheduling, and terminating processes.
+* **Device driver management:** Interfacing with hardware devices.
+* **System calls:** Providing an interface for applications to interact with the kernel.
+* **Security:** Enforcing security policies and protecting system resources.
+
+------------------------------------------------
+
+5.
+Question 5
+Which of the following is a standard directory in the Linux filesystem?
+
+
+A. load
+B. launch
+C. bin
+D. reboot
+
+The correct answer is **C. bin**.
+
+The `bin` directory is a standard directory in the Linux filesystem. It contains essential executable binaries, such as `ls`, `cp`, `mv`, and many others. These commands are used for basic file management and system operations.
+
+------------------------------------------------
+
+6.
+Question 6
+Which of the following is a GUI-based text editor? 
+
+
+A. gedit 
+B. Vim 
+C. vi 
+D. GNU nano 
+
+The answer is **A. gedit**.
+
+* **gedit** is a popular GUI-based text editor, often the default in GNOME desktop environments.
+* **Vim** and **vi** are command-line text editors, known for their efficiency but requiring a learning curve.
+* **GNU nano** is a simple command-line text editor, easier to learn than Vim but less powerful.
+
+------------------------------------------------
+
+7.
+Question 7
+Which of the following path helps you navigate to the user’s home directory?
+
+
+A. \myhome 
+B. ~ 
+C. \ 
+D. \home 
+
+The correct answer is **B. ~**.
+
+The tilde symbol (`~`) is a shorthand notation for the user's home directory. It's a convenient way to quickly navigate to your home folder in the terminal.
+
+
+\home: This is also a valid path, but it refers to the specific directory named "home" at the root level. This directory is often used to store user home directories, but it's not a direct path to a user's home directory.
+
+------------------------------------------------
+
+8.
+Question 8
+Complete the following. Packages are: 
+
+
+A. Archive files 
+B. Text editors 
+C. Backups 
+D. Kernels 
+
+
+------------------------------------------------
+
+9.
+Question 9
+Which command can you use to convert package files between deb and RPM formats? 
+
+
+A. alien 
+B. apt 
+C. update 
+D. yum 
+
+The command to convert package files between deb and RPM formats is **A. alien**.
+
+Here's what the other commands do:
+
+* **apt:** This is a package management system used in Debian-based distributions like Ubuntu. It's used to search for, install, remove, and update packages.
+* **update:** This is not a specific command, but it's often used in conjunction with package managers like apt to update the package lists. For example, `sudo apt update` updates the package lists to reflect the latest available versions of packages.
+* **yum:** This is a package management system used in Red Hat-based distributions like Fedora and CentOS. It functions similarly to apt, allowing you to manage packages.
+
+------------------------------------------------
+
+10.
+Question 10
+Complete the following. An advantage of using a GUI-based package manager such as PackageKit is that: 
+
+
+A. It always installs all available updates, so users cannot opt to only install specific updates. 
+B. It automatically checks for updates at configurable intervals. 
+C. It automatically installs new software packages. 
+D. It works on deb- and RPM-based Linux. 
+
+The correct answer is **B. It automatically checks for updates at configurable intervals.**
+
+GUI-based package managers like PackageKit offer a user-friendly interface to manage software installations and updates. One of their key advantages is the ability to automatically check for updates at specified intervals. This ensures that your system is always up-to-date with the latest security patches and feature improvements. 
+
+The other options are not accurate:
+
+* **A:** While GUI package managers can automate updates, they typically provide options to choose which updates to install.
+* **C:** GUI package managers do not automatically install new software without user input.
+* **D:** While some GUI package managers can work on both deb- and RPM-based Linux, this is not a universal feature.
+
+
+------------------------------------------------

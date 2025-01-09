@@ -1,0 +1,310 @@
+1.
+### Question 1
+
+What is Unix?
+
+A. Unix is a family of operating systems dating from the 1960s
+B. Unix is a programming language for developing web applications
+C. Unix is a type of computer hardware that can run graphical applications
+D. Unix is a proprietary operating system developed by Microsoft
+
+The answer is **A. Unix is a family of operating systems dating from the 1960s**. 
+
+Unix is a family of multitasking, multi-user computer operating systems that emerged in the late 1960s at AT&T's Bell Labs. It's known for its reliability, efficiency, and flexibility. Many modern operating systems, including Linux and macOS, are based on Unix principles.
+
+----------------------------------------------------------------------
+
+2.
+### Question 2
+Which layer of the Linux system is the core component of the operating system and responsible for memory, processing, and security management?
+
+
+A. Hardware
+B. Operating system
+C. Kernel
+D. Application
+
+The answer is **C. Kernel**.
+
+The kernel is the core component of the Linux operating system. It directly interacts with the hardware and manages system resources. Its responsibilities include:
+
+* **Memory management:** Allocating and deallocating memory to processes.
+* **Process management:** Creating, scheduling, and terminating processes.
+* **Device driver management:** Interfacing with hardware devices.
+* **System calls:** Providing an interface for applications to interact with the kernel.
+* **Security:** Enforcing security policies and protecting system resources.
+
+
+----------------------------------------------------------------------
+
+3.
+### Question 3
+Which shell command can you use to change the current working directory to your home directory?
+
+
+A. cd /
+B. cd ~ 
+C. cd !
+D. cd ..
+
+
+The answer is **B. cd ~**.
+
+The tilde symbol (`~`) is a shorthand notation for the user's home directory. So, `cd ~` will take you directly to your home directory.
+
+----------------------------------------------------------------------
+
+4.
+### Question 4
+What command do you use to open a text file using nano?
+
+
+A. open nano filename.txt
+B. nano open filename.txt
+C. nano filename.txt
+D. nano txt filename.txt
+
+
+The command to open a text file using nano is:
+
+```bash
+nano filename.txt
+```
+
+Where `filename.txt` is the name of the file you want to open.
+
+
+----------------------------------------------------------------------
+
+5.
+### Question 5
+Which shell command can you use to download a file from a URL?
+
+
+A. ping
+B. cat
+C. wget
+D. touch
+
+The answer is **C. wget**.
+
+The `wget` command is a powerful tool for downloading files from the internet. You can use it to download files from various protocols like HTTP, HTTPS, FTP, etc. 
+
+Here's a simple example:
+
+```bash
+wget https://example.com/file.zip
+```
+
+This command will download the file `file.zip` from the specified URL and save it to your current directory.
+
+
+----------------------------------------------------------------------
+
+6.
+### Question 6
+You can use the touch command for which of the following purposes?
+
+
+A. To create a new file
+B. To change a file’s permissions
+C. To add a string to a file
+D. To display a file’s contents
+
+The answer is **A. To create a new file**.
+
+The primary use of the `touch` command is to update the timestamp of a file. However, if the file doesn't exist, it will create an empty file with that name. 
+
+So, you can use `touch` to create new empty files.
+
+
+----------------------------------------------------------------------
+
+7.
+### Question 7
+Which command can you use to print the total number of lines in a file?
+
+
+A. head
+B. more
+C. cat
+D. wc
+
+The answer is **D. wc**.
+
+The `wc` command is used to count the number of lines, words, and bytes in a file. To print only the total number of lines, you can use the `-l` option:
+
+```bash
+wc -l filename.txt
+```
+
+This will output the number of lines in the specified file.
+
+
+----------------------------------------------------------------------
+
+8.
+### Question 8
+Which command prints all lines and line numbers from the file login.txt that contain the word “password”?
+
+
+A. grep -n password login.txt
+B. paste -i password login.txt
+C. tail -l password login.txt
+D. uniq -c password login.txt
+
+
+The command to print all lines and line numbers from the file login.txt that contain the word "password" is:
+
+```bash
+grep -n password login.txt
+```
+
+Here's a breakdown of the command:
+
+* **grep:** This command is used to search for patterns in text.
+* **-n:** This option tells `grep` to print the line numbers along with the matching lines.
+* **password:** This is the pattern we're searching for.
+* **login.txt:** This is the file we're searching in.
+
+So, this command will output lines from `login.txt` that contain the word "password", with each line prefixed by its line number.
+
+
+----------------------------------------------------------------------
+
+9.
+### Question 9
+Which command displays the hardware specification of a Wi-Fi adapter wifi0?
+
+
+A. netstat wifi0
+B. ifconfig wifi0
+C. ping wifi0
+D. hostname wifi0
+
+
+----------------------------------------------------------------------
+
+10.
+### Question 10
+Which command creates an archive of the /etc directory and names this archive etc.tar?
+
+
+A. tar -cf etc.tar /etc
+B. tar -xf /etc etc.tar
+C. tar -lf etc.tar /etc
+D. tar -tf /etc etc.tar
+
+```bash
+tar -cf etc.tar /etc
+```
+
+This command creates a tar archive named `etc.tar` containing the contents of the `/etc` directory.
+
+Here's a breakdown of the options used:
+
+* **-c:** Create a new archive.
+* **-f:** Specify the name of the archive file.
+* **-t:** List the contents of an archive.
+* **-x:** Extract files from an archive.
+
+In this case, we're using the `-c` and `-f` options to create a new archive named `etc.tar` and store the contents of `/etc` in it.
+
+
+----------------------------------------------------------------------
+
+11.
+### Question 11
+Which extension is used to indicate a file is a shell script?
+
+
+A. .sh
+B. .script
+C. .ss
+D. .shebang
+
+
+The extension used to indicate a file is a shell script is **A. .sh**.
+
+
+----------------------------------------------------------------------
+
+12.
+### Question 12
+Which of the following lines of input creates a new shell variable named language and stores the string 'German' in it?
+
+
+A. language='German'
+B. 'German'=language
+C. 'German'=$language
+D. $language='German'
+
+
+```bash
+language='German'
+```
+
+This line of input creates a new shell variable named `language` and assigns the string `'German'` to it.
+
+
+----------------------------------------------------------------------
+
+13.
+### Question 13
+Assume you have a file named shoppinglist.txt. In the terminal, you want to print each line of shoppinglist.txt in alphabetical order, but you want to omit consecutively repeated lines from the output. Which of the following Bash inputs should you use?
+
+
+A. uniq shoppinglist.txt | sort
+B. uniq shoppinglist.txt \\> sort
+C. sort shoppinglist.txt | uniq
+D. sort shoppinglist.txt \\> uniq
+
+
+```bash
+sort shoppinglist.txt | uniq
+```
+
+This command will first sort the lines of `shoppinglist.txt` alphabetically, and then the `uniq` command will remove any consecutive duplicate lines.
+
+
+--------------------------------------------------------------------
+
+14.
+### Question 14
+Which input can you use to run the hostname command and ifconfig command sequentially?
+
+
+A. hostname & ifconfig
+B. hostname --\\> ifconfig
+C. hostname; ifconfig
+D. hostname = ifconfig
+
+
+```bash
+hostname; ifconfig
+```
+
+The semicolon (`;`) is used to separate multiple commands on a single line. When you use this syntax, the shell executes the first command, then the second, and so on. In this case, it will first execute `hostname` to display the system's hostname, and then execute `ifconfig` to display network interface information.
+
+----------------------------------------------------------------------
+
+15.
+### Question 15
+Which cron command opens the default text editor?
+
+
+A. crontab -u
+B. crontab -l
+C. crontab -r
+D. crontab -e 
+
+
+```bash
+crontab -e
+```
+
+This command opens the crontab file in your default text editor, allowing you to add, modify, or delete cron jobs.
+
+----------------------------------------------------------------------
+
+Coursera Honor Code  Learn more

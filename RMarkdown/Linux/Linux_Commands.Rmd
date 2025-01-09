@@ -1,0 +1,47 @@
+Here's a list of basic shell scripting commands:
+
+Basic Commands:
+
+echo: Prints text to the console.
+read: Reads input from the user.
+exit: Exits the script.
+File and Directory Operations:
+
+cd: Changes the current working directory.
+ls: Lists files and directories.
+mkdir: Creates a new directory.
+rmdir: Removes an empty directory.
+rm: Removes files or directories.
+cp: Copies files or directories.
+mv: Moves or renames files or directories.
+Control Flow:
+
+if: Executes a block of code if a condition is true.
+else: Executes a block of code if a condition is false.
+elif: Executes a block of code if an additional condition is true.
+for: Iterates over a list of values.
+while: Repeats a block of code while a condition is true.
+until: Repeats a block of code until a condition is true.
+break: Exits a loop.
+continue: Skips the current iteration of a loop.
+Input/Output Redirection:
+
+>: Redirects standard output to a file.
+>>: Appends standard output to a file.
+<: Redirects standard input from a file.
+2>: Redirects standard error to a file.
+2>&1: Redirects standard error to the same place as standard output.
+Other Useful Commands:
+
+date: Displays the current date and time.
+cal: Displays a calendar.
+pwd: Prints the current working directory.
+grep: Searches for patterns in files.
+wc: Counts words, lines, and characters in a file.
+sort: Sorts lines of text.
+uniq: Removes duplicate lines.
+head: Displays the first few lines of a file.
+tail: Displays the last few lines of a file.
+cut: Extracts columns from a file.
+paste: Merges lines of files.
+Remember, these are just some of the basic commands you can use in shell scripting. By combining these commands with control flow structures and input/output redirection, you can create powerful and automated scripts to perform a variety of tasks.

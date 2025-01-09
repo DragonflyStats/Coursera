@@ -1,0 +1,128 @@
+1.
+Question 1
+What common trait do the NoSQL family of databases share? 
+
+
+A. Technology 
+B. Non-relational 
+C. Tabular style 
+D. Exclusion of SQL 
+
+The answer is **B. Non-relational**.
+
+NoSQL databases are characterized by their ability to handle large volumes of unstructured data that don't fit neatly into traditional relational database tables. They offer flexibility and scalability, making them well-suited for modern applications. 
+
+Here's a breakdown of the other options:
+
+* **A. Technology:** While NoSQL databases often share certain technologies (e.g., distributed systems, key-value stores), they can vary widely in their implementation details.
+* **C. Tabular style:** This is more characteristic of relational databases. NoSQL databases often use more flexible data models like document, key-value, or graph.
+* **D. Exclusion of SQL:** While many NoSQL databases don't use SQL directly, some do offer SQL-like query languages. The key distinction is the underlying data model, which is non-relational.
+
+---------------------------------------------------------
+
+2.
+Question 2
+What might be the most common reason to use a NoSQL database?
+
+
+A. Normalization 
+B. Security 
+C. Scalability 
+D. Joins 
+
+The most common reason to use a NoSQL database is **C. Scalability**. 
+
+NoSQL databases are designed to handle large volumes of unstructured data and can scale horizontally, making them ideal for applications that need to handle increasing amounts of data and traffic. 
+
+Here's a brief explanation of the other options:
+
+* **A. Normalization:** This is a technique used in relational databases to reduce data redundancy and improve data integrity. NoSQL databases often prioritize flexibility over strict normalization.
+* **B. Security:** While NoSQL databases offer various security features, they are not inherently more secure than relational databases. Security measures depend on implementation and configuration.
+* **D. Joins:** Relational databases excel at performing joins to combine data from multiple tables. NoSQL databases, especially those with document or key-value models, may not be as efficient for complex joins. 
+
+
+---------------------------------------------------------
+
+3.
+Question 3
+What makes key-value NoSQL databases powerful for read operations? 
+
+
+A. They are good for complex join operations. 
+B. They are represented as a hashmap. 
+C. They shard easily across nodes. 
+D. They are good for bulk reads. 
+
+The answer is **B. They are represented as a hashmap**.
+
+Key-value stores essentially function like hashmaps, where each key is mapped to a specific value. This structure allows for extremely fast lookups based on the key, making them highly efficient for read operations. 
+
+Here's a breakdown of the other options:
+
+* **A. They are good for complex join operations:** Key-value stores are not optimized for complex join operations, as they lack the relational structure required for such queries.
+* **C. They shard easily across nodes:** While key-value stores can be sharded for scalability, this doesn't directly impact their read performance. 
+* **D. They are good for bulk reads:** While key-value stores can handle bulk reads, their strength lies in their ability to efficiently retrieve individual records based on their keys.
+
+---------------------------------------------------------
+
+4.
+Question 4
+Which use case is a good choice for a document type NoSQL database? 
+
+
+A. Online blogging 
+B. The data naturally falls into a normalized tabular model 
+C. Aggregate-oriented design 
+D. When you require ACID transactions 
+
+The answer is **A. Online blogging**.
+
+Document-type NoSQL databases are well-suited for scenarios where data is naturally hierarchical and doesn't fit neatly into a rigid tabular structure. In the case of an online blog, each blog post can be represented as a document containing fields like title, content, author, publication date, comments, and tags. This hierarchical structure aligns well with the document model, making it easy to store, retrieve, and update blog posts efficiently.
+
+Here's a breakdown of why the other options aren't ideal:
+
+* **B. The data naturally falls into a normalized tabular model:** If your data is highly structured and can be easily represented in tables, a relational database might be a better choice.
+* **C. Aggregate-oriented design:** While document databases can handle some aggregation operations, they are not as optimized for complex aggregations as analytical databases.
+* **D. When you require ACID transactions:** Document databases generally prioritize scalability and flexibility over strong ACID guarantees. If strict transactional consistency is a critical requirement, a relational database might be more suitable.
+
+---------------------------------------------------------
+
+5.
+Question 5
+What is a characteristic of column-based NoSQL databases? 
+
+
+A. Columns are grouped together in families because they are often accessed individually. 
+B. Rows in column families are required to share the same columns. 
+C. Rows in column families can share all, a subset, or none of the columns. 
+D. Rows in column families share a common key or identifier. 
+
+The answer is **C. Rows in column families can share all, a subset, or none of the columns.**
+
+Column-based NoSQL databases store data in columns, with each column representing a specific attribute. This allows for efficient storage and retrieval of specific columns, making them ideal for analytical workloads where you often need to query a subset of columns.
+
+Here's a breakdown of the other options:
+
+* **A. Columns are grouped together in families because they are often accessed individually:** While columns are often grouped into column families, this is primarily for organizational purposes. Access patterns can vary.
+* **B. Rows in column families are required to share the same columns:** This is not a strict requirement. Rows within a column family can have different sets of columns, allowing for flexibility in data modeling.
+* **D. Rows in column families share a common key or identifier:** While some column-based databases use row keys, they are not always essential. The primary focus is on columnar storage and efficient columnar scans.
+
+
+-----------------------------------------------------------
+
+
+In the context of NoSQL, a hashmap is a data structure that stores data in key-value pairs. It's a fundamental concept underlying many NoSQL databases, particularly key-value stores.
+
+**Key characteristics of a hashmap:**
+
+* **Unique keys:** Each key must be unique within the hashmap.
+* **Fast lookup:** Hashmaps are optimized for efficient retrieval of values based on their keys.
+* **Flexible values:** The values associated with keys can be of any data type, including simple strings, complex objects, or even other data structures.
+* **Scalability:** Hashmaps can be scaled horizontally by distributing data across multiple nodes, making them suitable for large-scale applications.
+
+**How hashmaps are used in NoSQL:**
+
+* **Key-value stores:** These databases are directly modeled after hashmaps, allowing for fast, simple data storage and retrieval.
+* **Other NoSQL models:** While not as explicit, hashmaps are often used internally to implement various data structures and operations in other NoSQL models, such as document databases and graph databases.
+
+**In essence, hashmaps provide a foundation for efficient data storage and retrieval in NoSQL databases, enabling them to handle large-scale, high-performance applications.**

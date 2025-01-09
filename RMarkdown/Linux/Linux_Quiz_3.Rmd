@@ -1,0 +1,226 @@
+### Question 1
+Shell scripts are scripts that invoke a shell program. Which of the following invokes the Bourne shell program?
+
+
+A. #!/bin/ksh
+B. #!/bin/bash
+C. #!/bin/zsh
+D. #!/bin/sh
+
+
+The answer is **D. #!/bin/sh**.
+
+The shebang line `#!/bin/sh` specifies that the script should be executed using the Bourne shell. This is the traditional shell on Unix-like systems, and it's often used for simple scripts.
+
+
+-------------------------------------------------------------------
+
+
+### Question 2
+What is one benefit of shell scripts over compiled languages?
+
+
+A. Easier and faster to develop
+B. Shorter runtimes
+C. Listed line by line in text files
+D. Interpreted at runtime
+
+The answer is **A. Easier and faster to develop**.
+
+Here's why:
+
+* **No Compilation Stage:** Shell scripts are interpreted line by line, eliminating the need for a separate compilation step. This makes the development process quicker and more iterative.
+* **Simpler Syntax:** Shell scripts often use a simpler syntax compared to compiled languages, making them easier to learn and write.
+* **Flexibility:** Shell scripts can be easily modified and tested, allowing for rapid prototyping and experimentation.
+
+While shell scripts offer these advantages, they also have some drawbacks compared to compiled languages, such as slower execution speed and potential performance limitations.
+
+-------------------------------------------------------------------
+
+3.
+### Question 3
+Which symbol is used for chaining filter commands?
+
+
+A. colon :
+B. equals sign =
+C. plus sign +
+D. vertical bar |
+
+The answer is **D. vertical bar |**.
+
+The vertical bar `|` is used to chain commands together in a pipeline. The output of the first command is piped as input to the second command, and so on. This allows you to create complex command sequences to perform specific tasks.
+
+
+-------------------------------------------------------------------
+
+4.
+### Question 4
+What results from chaining filters together?
+
+
+A. Pipeline
+B. Net
+C. Loader
+D. Multi-use script
+
+The answer is **A. Pipeline**.
+
+When you chain filters together using the `|` symbol, you create a pipeline. Each command in the pipeline processes the output of the previous command, creating a sequential flow of data. This allows you to combine simple commands to perform complex tasks efficiently.
+
+-------------------------------------------------------------------
+
+5.
+### Question 5
+What symbol do you use to a define shell variable?
+
+
+A. plus sign +
+B. dollar sign $
+C. greater than symbol >
+D. equal sign =
+
+The answer is **D. equal sign =**.
+
+To define a shell variable, you use the equal sign (`=`) to assign a value to the variable name. For example:
+
+```bash
+variable_name=value
+```
+
+This assigns the value "value" to the variable named "variable_name". You can then use the variable by prefixing it with a dollar sign (`$`), like this:
+
+```bash
+echo $variable_name
+```
+
+This will print the value of the variable to the console.
+
+
+-------------------------------------------------------------------
+
+6.
+### Question 6
+Which command lists all environment variables?
+
+
+A. export
+B. grep
+C. env
+D.-env
+
+The command to list all environment variables is **C. env**. 
+
+This command will print a list of all the environment variables and their corresponding values.
+
+-------------------------------------------------------------------
+
+7.
+### Question 7
+Which of the following is a cron job syntax?
+
+
+A. command m h dom mon dow
+B. crontab -e
+C. time day date command
+D. m h dom mon dow command
+
+The correct answer is **D. m h dom mon dow command**.
+
+This is the standard syntax for a cron job, where:
+
+* **m:** Minute (0-59)
+* **h:** Hour (0-23)
+* **dom:** Day of the month (1-31)
+* **mon:** Month (1-12)
+* **dow:** Day of the week (0-6, where 0 is Sunday)
+* **command:** The command to be executed
+
+For example, to run a script every day at 3 AM, you would use:
+
+```
+0 3 * * * /path/to/your/script.sh
+```
+
+-------------------------------------------------------------------
+
+8.
+### Question 8
+Scheduling cron jobs involves a series of steps. Which command opens the crontab configuration file using the default text editor?
+
+
+A. edit crontab
+B. crontab
+C. crontab -e
+D. cat crontab
+
+The command to open the crontab configuration file for editing is **C. crontab -e**.
+
+This command will open the crontab file in your default text editor, allowing you to add, modify, or delete cron jobs.
+
+-------------------------------------------------------------------
+
+9.
+### Question 9
+Quoting specifies whether the shell should interpret special characters as metacharacters, or ‘escape’ them. When used in conjunction with the echo command, which one of the following statements is true?
+
+
+A. Double quotes are used to interpret all contents as literal characters
+B. You can use the backslash “\” to interpret a single character as a metacharacter
+C. Single quotes are used to interpret all contents as literal characters.
+D. The backslash “\” will not escape metacharacters when used within single quotes.
+
+The correct answer is **C. Single quotes are used to interpret all contents as literal characters.**
+
+When you enclose text within single quotes, the shell treats every character literally, including special characters like `$`, `*`, and `\`. This means that these characters will not be interpreted as metacharacters, and the exact string within the quotes will be printed.
+
+Here's a breakdown of the other options:
+
+* **A. Double quotes are used to interpret all contents as literal characters.** This is incorrect. Double quotes allow for variable expansion and command substitution, but they also interpret some special characters like `$` and `\`.
+* **B. You can use the backslash “\” to interpret a single character as a metacharacter.** This is correct. The backslash is used to escape the following character, preventing it from being interpreted as a special character. However, this is typically used within double quotes.
+* **D. The backslash “\” will not escape metacharacters when used within single quotes.** This is correct. As mentioned earlier, single quotes treat all characters literally, including the backslash. So, the backslash will not have its usual escaping behavior within single quotes. 
+
+In summary, single quotes are the most reliable way to prevent the shell from interpreting special characters in an `echo` command.
+
+-------------------------------------------------------------------
+
+10.
+### Question 10
+I/O redirection is a set of features that redirect either the standard input or the standard output. Which symbol redirects an error message to a file?
+
+
+A. >
+B. >>
+C. 2>
+D. <
+
+
+-------------------------------------------------------------------
+
+```bash
+for i in {1..10}; do echo $i; done
+```
+
+**Breakdown of the Command:**
+
+1. **`for i in {1..10}; do`:**
+   - **`for i in`:** This part initiates a `for` loop, which will iterate over a sequence of values.
+   - **`{1..10}`:** This brace expansion creates a sequence of numbers from 1 to 10.
+   - **`do`:** This keyword marks the beginning of the loop body.
+
+2. **`echo $i;`:**
+   - **`echo`:** This command prints the value of the variable `$i` to the console.
+   - **`$i`:** This is a variable that will take on each value from the sequence in turn.
+
+3. **`done`:**
+   - This keyword marks the end of the loop body.
+
+**How it works:**
+
+1. The loop starts with `i` set to 1.
+2. The `echo $i` command prints the value of `i` (which is 1) to the console.
+3. The loop increments `i` to 2.
+4. The `echo $i` command prints 2.
+5. This process continues until `i` reaches 10.
+
+**In essence, this command will print the numbers from 1 to 10, each on a new line.**

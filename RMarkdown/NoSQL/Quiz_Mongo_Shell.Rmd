@@ -1,0 +1,232 @@
+1.
+
+### Question 1
+
+Select the answer that defines Mongo shell.
+
+
+
+
+
+A. Mongo shell is a tool provided by MongoDB to interact with your databases.
+
+B. Mongo shell is the default database.
+
+C. Mongo shell is a graphical user interface.
+
+D. Mongo shell is a stock market aggregator.
+
+
+
+The answer is **A. Mongo shell is a tool provided by MongoDB to interact with your databases.**
+
+
+
+The Mongo shell provides a command-line interface to interact with MongoDB databases. You can use it to:
+
+* Query data
+
+* Insert, update, and delete documents
+
+* Create and drop databases and collections
+
+* Execute administrative tasks
+
+
+
+It's a powerful tool for managing and working with MongoDB databases.
+
+
+
+---------------------------------------------------------------
+
+
+
+2.
+
+### Question 2
+
+MongoDB uses compound indexing. What is special about a compound index?
+
+
+
+
+
+A. Compound indexes perform in-memory sort.
+
+B. MongoDB stores compound indexes in graph form.
+
+C. MongoDB compound indexes index more than one field.
+
+D. MongoDB compound indexes use single fields.
+
+
+
+The answer is **C. MongoDB compound indexes index more than one field.**
+
+
+
+A compound index in MongoDB indexes multiple fields within a collection. This enables efficient querying and sorting on combinations of fields. For example, a compound index on `(field1, field2)` can be used to efficiently query documents based on specific values of both `field1` and `field2`.
+
+
+
+This is particularly useful for complex queries that involve filtering and sorting on multiple fields. By creating a compound index on the relevant fields, MongoDB can optimize query performance significantly.
+
+
+
+
+
+---------------------------------------------------------------
+
+
+
+3.
+
+### Question 3
+
+An aggregation pipeline is a series of operations that you apply to your data to get a desired result. What does the following operation do?
+
+
+
+<pre><code>
+
+
+
+> db.courseResults.aggregate([ 
+
+
+
+{ $match: { "year": 2020 } }, 
+
+
+
+{ $group: { "_id": "$courseId", "avgScore": { $avg: "$score"} } } 
+
+
+
+]) 
+
+</code></pre>
+
+
+
+A. Filter 2020 documents, group these documents by course, and display the resultant list as an outcome.
+
+B. Filter 2020 documents, group these documents by average score, and display this list in ascending order of average scores.
+
+C. Filter 2020 documents, group these documents by course, then calculate the average student score per course in that year.
+
+D. Filter 2020 documents, group these documents by course, and then displays the student ID, course ID, and average score of all 2020 documents in a tabular format.
+
+
+
+The correct answer is **C. Filter 2020 documents, group these documents by course, then calculate the average student score per course in that year.**
+
+
+
+Here's a breakdown of how the pipeline works:
+
+
+
+1. **`$match` stage:**
+
+   - Filters documents where the `year` field is equal to 2020.
+
+
+
+2. **`$group` stage:**
+
+   - Groups the filtered documents by the `courseId` field.
+
+   - Calculates the average score for each group using the `$avg` accumulator. The average score is stored in a field named `avgScore`.
+
+
+
+The final result will be a list of documents, each containing a `_id` field (the `courseId`) and an `avgScore` field, representing the average score for that course in 2020.
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------
+
+
+
+4.
+
+### Question 4
+
+Fill in the blank. A MongoDB Replica Set is a collection of data-bearing nodes _________________.
+
+
+
+
+
+A. Providing multiple copies just in case you accidentally delete your data
+
+B. Providing horizontal scaling to increase capacity
+
+C. With each node being a primary node, allowing you to apply changes
+
+D. Where each node is either a primary node or a secondary node, and each node maintains a copy of the same data
+
+
+#### Explanation
+
+The correct answer is D
+
+
+
+D. Where each node is either a primary node or a secondary node, and each node maintains a copy of the same data
+
+---------------------------------------------------------------
+
+
+
+5.
+
+### Question 5
+
+What does the following operation in Python do?
+
+
+
+                 customers.count_documents({"lastName": "Smith"})
+
+
+
+
+
+A. This operation returns the first document in natural order (the order in which the database refers to documents on disk), which has the last name Smith.
+
+B. This operation allows you to insert the column “customers_list” in the database.
+
+C. This operation counts the number of customers with the last name Smith and returns the number of records found as an outcome.
+
+D. This operation updates the customer list with customer information in the “customers_list” field.
+
+
+
+**C. This operation counts the number of customers with the last name Smith and returns the number of records found as an outcome.**
+
+
+
+Here's a breakdown:
+
+
+
+1. **`customers.count_documents()`:** This method is used to count the number of documents in a specific collection.
+
+2. **`{"lastName": "Smith"}`:** This is a filter query that specifies the condition to be met. In this case, it's looking for documents where the "lastName" field is equal to "Smith".
+
+
+
+So, the entire operation counts the number of documents in the "customers" collection that match the given filter criteria.
+
+
+
+--------------------------------------------------------------------------------------------------
