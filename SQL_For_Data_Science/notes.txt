@@ -1,0 +1,21 @@
+* https://github.com/trentparkinson/SQL-for-Data-Science
+* https://github.com/larrybotha/sql-for-data-science
+* https://github.com/ctzhou86/Coursera-SQL-for-Data-Science-Answers/tree/master
+* https://github.com/brianchiang-tw/SQL_for_DataScience
+
+* https://github.com/mbaradas/Data_Wrangling_Analysis_and_AB_Testing_with_SQL
+* https://github.com/anishazaveri/coursera_SQL
+* https://github.com/LuisQuichca/Data-Wrangling-Analysis-and-AB-Testing-with-SQL
+* https://github.com/R3128/Data-Wrangling
+* https://github.com/joseluisrj/AB_Testing
+
+* https://github.com/Linlin-Li-1/Distributed-Computing-with-Spark-SQL
+* https://github.com/KaderDurak/Distributed-Computing-with-Spark-SQL
+* https://github.com/mbaradas/Distributed_Computing_with_Spark_SQL
+* https://github.com/swilliamc/SparkSQL
+
+* https://github.com/Mega-Barrel/SQL-DataScience-Capstone
+* https://github.com/Bombjack88/SQL-for-Data-Science-Capstone-Project/tree/main
+* https://github.com/Shegartyy/SQL-for-Data-Science-Capstone-Project/tree/main
+* https://github.com/GaurabKundu1/UCDavis-SQL-for-Data-Science-Capstone-Project/tree/main/Week%202
+* https://github.com/Evbw/SQL-For-Data-Science-Capstone-Project

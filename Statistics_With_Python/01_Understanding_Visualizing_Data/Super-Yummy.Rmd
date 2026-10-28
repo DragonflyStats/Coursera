@@ -1,0 +1,56 @@
+---
+title: "Business Memorandum"
+output: html_document
+date: "03-03-2023"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Super-Yummy Pizza company
+
+The Super-Yummy Pizza company is a well-known family owned Pizza restaurant chain that has been operating in the South side of London since 1988. The chain of restaurants now has 7 restaurants all across South London, and has built up a very loyal clientele.
+
+Super-Yummy has been a successful business because of the recognition that tastes and attitudes change. The purpose of this study is to get feedback about the needs of the modern customers. Super-Yummy Pizzas seeks to find the right balance between maintaining its existing customer base, but at the same time reach out to new customers.
+
+
+### Objective 
+
+The project is a survey of the general public - and their current tastes and habits regarding dining out, and what their preferred customer experience would be.
+
+### Part A - Data Collection.
+
+* Super Yummy's premises are located in several main shopping districts where the high foot-fall throughout the day. The main data collection strategy is to entice passers-by to engage with the survey.
+
+* Participants will give free slices of pizza, with a soft drink, in exchange for answering some questions. 
+
+* The people who receive a delicious pizza will do a survey, which will show the particular preferences of our pizza with respect to those of the pizza hut company.
+
+* The interviews will take place at each of the restaurants, and over several days of the week. 
+
+* The intention is to get a large and diverse sample size that fully reflects the demographics of the area.
+
+### Part B - Survey Questions
+
+The interview will comprise several sections. 
+
+*Question Types*: Some questions will be categorical in nature, but for the purposes of data analysis, questions will preferably be structured in an ***ordinal scale*** (e.g. on a scale of "1 to 10"). Where relevant, the questions below will be answered with numeric values.
+
+1. **Information about time and location of interview**: including the restaurant location, time of the day, and day of the week. This information can be completed by the interviewer at the end of the interview.
+
+2. **Demographic Information**: The intention is that interviewee gives their age-group, gender and some employment details. (N.B. The interviewer should not compel them to give answers if they are not willing)
+
+3. **Preferences in Pizza type**: What is their favourite pizzas? What is their least favourite? Can they rate different pizza toppings on a scale of 1 to 10.
+
+4. **Preferences for Side Orders**: What additional dishes do they like? What are their beverage preferences? Do they have deserts?
+
+5. **Habits:** What is their customary social habits? What is their preferred day to go out? What is their preferred time for going to a restaurant? Do they go in large groups or small? Do they go to pizza restaurants when participating in other activities (e.g. before or after going to the cinema)? Do they go with families?
+
+Remark - This last section is particularly important as it provides insights into the optimal customer experience for each segment of the customer base. The interviewer should encourage the participant to give as much information as possible on their ideal dining experience.
+
+### Part C - Outcome
+
+The collected data will be used to inform the Super-Yummy Pizza company about their customer base. The analysis will help Super-Yummy to devise strategies to ensure customers are coming to their restaurant at all times during the week, and advise on the viability of various customer experience strategies for different periods during the week. 
+
+
