@@ -1,8 +1,3 @@
-## Geospatial Foundations & Python Tooling Specialization
-
-Here is a structured, clear description for the 9-course specialization program:
-
----
 
 # Geospatial Analysis with Python & QGIS Specialization
 
