@@ -1,5 +1,3 @@
-Here is the cleanly formatted Markdown write-up of the course syllabus:
-
 ## Course Syllabus: Supervised Machine Learning & Regression
 
 ### Module 1: Introduction to Supervised Machine Learning and Linear Regression
