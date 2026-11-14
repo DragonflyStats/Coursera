@@ -1,0 +1,12 @@
+name: Penguins_Dataset
+title: Penguins_Dataset
+username: dragonflystats
+account: dragonflystats
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 18331076
+bundleId: 12763657
+url: https://dragonflystats.shinyapps.io/Penguins_Dataset/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
