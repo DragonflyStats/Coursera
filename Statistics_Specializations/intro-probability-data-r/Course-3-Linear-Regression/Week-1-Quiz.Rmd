@@ -1,0 +1,282 @@
+### Question 1
+
+A researcher is investigating a possible effect of Facebook use on exam grades and he wants to try a linear regression model. He has outside data, collected via a survey, showing that the correlation between the student’s exam grade and the number of hours spent on Facebook in the days before the exam is about -0.12. If the researcher wanted to use linear regression to predict the exam score for a student who spent 6 hours on Facebook before his exam, which is of the following best describes the researcher’s situation?
+
+* He should use linear regression since the correlation coefficient is not 0 it is clear that there is a linear relationship between the two variables.
+* **Correct** He needs to plot the data (e.g. a scatterplot) before deciding whether to use linear regression.
+* He should not use linear regression because the correlation is not strong enough.
+* He should use linear regression. He can predict the exam score for a student who spent 6 hours on Facebook before the exam using the equation score = 100 + 6 × (−0.12). 
+* He should use linear regression. Because of the negative correlation, spending more time on Facebook leads to lower exam scores..
+
+------------------------------------------------------
+
+### Question 1
+Of the four plots shown below, which one appears to show the weakest relationship between two variables?
+
+* (I)
+* ***Incorrect*** (II)
+* (III)
+* (IV)
+
+#### Explanation 
+
+This question refers to the following learning objective(s): When 
+describing the association between two numerical variables, evaluate
+
+* direction: positive (x ↑, y ↑), negative (x ↓, y ↑)
+* form: linear or not
+* strength: determined by the scatter around the underlying relationship
+
+-----------------------------------------------------------
+### Question 2
+The first plot below was created by plotting data collected on two variables. Then, the second plot was created using the same data but with different units for the dependent variable. In the context of linear regression, which of the following best describes the differences between the two plots?
+
+
+* The slope of the linear relationship in the first plot has a smaller absolute value, but the correlation coefficients for the two plots are the same.
+* The correlation coefficient for the second plot has a larger absolute value, but the slopes of the linear relationships in the two plots are the same.
+* The correlation coefficient for the second plot has a smaller absolute value, but the slopes of the linear relationships in the two plots are the same.
+* Both the slopes and the regression coefficients are the same for the two plots.
+* **Correct** The slope of the linear relationship in the first plot has a larger absolute value, but the correlation coefficients for the two plots are the same.
+
+#### Explanation 
+
+This question refers to the following learning objective(s): Note that correlation coefficient (R, also called Pearson's R) has the following properties:
+
+* the magnitude (absolute value) of the correlation coefficient measures the strength of the linear association between two numerical variables
+* the sign of the correlation coefficient indicates the direction of association
+* the correlation coefficient is always between -1 and 1, -1 indicating perfect negative linear association, +1 indicating perfect positive linear association, and 0 indicating no linear relationship
+* the correlation coefficient is unitless
+* since the correlation coefficient is unitless, it is not affected by changes in the center or scale of either variable (such as unit conversions)
+* the correlation of X with Y is the same as of Y with X 
+* the correlation coefficient is sensitive to outliers
+
+The correlation coefficient is unitless and so does not change if the units of the involved variables change. Magnitude of the slope is measured by the steepness of the relationship, the steeper the line, the larger the magnitude of the slope. Since the plots are plotted on the same x-axis and y-axis scales, we can say for sure that the regression slope has decreased in the 2nd plot compared to the 1st.
+
+-----------------------------------------------------------
+### Question 3 (Variant)
+Fill in the blank: Residuals of linear models should be distributed nearly normally around __________.
+
+
+* **Correct**  0
+* the mean of y
+* the mean of $\hat{y}$ (the predicted values)
+* the mean of x
+
+-----------------------------------------------------------
+### Question 3 (Variant)
+
+Which of the following is false?
+
+* Residuals of linear models should be distributed nearly normally around 0.
+* The residuals plot (residuals vs. x) should show a random scatter around 0. 
+* A data point that has a negative residual is located below the regression line.
+* **Correct** The variability of residuals should increase as x increases.
+
+#### Explanation 
+
+Constant variability in the residuals is a condition for fitting a least-squares line.
+
+This question refers to the following learning objective(s):
+
+* Define residual (e) as the difference between the observed (y)  and predicted ( $\hat{y}$ ) values of the response variable.
+
+$$ e = y - \hat{y}$$
+
+* Define the least squares line as the line that minimizes the sum of the squared residuals, and list conditions necessary for fitting such line: 
+
+1. linearity
+2. nearly normal residuals
+3. constant variability
+
+-----------------------------------------------------------
+
+### Question 4
+
+Sixteen student volunteers at Ohio State University drank a randomly assigned number beers. Thirty minutes later, a police officer measured their blood alcohol content (BAC) in grams of alcohol per deciliter of blood. The scatterplot displays the relationship between BAC and number of beers consumed. Suppose a mistake was found in the data: the student who supposedly drank the highest number of beers (9 beers) actually only drank 6. His BAC was recorded correctly. In a new scatterplot, how would the strength of the association appear - compared to the strength of the association shown here?
+
+
+* Roughly the same as the strength of the association shown in the above scatterplot.
+* **Correct** Weaker than the strength of the association shown in the above scatterplot.
+* ***Incorrect*** Stronger than the strength of the association shown in the above scatterplot.
+* It’s impossible to tell.
+
+#### Explanation
+
+This question refers to the following learning objective(s): When 
+describing the association between two numerical variables, evaluate
+
+* direction: positive (x ↑, y ↑), negative (x ↓, y ↑)
+* form: linear or not
+* strength: determined by the scatter around the underlying relationship
+
+Moving the rightmost point back to x=6 would result in a scatterplot where there is more scatter around the main trend of the data. Therefore we would say the new strength of association would be weaker than that shown above.
+
+-----------------------------------------------------------
+### Question 5
+For a certain professional basketball team, 32% of the variability in the team’s points scored per game is explained by the total salary of the opposing team. 
+For this particular team, which of the following could be the correlation between their points scored per game and the salary of the opposing team?
+
+
+* $1−(0.32)^2 = 0.998$
+* **Correct** $− \sqrt{0.32} =−0.566$
+* ***Incorrect*** $1− \sqrt{0.32} =0.434$
+* $(−0.32)^2  = − 0.102$
+
+#### Explanation 
+
+This question refers to the following learning objective(s): Define $R^2$ as the percentage of the variability in the response variable explained by the the explanatory variable. 
+
+For a good model, we would like this number to be as close to 100% as possible.
+
+This value is calculated as the square of the correlation coefficient.
+
+Correlation coefficient is the square root of $R^2$
+
+-----------------------------------------------------------
+
+### Question 6
+
+A colleague needs some help with a statistics problem: He brings you the plot shown below, along with a correlation coefficient of 0.03 which he calculated himself. The plot shows two numerical variables which are obviously strongly related, and as a result your colleague is afraid he made a mistake calculating the correlation coefficient: that is, he was surprised to get an answer so close to 0. Given only this information, which of the following responses is the best to give your colleague?
+
+* **Correct** The correlation coefficient measures the strength of the linear relationship, therefore two variables that have a strong non-linear association might still have a low correlation coefficient.
+* ***Incorrect*** Your colleague must have made a mistake in his calculations. A much higher correlation coefficient is expected for variables that show a clear association. 
+
+#### Explanation
+
+Incorrect for (b)
+
+There is clear association between these variables, but it’s not linear, therefore a low correlation coefficient is not unexpected.
+
+This question refers to the following learning objective(s): 
+
+Define correlation as the linear association between two numerical variables.
+
+Note that a relationship that is nonlinear is simply called an association.
+
+Note that correlation coefficient (R, also called Pearson’s R) has the following properties:
+
+ 
+   - the magnitude (absolute value) of the correlation coefficient 
+measures the strength of the linear association between two numerical 
+variables
+
+    - the sign of the correlation coefficient indicates the direction of association
+
+ 
+   - the correlation coefficient is always between -1 and 1, -1 
+indicating perfect negative linear association, +1 indicating perfect 
+positive linear association, and 0 indicating no linear relationship
+
+    - the correlation coefficient is unitless
+
+ 
+   - since the correlation coefficient is unitless, it is not affected 
+by changes in the center or scale of either variable (such as unit 
+conversions)
+
+    - the correlation of X with Y is the same as of Y with X
+
+    - the correlation coefficient is sensitive to outliers
+
+-----------------------------------------------------------
+
+### Question 7
+
+Fill in the blanks: A data point that has a negative residual is located ________ the regression line.
+
+* on
+* **Correct** below
+* above
+
+-----------------------------------------------------------
+
+### Question 7
+
+The  linear model below is used for predicting poverty rate from high school graduation rate in the 51 states in the US (including DC).
+$$p=64.68−0.62 HS grad rate$$
+where p is poverty
+High school graduation rate for North Carolina is 81.4% and the poverty rate is 13.1%. What is the residual for this observation? Choose the closest answer.
+
+A snippet of the data matrix is provided below, pay attention to the scale of the data in solving this question:
+
+* -24.8
+* 0
+* **Correct** -1.1
+* ***Incorrect*** 1.1
+* 24.8
+
+#### Explanation 
+
+Incorrect for (d)
+
+The residual is calculated as observed - predicted (not predicted - observed).
+
+This question refers to the following learning objective(s): 
+
+* Define residual (e) as the difference between the observed (y)  and predicted ( $\hat{y}$ ) values of the response variable.
+
+$$ e = y - \hat{y}$$
+
+* Define the least squares line as the line that minimizes the sum of the squared residuals, and list conditions necessary for fitting such line: 
+
+1. linearity
+2. nearly normal residuals
+3. constant variability
+
+ 
+
+-----------------------------------------------------------
+
+### Question 8
+
+The following ANOVA output is for the linear model predicting nicotine content (in mg) from tar content (in mg). 
+Which of the following is $R^2$ ? 
+Choose the closest answer.
+
+* ***Incorrect*** 20%
+* 95%
+* 0.2%
+* 4%
+* 5%
+
+
+
+-----------------------------------------------------------
+
+### Question 8
+
+Which of the following best describes SST (sum of squares total) in a regression?
+
+* Total variability in the explanatory variable.
+* Strength of the model fit.
+* Unexplained variability in the response variable. 
+* **Correct** Total variability in the response variable.
+* Explained variability in the response variable.
+
+#### Explanation
+
+Sum of squares total is the total variability in the response variable.
+
+-----------------------------------------------------------
+
+### Question 9
+
+Based on an observational study, a clinical psychologist finds that the relationship between the number of weeks spent in a therapy hospital and number of seizures per week is described by the following equation:   
+
+Which of the following is the best interpretation of the slope estimate?
+
+* ***Incorrect*** Each additional week spent in a therapy hospital decreases the number of seizures per week by 0.91.
+* **TRY** For each additional week spent in the therapy hospital, we would  expect the average number of seizures per week to lower by 0.91 seizures.
+* ***Incorrect*** All patients start their treatment with at least 14.09 seizures per week.
+* For each additional seizure per week, we would expect the average number of additional weeks spent in the therapy hospital to be higher by 0.91 seizures.
+
+
+#### Explanation 
+
+The question is about the slope, not the intercept.
+
+This question refers to the following learning objective(s): Interpret the slope as
+
+* when x is numerical: “For each unit increase in x, we would expect y to be lower/higher on average by |b_{1}| units”
+* when x is categorical: “The value of the response variable is predicted to be |b_{1}| units higher/lower between the baseline level and the other level of the explanatory variable.”
+* Note that whether the response variable increases or decreases is determined by the sign of $b_{1}$ .

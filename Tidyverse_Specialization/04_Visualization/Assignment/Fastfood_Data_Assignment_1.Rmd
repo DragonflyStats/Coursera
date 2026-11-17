@@ -1,0 +1,351 @@
+---
+title: "Visualizing Data: Final Project"
+
+output: 
+    html_document:
+        toc: TRUE
+        theme: flatly
+        highlight: tango
+        code_folding: show
+        df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## **Instructions:** 
+
+In this course, we have learned the importance of data visualization and how to leverage packages in the Tidyverse for data visualization in R. This project will give you the opportunity to practice those skills in greater depth. 
+
+This assignment uses two data sets about fast food restaurants.  Specifically, we will create data visualizations using:
+
+1. Data set: annual sales information and number of stores per fast food restaurants in 2018 (data_fastfood_sales.csv). Source: Data originally from Hubworks. 
+
+2. Data set: nutrition information about entrees from fast food restaurants (data_fastfood_calories.csv). Source: Data originally from the GitHub repository from the Tidy Tuesday project in R4DS online learning community.
+
+## Load Libraries and Read Data
+```{r, message=FALSE, warning=FALSE}
+library(pacman)
+p_load(tidyverse, skimr, ggrepel)
+```
+
+Annual sales information and number of stores per fast food restaurants in 2018 
+```{r sales}
+sales <- read_csv('Data_Fastfood_Sales.csv',show_col_types = FALSE)
+```
+
+Nutrition information about entrees from fast food restaurants
+```{r calories}
+calories <- read_csv('Data_Fastfood_Calories.csv',show_col_types = FALSE)
+```
+
+
+```{r EDA}
+## Explore the Data
+
+#skim(sales)
+#skim(calories)
+#glimpse(sales)
+#glimpse(calories)
+#unique(sales$restaurant)     
+#unique(calories$restaurant)
+```
+
+# Problem 1: Sales vs. Num. Stores
+```{r problem 1}
+## data
+p1 <- sales %>% 
+  
+  select(restaurant, us_sales, num_franchised_stores, unit_count) %>% 
+  mutate(prop_franchised_stores = num_franchised_stores/unit_count) %>% 
+  group_by(restaurant, num_franchised_stores, us_sales, prop_franchised_stores, unit_count) %>%
+  summarise(us_sales = sum(us_sales)) %>% 
+  arrange(desc(prop_franchised_stores)) %>% 
+  ungroup()
+## visualization
+p1 %>% 
+  ggplot(aes(x = us_sales,
+             y = unit_count,
+             color = prop_franchised_stores)) + 
+  
+  geom_point(size = 3) + 
+  scale_x_log10() +
+  scale_y_log10() +
+  labs(
+    title = "Problem 1: US Sales vs. Number of Stores",
+    subtitle = '',
+    x = 'U.S. sales in millions (log10 scale)',
+    y = 'Total number if stores (log10 scale)',
+    caption =paste0("Data: Hubworks & Tidy Tuesday project • Visualization: Steven Ponce (@sponce1)"),
+    color = "Proportion of stores\nfranchised") +   # legend title
+  
+  theme_bw() +
+  
+  # theme
+  theme(
+    plot.margin = margin(t = 10, r = 5, b = 10, l = 5),
+    legend.position = 'right',
+    axis.title = element_text(size = 12),
+    axis.text  = element_text(size = 10),
+    
+    plot.title = element_text(
+      color = "#2C3E50",
+      face = "bold",
+      size = 14,  
+      margin = margin(t = 10)),
+    
+    plot.subtitle = element_text(
+      color = "#2C3E50",
+      size = 14,  
+      margin = margin(b = 5)),
+    
+    plot.caption = element_text(
+      color = "grey60",
+      size = 10,
+      hjust = .5,
+      margin = margin(t = 15, b = 15)) 
+  )   +
+  
+  # datapoints labels
+  geom_text_repel(aes(label = restaurant), color = 'black')
+``` 
+
+# Problem 2: Average sales per unit store
+```{r problem 2}
+## data
+p2 <- sales %>% 
+  
+  select(restaurant, average_sales) %>% 
+  group_by(restaurant) %>%
+  summarise(average_sales = sum(average_sales)) %>% 
+  arrange(desc(average_sales)) %>% 
+  
+  # bar labels
+  mutate(
+    bar_label = round(average_sales, digits = 0),
+    bar_label = paste0('$', {bar_label})
+    ) %>% 
+  
+  # order by sales from High to Low
+  mutate(restaurant = restaurant %>% fct_reorder(average_sales)) %>% 
+  ungroup()
+## visualization  
+p2 %>% 
+  ggplot(aes(x = average_sales, y = restaurant)) +
+  geom_col() +
+  
+  scale_x_continuous(labels = scales::dollar_format()) +
+  scale_y_discrete() +
+  coord_cartesian(clip='off') +
+  
+  labs(
+    title = "Problem 2: Average sales per unit store",
+    subtitle = '',
+    x = 'Average sales per unit store (in thousands)',
+    y = 'Restaurant',
+    caption =paste0("Data: Hubworks & Tidy Tuesday project • Visualization: Steven Ponce (@sponce1)")) +
+  
+  theme_classic() +
+  
+  # theme
+  theme(
+    plot.margin = margin(t = 10, r = 25, b = 10, l = 20),
+    legend.position = 'right',
+    axis.title = element_text(size = 12),
+    axis.text  = element_text(size = 10),
+    
+    plot.title = element_text(
+      color = "#2C3E50",
+      face = "bold",
+      size = 14,  
+      margin = margin(t = 10)),
+    
+    plot.subtitle = element_text(
+      color = "#2C3E50",
+      size = 14,  
+      margin = margin(b = 5)),
+    
+    plot.caption = element_text(
+      color = "grey60",
+      size = 10,
+      hjust = .5,
+      margin = margin(t = 15, b = 15)) 
+  )  +
+  
+  # col labels
+  geom_text(aes(label = bar_label, hjust= -0.25)) 
+ 
+```
+
+# Problem 3: Sodium Levels
+```{r problem 3,  fig.height = 12, fig.width = 12}
+## data
+p3 <- calories %>% 
+  select(restaurant, item, calories, sodium) 
+## visualization
+p3 %>% 
+  ggplot(aes(x = calories, y = sodium)) + 
+  
+  facet_wrap(~restaurant) +
+  geom_point(size = 2, alpha = 0.5) +
+  geom_hline(yintercept = 2300) + 
+  
+  geom_text_repel(data = p3  %>% filter(sodium > 2300),
+                  aes(label = item, direction = 'y'), 
+                  nudge_x = 800, nudge_y = 1000) +
+  #labs
+  labs(
+    title = "Problem 3: Sodium Levels",
+    subtitle = '',
+    x = 'Calories',
+    y = 'Sodium (mg)',
+    caption =paste0("Data: Hubworks & Tidy Tuesday project • Visualization: Steven Ponce (@sponce1)")
+    ) +
+  
+  # theme
+  theme_bw() + 
+  
+  theme(
+    plot.margin = margin(t = 10, r = 25, b = 10, l = 20),
+    legend.position = 'right',
+    axis.title = element_text(size = 12),
+    axis.text  = element_text(size = 10),
+    
+    plot.title = element_text(
+      color = "#2C3E50",
+      face = "bold",
+      size = 14,  
+      margin = margin(t = 10)),
+    
+    plot.subtitle = element_text(
+      color = "#2C3E50",
+      size = 14,  
+      margin = margin(b = 5)),
+    
+    plot.caption = element_text(
+      color = "grey60",
+      size = 10,
+      hjust = .5,
+      margin = margin(t = 15, b = 15)))
+```
+ 
+# Problem 4: Any Salad?   
+```{r problem 4, fig.height = 8, fig.width = 12}
+## data
+p4 <- calories %>% 
+  select(restaurant, item, calories) %>% 
+  # salad available?
+  mutate(is_salad = str_detect(str_to_lower(item), 'salad')) %>% 
+  # order by calories from High to Low
+  mutate(restaurant = restaurant %>% fct_reorder(calories)) 
+## visualization
+p4 %>%  
+  ggplot(aes(x = calories, y = restaurant)) +
+  
+  geom_boxplot(outlier.shape = NA) + 
+  geom_jitter(aes(color = is_salad)) + 
+  scale_x_log10() +
+  scale_y_discrete() +
+  scale_color_discrete(labels=c("Not a salad", "Salad")) +
+  
+  #labs
+  labs(
+    title = "Problem 4: Any salad? ",
+    subtitle = '',
+    x = 'Calories (log10 scale)',
+    y = 'Restaurant',
+    color = "Is the entree\n a salad?",
+    caption =paste0("Data: Hubworks & Tidy Tuesday project • Visualization: Steven Ponce (@sponce1)") 
+  ) +
+  
+  # theme
+  theme_bw() + 
+  
+  theme(
+    plot.margin = margin(t = 10, r = 25, b = 10, l = 20),
+    legend.position = 'right',
+    axis.title = element_text(size = 12),
+    axis.text  = element_text(size = 10),
+    
+    plot.title = element_text(
+      color = "#2C3E50",
+      face = "bold",
+      size = 14,  
+      margin = margin(t = 10)),
+    
+    plot.subtitle = element_text(
+      color = "#2C3E50",
+      size = 14,  
+      margin = margin(b = 5)),
+    
+    plot.caption = element_text(
+      color = "grey60",
+      size = 10,
+      hjust = .5,
+      margin = margin(t = 15, b = 15)))
+```
+
+# Problem 5: Sugar Levels
+```{r problem 5}
+## data
+p5 <- sales %>% 
+  inner_join(calories, by = 'restaurant') %>%
+  
+  select(restaurant, item, calories, sugar, us_sales) %>% 
+  filter(restaurant!="Taco Bell") %>%
+  
+  group_by(restaurant, us_sales) %>%
+  summarise(median_sugar = median(sugar)) %>% 
+  
+  ungroup() %>% 
+  arrange(desc(median_sugar)) %>% 
+  
+  # order by sugar from High to Low
+  mutate(restaurant = restaurant %>% fct_reorder(median_sugar))
+## visualization
+p5 %>%  
+  ggplot(aes(x = restaurant,
+             y = us_sales)) +
+  geom_col(aes(fill = median_sugar)) + 
+  
+  scale_x_discrete() + 
+  scale_y_continuous() + 
+  scale_fill_viridis_c() +
+  
+  #labs
+  labs(
+    title = "Problem 5: Sugar Levels ",
+    subtitle = '',
+    x = 'Restaurant',
+    y = 'U.S. sales (in millions)',
+    fill = "Median sugar (grams)\nin fast food entrees",
+    caption =paste0("Data: Hubworks & Tidy Tuesday project • Visualization: Steven Ponce (@sponce1)") 
+  ) +
+  
+  # theme
+  theme_classic() + 
+  
+  theme(
+    plot.margin = margin(t = 10, r = 25, b = 10, l = 20),
+    legend.position = 'right',
+    axis.title = element_text(size = 12),
+    axis.text  = element_text(size = 10),
+    
+    plot.title = element_text(
+      color = "#2C3E50",
+      face = "bold",
+      size = 14,  
+      margin = margin(t = 10)),
+    
+    plot.subtitle = element_text(
+      color = "#2C3E50",
+      size = 14,  
+      margin = margin(b = 5)),
+    
+    plot.caption = element_text(
+      color = "grey60",
+      size = 10,
+      hjust = .5,
+      margin = margin(t = 15, b = 15)))
+```

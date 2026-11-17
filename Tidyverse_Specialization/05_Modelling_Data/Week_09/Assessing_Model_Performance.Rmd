@@ -1,0 +1,236 @@
+### Tidied Text
+After fitting our model, we can use the `broom` package to examine the output in a tidy format. The `tidy()` function returns a tidy data frame with model coefficients.
+
+Many other `broom` functions currently work only with `parsnip` objects, not raw `workflows` objects. However, we can use the `tidy` function if we first use the `pull_workflow_fit()` function:
+
+```R
+wflowoutput <- PM_wflow_fit %>% 
+  pull_workflow_fit() %>% 
+  broom::tidy() 
+
+wflowoutput
+# A tibble: 33 x 5
+# term         estimate std.error statistic  p.value
+# <chr>           <dbl>     <dbl>     <dbl>    <dbl>
+# 1 (Intercept)  2.22e+2  1.20e+2     1.85  6.51e-2
+# 2 lat          3.77e-2  2.45e-2     1.54  1.24e-1
+# 3 lon          3.02e-2  9.31e-3     3.25  1.23e-3
+```
+
+After fitting our model, we can predict air pollution values based on the included predictors. To assess variable importance, we use the `vip` package's `vip()` function to create a bar plot of variable importance scores. Again, we need to use the `pull_workflow_fit()` function:
+
+```R
+# install.packages(vip)
+library(vip)
+
+PM_wflow_fit %>% 
+  pull_workflow_fit() %>% 
+  vip()
+```
+
+### Model Performance: Getting Predicted Values
+To assess overall model performance, we compare predicted estimates with the true outcome values. Machine learning aims to minimize the distance between predicted and actual outcomes using feature inputs.
+
+```R
+wf_fit <- PM_wflow_fit %>% 
+  pull_workflow_fit()
+
+wf_fitted_values <- wf_fit$fit$fitted.values
+head(wf_fitted_values)
+# 9.480088 10.418317 11.786217 11.295655 10.806653 11.091767
+```
+
+Alternatively, use the `augment()` function from the `broom` package with the workflow output:
+
+```R
+wf_fitted_values <- 
+  broom::augment(wf_fit$fit, data = preproc_train) %>% 
+  select(value, .fitted:.std.resid)
+
+head(wf_fitted_values)
+# # A tibble: 6 x 8
+# value .fitted .se.fit .resid   .hat .sigma    .cooksd .std.resid
+# <dbl>   <dbl>   <dbl>  <dbl>  <dbl>  <dbl>      <dbl>      <dbl>
+# 1  9.60    9.48   0.375  0.118 0.0323   2.09 0.00000333     0.0573
+# 2 10.8    10.4    0.383  0.382 0.0338   2.09 0.0000368      0.186 
+```
+
+Finally, use the `predict()` function with the raw data:
+
+```R
+values_pred_train <- 
+  predict(PM_wflow_fit, train_pm) %>% 
+  bind_cols(train_pm %>% select(value, fips, county, id))
+
+values_pred_train
+# # A tibble: 584 x 5
+# .pred value fips  county    id       
+# <dbl> <dbl> <fct> <chr>     <fct>    
+# 1  9.48  9.60 1003  Baldwin   1003.001 
+```
+
+### Visualizing Model Performance
+Compare predicted (fitted) values to actual values:
+
+```R
+library(ggplot2)
+wf_fitted_values %>% 
+  ggplot(aes(x = value, y = .fitted)) + 
+  geom_point() + 
+  xlab("Actual Outcome Values") + 
+  ylab("Predicted Outcome Values")
+```
+
+### Quantifying Model Performance
+Use different distance functions to assess how far off our predicted values are. One key metric is the root mean squared error (RMSE). Within the `tidymodels` framework, we can use the `yardstick` package:
+
+```R
+yardstick::metrics(wf_fitted_values, truth = value, estimate = .fitted)
+# # A tibble: 3 x 3
+# .metric .estimator .estimate
+# <chr>   <chr>          <dbl>
+# 1 rmse    standard       2.02 
+# 2 rsq     standard       0.431
+# 3 mae     standard       1.49
+```
+
+Alternatively, you can use `mae()`, `rsq()`, or `rmse()` functions.
+
+---
+
+### Synopsis
+This guide demonstrates how to fit a machine learning model, evaluate its coefficients, assess variable importance, and measure performance using the `broom`, `vip`, and `yardstick` packages in R. We cover model fitting, variable importance visualization, predicted value extraction, and performance quantification through metrics like RMSE.
+
+------------------
+
+Assessing the Model Fit
+After we fit our model, we can use the broom package to look at the output from the fitted model in an easy/tidy way.
+
+The tidy() function returns a tidy data frame with coefficients from the model (one row per coefficient).
+
+Many other broom functions currently only work with parsnip objects, not raw workflows objects.
+
+However, we can use the tidy function if we first use the pull_workflow_fit() function.
+
+123456789101112131415161718
+wflowoutput <- PM_wflow_fit %>% 
+  pull_workflow_fit() %>% 
+  broom::tidy() 
+  wflowoutput
+## # A tibble: 33 x 5
+##    term         estimate std.error statistic  p.value
+##    <chr>           <dbl>     <dbl>     <dbl>    <dbl>
+##  1 (Intercept)  2.22e+ 2  1.20e+ 2     1.85  6.51e- 2
+##  2 lat          3.77e- 2  2.45e- 2     1.54  1.24e- 1
+##  3 lon          3.02e- 2  9.31e- 3     3.25  1.23e- 3
+
+We have fit our model on our training data, which means we have created a model to predict values of air pollution based on the predictors that we have included. Yay!
+
+One last thing before we leave this section. We often are interested in getting a sense of which variables are the most important in our model. We can explore the variable importance using the vip() function of the vip package. This function creates a bar plot of variable importance scores for each predictor variable (or feature) in a model. The bar plot is ordered by importance (highest to smallest).
+
+Notice again that we need to use the pull_workflow_fit() function.
+
+Let’s take a look at the top 10 contributing variables:
+
+1234567891011
+#install.packages(vip)
+library(vip)
+## 
+## Attaching package: 'vip'
+## The following object is masked from 'package:utils':
+## 
+##     vi
+
+PM_wflow_fit %>% 
+  pull_workflow_fit() %>% 
+
+
+
+The state in which the monitor was located (if it was in California or not), the CMAQ model, and the aod satellite information appear to be the most important for predicting the air pollution at a given monitor.
+
+Model Performance: Getting Predicted Values
+In this next section, our goal is to assess the overall model performance. The way we do this is to compare the similarity between the predicted estimates of the outcome variable produced by the model and the true outcome variable values.
+
+Machine learning (ML) is an optimization problem that tries to minimize the distance between our predicted outcome and actual outcome using our features (or predictor variables) as input to a function that we want to estimate.
+
+First, let’s pull out our predicted outcome values from the models we fit (using different approaches).
+
+1234567
+wf_fit <- PM_wflow_fit %>% 
+  pull_workflow_fit()
+
+wf_fitted_values <- wf_fit$fit$fitted.values
+head(wf_fitted_values)
+##         1         2         3         4         5         6 
+##  9.480088 10.418317 11.786217 11.295655 10.806653 11.091767
+Alternatively, we can get the fitted values using the augment() function of the broom package using the output from workflows:
+
+1234567891011121314
+wf_fitted_values <- 
+  broom::augment(wf_fit$fit, data = preproc_train) %>% 
+  select(value, .fitted:.std.resid)
+
+head(wf_fitted_values)
+## # A tibble: 6 x 8
+##   value .fitted .se.fit .resid   .hat .sigma    .cooksd .std.resid
+##   <dbl>   <dbl>   <dbl>  <dbl>  <dbl>  <dbl>      <dbl>      <dbl>
+## 1  9.60    9.48   0.375  0.118 0.0323   2.09 0.00000333     0.0573
+## 2 10.8    10.4    0.383  0.382 0.0338   2.09 0.0000368      0.186 
+
+Finally, we can also use the predict() function. Note that because we use the actual workflow here, we can (and actually need to) use the raw data instead of the preprocessed data.
+
+123456789101112131415161718192021
+values_pred_train <- 
+  predict(PM_wflow_fit, train_pm) %>% 
+  bind_cols(train_pm %>% select(value, fips, county, id)) 
+## Warning in predict.lm(object = object$fit, newdata = new_data, type =
+## "response"): prediction from a rank-deficient fit may be misleading
+values_pred_train
+## # A tibble: 584 x 5
+##    .pred value fips  county    id       
+##    <dbl> <dbl> <fct> <chr>     <fct>    
+##  1  9.48  9.60 1003  Baldwin   1003.001 
+
+
+### Visualizing Model Performance
+Now, we can compare the predicted outcome values (or fitted values)  to the actual outcome values that we observed:
+
+1234567
+library(ggplot2)
+wf_fitted_values %>% 
+  ggplot(aes(x =  value, y = .fitted)) + 
+  geom_point() + 
+  xlab("actual outcome values") + 
+  ylab("predicted outcome values")
+
+
+
+OK, so our range of the predicted outcome values appears to be smaller than the real values. We could probably do a bit better.
+
+Quantifying Model Performance
+Next, let’s use different distance functions to assess how far off our predicted outcome and actual outcome values are from each other:
+
+There are entire scholarly fields of research dedicated to identifying different distance metrics for machine learning applications. However, we will focus on 
+root mean squared error
+ (rmse).
+
+One way to calculate these metrics within the tidymodels framework is to use the yardstick package using the metrics() function.
+
+12345678
+yardstick::metrics(wf_fitted_values, 
+                   truth = value, estimate = .fitted)
+## # A tibble: 3 x 3
+##   .metric .estimator .estimate
+##   <chr>   <chr>          <dbl>
+## 1 rmse    standard       2.02 
+## 2 rsq     standard       0.431
+## 3 mae     standard       1.49
+Here we see the RMSE in addition to the RSQ or the R squared value also known as the 
+coefficient of determination
+ and the MAE, which stands for the 
+mean absolute error
+.
+
+Alternatively if you only wanted one metric you could use the mae(), rsq(), or rmse() functions, respectively.
+
+1234567

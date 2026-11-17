@@ -1,0 +1,153 @@
+---
+title: "Combining Plots with {patchwork}"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+```
+
+### Preparation
+
+For this exercise, we will use the following three plots
+```{r}
+p1 <- ggplot(mtcars, aes(qsec, mpg, color = am)) + 
+  geom_point() +
+  theme_bw() 
+
+
+p2 <- ggplot(mtcars, aes(qsec, mpg, color = as.factor(cyl))) + 
+  geom_point() +
+  scale_color_manual(values = c("red", "blue","green")) +
+  theme_classic() 
+
+
+p3 <- ggplot(mtcars, aes(as.factor(cyl))) + 
+  geom_bar() + 
+  facet_wrap(~am) 
+
+gridExtra::grid.arrange(p1,p2,p3,ncol=2)
+```
+
+The patchwork package is useful for combining R plots together. With the patchwork package, plots can be combined using a few operators, such as "+", "/", and `“|”.
+
+To combine two plots together we can simply add them together with the + sign or place them next to one another using the |:
+
+```{r}
+#install.packages(patchwork)
+library(patchwork)
+
+p1 + p2
+```
+
+
+```{r}
+p1 | p2
+```
+
+
+If we want a plot above another plot we can use the “/” symbol:
+
+```{r}
+p1 / p2
+```
+
+
+Grouping or nesting plots together using parenthesis can result in two or more plots taking up a single grid space.
+
+Thus, to combine multiple plots in a more complicated layout, one can combine two plots on one row and have a third plot on another row like this:
+
+```{r}
+(p3 + p2) / p1
+```
+
+
+Without the parentheses we would have the following:
+```{r}
+p3 + p2 / p1
+```
+
+
+You can also empty plot spacers using the plotspacer() function like so:
+
+```{r}
+(plot_spacer() + p2 + plot_spacer()) / p1
+```
+
+
+You can modify the widths of the plots using the widths argument of the plot_layout() function. In the following example we will make the width of the plot on the left 2 times that of the plot on the right. Any numeric values will do, it is the ratio of the numbers that make the difference.
+
+Thus, both <tt>p1 + p2 + plot_layout(widths = c(2, 1))</tt> and 
+<tt>p1 + p2 + plot_layout(widths = c(60, 30))</tt> will result in the same relative size difference between p1 and p2.
+
+12
+p1 + p2 + plot_layout(widths = c(2, 1))
+
+
+```{r}
+p1 + p2 + plot_layout(widths = c(60, 30))
+```
+
+
+The relative heights of the plots can also be modified using a heights argument with the same function.
+
+```{r}
+p1 + p2 + plot_layout(heights = c(2, 1))
+```
+```{r}
+p1 + p2 + plot_layout(heights = c(60, 30))
+```
+
+
+This package also allows for modification of legends. For example, legends can be gathered together to one side of the combined plots using the guides = 'collect' argument of the plot_layout() function.
+
+```{r}
+p1 + p2 + plot_layout(guides = "collect")
+```
+
+You can also specify the number of columns or rows using this same function with ncol or nrow as you would with facet_wrap() of the ggplot2 package, where plots are added to complete a row before they will be added to a new row. For example, the following will result in an empty 2nd row below the plots.
+
+```{r}
+p1 + p2 + plot_layout(nrow = 2, ncol = 2, guides = "collect")
+
+```
+
+However, the byrow = FALSE argument can disrupt this behavior and result in an empty 2nd column:
+
+```{r}
+p1 +p2 + plot_layout(nrow = 2, ncol = 2, byrow = FALSE, guides = "collect")
+
+```
+
+In this case the columns will be preferentially completed before placing a plot in a new column.
+
+We can also use the package to change the theme specifications of specific plots. By default the plot just prior to the theme() function will be the only plot changed.
+
+```{r}
+p1 + p2 + theme(legend.position = "bottom") + p2
+```
+
+
+Using the *, themes can be added to all plots that are nested together.
+```{r}
+(p1 + p2) *theme_bw() + p2
+```
+
+
+The & adds themes to all plots.
+
+```{r}
+(p1 + p2) + p2 & theme(axis.title.x = element_text(face = "bold"))
+```
+
+
+Annotations for all the plots combined can also be added using the plot_annotation() function, which can also take theme() function specifications with the theme argument.
+
+```{r}
+(p1 + p2) + p3 + theme(axis.text.x = element_text(angle = 90)) +
+  plot_annotation(title = "Plot title for all 3 plots", 
+                  theme = theme(plot.title = element_text(hjust = 0.5)))
+```
+

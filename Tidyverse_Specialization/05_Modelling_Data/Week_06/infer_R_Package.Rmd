@@ -1,0 +1,194 @@
+---
+title: "The `infer` R package" 
+subtitle: "A Tidyverse Approach to Statistical Inference in R"
+author: "Tidyverse Coursera Specialization"
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Infer: A Tidyverse Approach to Statistical Inference in R
+
+The `infer` package in R provides a tidyverse-friendly framework for performing statistical inference. It emphasizes a workflow based on verbs that clearly express the steps involved in hypothesis testing and confidence interval estimation. This makes it easier to understand and communicate the logic behind your statistical analyses.
+
+Here's a tutorial covering the core functionalities of `infer`:
+
+**1. Installation and Loading**
+
+First, install and load the `infer` package along with `dplyr` and `ggplot2` (which `infer` often uses):
+
+```R
+install.packages("infer")
+install.packages("dplyr")
+install.packages("ggplot2")
+
+library(infer)
+library(dplyr)
+library(ggplot2)
+```
+
+**2. Data Preparation**
+
+We'll use the `mtcars` dataset for demonstration.
+
+```R
+data(mtcars)
+head(mtcars)
+```
+
+**3. Hypothesis Testing**
+
+Let's say we want to test whether the mean miles per gallon (mpg) is significantly different from 20.
+
+**a. Specify the Hypothesis**
+
+We'll use a one-sample t-test. Our null hypothesis (H0) is that the population mean mpg is 20. Our alternative hypothesis (HA) is that the population mean mpg is not 20.
+
+**b. Calculate the Observed Statistic**
+
+We calculate the observed mean mpg from our sample.
+
+```R
+observed_mean <- mtcars %>%
+  summarize(mean_mpg = mean(mpg)) %>%
+  pull(mean_mpg)
+
+observed_mean
+```
+
+**c. Generate the Null Distribution**
+
+We use `infer` to generate the null distribution by simulating data under the null hypothesis.
+
+```R
+null_distribution <- mtcars %>%
+  specify(response = mpg) %>%
+  hypothesize(null = "point", mu = 20) %>%
+  generate(replicates = 1000, type = "bootstrap") %>%
+  calculate(stat = "mean")
+```
+
+* `specify(response = mpg)`: Specifies the variable of interest.
+* `hypothesize(null = "point", mu = 20)`: Sets the null hypothesis to a specific value (mean = 20).
+* `generate(replicates = 1000, type = "bootstrap")`: Generates 1000 bootstrap samples under the null hypothesis. We use a bootstrap here because we are sampling from the single dataset and shifting the mean.
+* `calculate(stat = "mean")`: Calculates the mean for each bootstrap sample.
+
+**d. Visualize the Null Distribution and Observed Statistic**
+
+```R
+ggplot(null_distribution, aes(x = stat)) +
+  geom_histogram(binwidth = 1) +
+  geom_vline(xintercept = observed_mean, color = "red")
+```
+
+**e. Calculate the P-value**
+
+The p-value is the probability of observing a statistic as extreme as or more extreme than the observed statistic, assuming the null hypothesis is true.
+
+```R
+p_value <- null_distribution %>%
+  get_p_value(obs_stat = observed_mean, direction = "both")
+
+p_value
+```
+
+* `get_p_value(obs_stat = observed_mean, direction = "both")`: Calculates the p-value for a two-sided test. Use `direction = "greater"` or `direction = "less"` for one-sided tests.
+
+**4. Confidence Intervals**
+
+Let's calculate a 95% confidence interval for the mean mpg.
+
+**a. Generate the Bootstrap Distribution**
+
+We generate a bootstrap distribution to estimate the variability of the sample mean.
+
+```R
+bootstrap_distribution <- mtcars %>%
+  specify(response = mpg) %>%
+  generate(replicates = 1000, type = "bootstrap") %>%
+  calculate(stat = "mean")
+```
+
+**b. Calculate the Confidence Interval**
+
+We use `get_confidence_interval()` to calculate the confidence interval.
+
+```R
+confidence_interval <- bootstrap_distribution %>%
+  get_confidence_interval(level = 0.95)
+
+confidence_interval
+```
+
+**5. Comparing Two Groups**
+
+Let's compare the mean mpg for cars with automatic (am = 0) and manual (am = 1) transmissions.
+
+**a. Specify the Hypothesis**
+
+H0: The mean mpg is the same for both transmission types.
+HA: The mean mpg is different for the two transmission types.
+
+**b. Calculate the Observed Statistic**
+
+```R
+observed_diff <- mtcars %>%
+  specify(mpg ~ am) %>%
+  calculate(stat = "diff in means", order = c("1", "0"))
+
+observed_diff
+```
+
+**c. Generate the Null Distribution**
+
+We use permutation to generate the null distribution.
+
+```R
+null_distribution_diff <- mtcars %>%
+  specify(mpg ~ am) %>%
+  hypothesize(null = "independence") %>%
+  generate(replicates = 1000, type = "permute") %>%
+  calculate(stat = "diff in means", order = c("1", "0"))
+```
+
+* `hypothesize(null = "independence")`: Sets the null hypothesis to independence between mpg and transmission type.
+* `generate(replicates = 1000, type = "permute")`: Generates 1000 permutations of the transmission type.
+
+**d. Calculate the P-value**
+
+```R
+p_value_diff <- null_distribution_diff %>%
+  get_p_value(obs_stat = observed_diff, direction = "both")
+
+p_value_diff
+```
+
+**e. Confidence Interval for the Difference**
+
+```R
+bootstrap_diff <- mtcars %>%
+  specify(mpg ~ am) %>%
+  generate(replicates = 1000, type = "bootstrap") %>%
+  calculate(stat = "diff in means", order = c("1", "0"))
+
+conf_int_diff <- bootstrap_diff %>%
+  get_confidence_interval(level = 0.95)
+
+conf_int_diff
+```
+
+**Key Advantages of `infer`:**
+
+* **Tidy Workflow:** Integrates seamlessly with the tidyverse.
+* **Clear and Concise Syntax:** Uses verbs that clearly express statistical operations.
+* **Flexibility:** Supports various types of hypothesis tests and confidence intervals.
+* **Visualization:** Facilitates easy visualization of null distributions and confidence intervals.
+* **Emphasis on Understanding:** Encourages a deeper understanding of statistical inference.
+
+This tutorial provides a basic introduction to `infer`. Explore the package documentation for more advanced features and examples.

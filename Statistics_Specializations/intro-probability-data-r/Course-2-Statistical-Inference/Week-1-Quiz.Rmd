@@ -1,0 +1,296 @@
+--------------------------------------------------------------
+### Question 1
+We want to estimate the average coffee intake of Coursera students, measured in cups of coffee. 
+A survey of 1,000 students yields an average of 0.55 cups per day, with a standard deviation of 1 cup per day. 
+Which of the following is not necessarily true?
+
+* **Correct** $\mu = 0.55, \sigma=1$
+* ***Incorrect*** The sample distribution is right skewed. 
+* 0.55 is a point estimate for the population mean.
+* $\bar{x} =  0.55,s=1$
+
+#### Explanation 
+
+This question refers to the following learning objective(s): Define sample statistic as a point estimate for a population parameter, for example, the sample mean is used to estimate the population mean, and note that point estimate and sample statistic are synonymous.
+
+The sample distribution should be right-skewed because average cups of coffee is bounded on the lower end by 0. 
+That is, no student can drink less than 0 cups per day, while some students will drink a large number of cups per day, but fewer and fewer students will drink more and more coffee.
+
+--------------------------------------------------------------
+
+### Question 2
+
+Researchers studying anthropometry collected various body and skeletal measurements for 507 physically active individuals. 
+The histogram below shows the sample distribution of heights in centimeters. If the 507 individuals are a simple random sample - and let’s assume they are - then the sample mean is a point estimate for the mean height of all active individuals. 
+What measure do we use to quantify the variability of such an estimate? 
+Compute this quantity using the data from this sample and choose the best answer below.
+
+* standard deviation = 0.019
+* standard deviation = 0.417 
+* mean squared error = 0.105
+* **Correct** standard error = 0.417 
+* standard error = 0.019
+
+#### Explanation 
+This question refers to the following learning objective(s): Calculate the sampling variability of the mean, the standard error, as 
+$$ SE=\sigma/ n$$.
+
+We quantify variability in the sample mean by calculating the standard error (of the mean) 
+$$ SE=\sigma/ n$$.
+​
+In this case we do not know the population standard deviation $\sigma$ so in the formula we use the sample standard deviation 
+$s=9.4$ instead. The result is 
+
+$$9.4/507=0.417$$.
+
+--------------------------------------------------------------
+### Question 3
+The standard error measures:
+
+* the variability of population parameters
+* **Correct** the variability of sample statistics
+* the variability of the sampled observations 
+* the variability in the population
+
+#### Explanation 
+This question refers to the following learning objective(s): Distinguish standard deviation ($\sigma$ or s) and standard error (SE): standard deviation measures the variability in the data, while standard error measures the variability in point estimates from different samples of the same size and from the same population, i.e. measures the sampling variability.
+
+----------------------------------------------------------
+### Question 3
+Students are asked to count the number of chocolate chips in 22 cookies for a class activity. They found that the cookies on average had 14.77 chocolate chips with a standard deviation of 4.37 chocolate chips. After collecting the data, a student reports the standard error of the mean to be 0.93 chocolate chips. What is the best way to interpret the student’s result?
+
+* **Correct** 0.93 chocolate chips is a measure of the variability we’d expect in calculations of the mean number of chocolate chips if we took repeated random samples of 22 cookies.
+* 0.93 chocolate chips is a measure of the variability in the mean number of chocolate chips across all chocolate chip cookies.
+* The student either made a calculation error or his result is meaningless, because it does not make sense to talk about 0.93 chocolate chips.
+* 0.93 is the standard deviation of the number of chocolate chips in a chocolate chip cookie.
+
+#### Explanation 
+This question refers to the following learning objective(s): Distinguish standard deviation (σ or s) and standard error (SE): standard deviation measures the variability in the data, while standard error measures the variability in point estimates from different samples of the same size and from the same population, i.e. measures the sampling variability.
+
+---------------------------------------------------------------
+### Question 3
+
+For the standard deviation σ or s and the standard error SE, which of the following is the correct set of descriptions?
+
+* SE: variability in sample data
+* σ: variability in population data
+* s: variability in point estimates from different samples of the same size and from same population
+
+* σ: variability in sample data
+* SE: variability in point estimates from different samples of the same size and from same population
+* s: variability in population data
+
+* σ: variability in sample data
+* s: variability in point estimates from different samples of the same size and from same population
+* SE: variability in population data
+
+* **Correct** s: variability in sample data
+* **Correct** SE: variability in point estimates from different samples of the same size and from same population
+* **Correct** σ: variability in population data
+
+#### Explanation
+
+This question refers to the following learning objective(s): 
+
+Distinguish standard deviation (σ or s) and standard error (SE): standard deviation measures the variability in the data, 
+while standard error measures the variability in point estimates from different samples of the same size and from the same 
+population, i.e. measures the sampling variability.
+
+Standard error measures the variability in point estimates from different samples of the same size and from the same population, i.e. measures the sampling variability.
+
+----------------------------------------------------------------
+### Question 4
+Four plots are presented below. The plot at the top is a distribution for a population. The mean is 60 and the standard deviation is 18. Also shown below is a distribution of
+
+(1) a single random sample of 500 values from this population,
+
+(2) a distribution of 500 sample means from random samples of each size 18, 
+
+(3) a distribution of 500 sample means from random samples of each size 81. 
+
+Determine which plot (A, B, or C) is which.
+
+**Correct** (1) one sample, n = 500 - Plot B 
+**Correct** (2) 500 samples, n = 18 - Plot C 
+**Correct** (3) 500 samples, n = 81 - Plot A
+
+(1) one sample, n = 500 - Plot C 
+(2) 500 samples, n = 18 - Plot B 
+(3) 500 samples, n = 81 - Plot A
+
+(1) one sample, n = 500 - Plot A 
+(2) 500 samples, n = 18 - Plot B 
+(3) 500 samples, n = 81 - Plot C
+
+(1) one sample, n = 500 - Plot C 
+(2) 500 samples, n = 18 - Plot A 
+(3) 500 samples, n = 81 - Plot B
+
+(1) one sample, n = 500 - Plot A 
+(2) 500 samples, n = 18 - Plot C 
+(3) 500 samples, n = 81 - Plot B
+
+The centers are the same in each plot. Plots A and C are nearly normal while plot B is left skewed. Plot B is the distribution of a single random sample of 500 values from this population since it mimics the population distribution (1). The only way to tell apart between the remaining plots is to consider the variability of each distribution. Plot C is more variable (larger range), hence corresponds to the smaller sample size (2), and Plot A corresponds to the sampling distribution of the sample with the larger sample size (3).
+
+------------------------------------------------------------------------
+### Question 4
+Suppose you took a large number of random samples of size n from a large population and calculated the mean of each sample. 
+Then suppose you plotted the distribution of your sample means in a histogram. 
+Now consider the following possible attributes of your collected data and the population from which they were sampled. 
+For which of the following sets of attributes would you not expect your histogram of your sample means to follow a nearly normal distribution?
+
+
+* n = 120. The population distribution is unknown, but the distribution of data in each sample is slightly skewed.
+* n = 20. The population distribution is nearly normal.
+* n = 120. The population distribution is slightly skewed.
+* **Correct** n = 10. The population distribution is unknown, but the distribution of data in each sample is heavily skewed.
+
+#### Explanation
+
+This question refers to the following learning objective(s): 
+
+Recognize  that the Central Limit Theorem (CLT) is about the distribution of point  estimates, and that given certain conditions, this distribution will be  nearly normal.
+
+In the case of the mean the CLT tells us that if
+
+(1a) the sample size is sufficiently large $(n\geq30)$ and the data are not extremely skewed or <br>
+
+(1b) the population is known to have a normal distribution, and <br>
+
+(2) the observations in the sample are independent, <br>
+
+then  the distribution of the sample mean will be nearly normal, centered at  the true population mean and with a standard error of  
+
+$$ \bar{x} \sim N(mean=\mu,SE= n/\sigma )$$
+When the population distribution is unknown, condition (1a) can be checked  using a histogram or some other visualization of the distribution of the  observed data in the sample. 
+
+The larger the sample size ($n$), the less important the shape of the distribution becomes, i.e.  when 
+$n$ is very large the sampling distribution will be nearly normal  regardless of the shape of the population distribution.
+
+Sample size is small and the population distribution might be skewed, hence likely not going to yield nearly normal sampling distribution.
+
+--------------------------------------------------------------
+
+### Question 5
+A random sample of 100 runners who completed the 2012 Cherry Blossom 10 mile run yielded an average completion time of 95 minutes. A 95% confidence interval calculated based on this sample is 92 minutes to 98 minutes. Which of the following is false based on this confidence interval?
+
+* 95% of the time the true average finishing time of all runners who completed the 2012 Cherry Blossom 10 mile run is between 92 minutes and 98 minutes.
+* The margin of error of this confidence interval is 3 minutes.
+* Based on this 95% confidence interval, we would reject a null hypothesis stating that the true average finishing time of all runners who completed the 2012 Cherry Blossom 10 mile run is 90 minutes.
+*  ***Incorrect*** We are 95% confident that the true average finishing time of all runners who completed the 2012 Cherry Blossom 10 mile run is between 92 minutes and 98 minutes.
+
+##### Explanation 
+This question refers to the following learning objective(s):
+
+Interpret a confidence interval as “We are XX% confident that the true  population parameter is in this interval”, where XX% is the desired  confidence level.
+
+Define margin of error as the distance  required to travel in either direction away from the point estimate when  constructing a confidence interval.
+
+This is the correct interpretation of the confidence interval.
+
+--------------------------------------------------
+
+### Question 5
+The General Social Survey (GSS) is a sociological survey used to collect data on demographic characteristics and attitudes of residents of the United States. 
+In 2010, the survey collected responses from over a thousand US residents. The survey is conducted face-to-face with an in-person interview of a randomly-selected sample of adults. 
+One of the questions on the survey is “For how many days during the past 30 days was your mental health, which includes stress, depression, and problems with emotions, not good?”
+
+Based on responses from 1,151 US residents, the survey reported a 95% confidence interval of 3.40 to 4.24 days in 2010. 
+Given this information, which of the following statements would be most appropriate to make regarding the true average number of days of “not good” mental health in 2010 for US residents?
+
+* ***Incorrect*** For all US residents in 2010, there is a 95% probability that the true average number of days of “not good” mental health is between 3.40 and 4.24 days.
+* For these 1,151 residents in 2010, we are 95% confident that the average number of days of “not good” mental health is between 3.40 and 4.24 days.
+* **Correct** For all US residents in 2010, based on this 95% confidence interval, we would reject a null hypothesis stating that the true average number of days of “not good” mental health is 5 days.
+* There is not sufficient information to calculate the margin of error of this confidence interval.
+
+#### Explanation
+
+This question refers to the following learning objective(s):
+
+* Interpret a confidence interval as “We are XX% confident that the true  population parameter is in this interval”, where XX% is the desired  confidence level.
+
+* Define margin of error as the distance  required to travel in either direction away from the point estimate when  constructing a confidence interval.
+
+The confidence level is not about the probability of the population parameter being in one single confidence interval, instead it’s about the percentage of confidence intervals at that confidence level that are expected to capture the true parameter.
+
+--------------------------------------------------------------
+###  Question 6 (Variant)
+
+All but one of the following confidence intervals has a margin of error of 0.7. Which is the confidence interval with the different margin of error?
+
+
+* (20.3,21.7)
+* (−4.7,−3.3)
+* **Try** (1.6,4.4)
+* ***Incorrect*** (−0.5,0.9) 
+
+#### Explanation 
+
+This question refers to the following learning objective(s):
+
+Recognize that when the sample size increases we would expect the sampling variability to decrease. 
+
+* Define  margin of error as the distance required to travel in either direction  away from the point estimate when constructing a confidence interval,  i.e. 
+$z^{\ast} \times SE$.
+
+The width of a confidence interval is 2 times the margin of error, since we add and subtract the same margin of error to the sample statistics to obtain the bounds of the confidence interval. To solve this question we need to calculate the margin of error using this rule for each choice:
+
+∣(−0.5−0.9)/2∣=0.7
+
+--------------------------------------------------------------
+###  Question 6
+Suppose we collected a sample of size n = 100 from some population and used the data to calculate a 95% confidence interval for the population mean. 
+Now suppose we are going to increase the sample size to n = 300. Keeping all else constant, which of the following would we expect to occur as a result of increasing the sample size?
+
+I. The standard error would decrease.
+
+II. Width of the 95% confidence interval would increase.
+
+III. The margin of error would decrease.
+
+* II and III 
+* **Correct** I and III
+* I and II
+* I, II, and III
+* None
+
+#### Explanation
+
+This question refers to the following learning objective(s):
+
+* Recognize that when the sample size increases we would expect the sampling variability to decrease. 
+
+* Define  margin of error as the distance required to travel in either direction  away from the point estimate when constructing a confidence interval,  i.e. 
+$z^{\ast} \times SE$.
+
+* Increasing the sample size (while keeping the same confidence level) will decrease the standard error, which decreases the margin of error and hence the width of intervals.
+
+----------------------------------------------------------
+### Question 7
+Researchers investigating characteristics of gifted children collected data from schools in a large city on a random sample of thirty-six children who were identified as gifted children soon after they reached the age of four.
+ The following histogram shows the distribution of the ages (in months) at which these children first counted to 10 successfully. 
+ Also provided are some sample statistics. 
+
+Calculate a 90% confidence interval for the average age at which gifted children first count to 10 successfully. Choose the closest answer.
+
+* **Correct** (29.50, 31.88)
+* (30.12, 31.26)
+* (29.28, 32.10)
+* (30.49, 30.89)
+
+#### Explanation
+This question refers to the following learning objective(s): 
+
+Recognize that the nearly normal distribution of the point estimate (as suggested by the CLT) implies that a confidence interval can be calculated as $point estimate±z^{\ast}\times SE$,
+ 
+
+where $z^{\ast}$ corresponds to the cutoff points in the standard normal distribution to capture the middle X\% of the data, where X\% is the desired confidence level.
+
+For means this is: 
+* $$\bar{x} ± z^{\ast} \frac{s}{\sqrt{n}} $$
+* Note that $z^{\ast}$ is always positive.
+
+The 90% confidence interval can be calculated as follows:
+
+$$\bar{x} ± z^{\ast}se(\bar{x}) = 30.69 ± 1.65×\frac{4.31}{\sqrt{36}} = 30.69 ± 1.19=(29.50,31.88)$$
+

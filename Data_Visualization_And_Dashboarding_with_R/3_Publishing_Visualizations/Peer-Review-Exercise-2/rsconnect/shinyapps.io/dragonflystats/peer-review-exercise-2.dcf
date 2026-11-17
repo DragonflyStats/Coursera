@@ -1,0 +1,13 @@
+name: peer-review-exercise-2
+title:
+username:
+account: dragonflystats
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 8416908
+bundleId: 6890504
+url: https://dragonflystats.shinyapps.io/peer-review-exercise-2/
+when: 1677454600.25944
+lastSyncTime: 1677454600.25944
+asMultiple: FALSE
+asStatic: FALSE

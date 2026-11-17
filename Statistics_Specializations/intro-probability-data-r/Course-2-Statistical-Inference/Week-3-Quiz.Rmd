@@ -1,0 +1,548 @@
+### Question 1
+
+People of different ages were asked to stand on a “force platform” and maintain a stable upright position. The *wiggle* of the board in the forward-backward direction is recorded; more wiggle corresponds to less balance. The participants are divided into two age groups: young and elderly. The average wiggle among elderly people was 26.33 mm, and the average among young people was 18.125 mm. The bootstrap distribution for the difference in means is shown below, based on 100 bootstrap samples. Of the following choices, which is the most accurate 90% bootstrap confidence interval for the true difference in means?
+
+* (3 mm, 17 mm)
+* ***Incorrect*** (5 mm, 15 mm)
+* **Correct** (3.75 mm, 15 mm)
+* (2.5 mm, 18 mm)
+
+#### Explanation
+
+This question refers to the following learning objective(s): 
+
+* Construct bootstrap confidence intervals using one of the following methods:
+* Percentile method: XX% confidence level is the middle XX% of the bootstrap distribution.
+* Standard  error method: If the standard error of the bootstrap distribution is  known, and the distribution is nearly normal, the bootstrap interval can  also be calculated as \bar{x}_{boot} \pm z^\star SE_{boot} 
+* Recognize  that when the bootstrap distribution is extremely skewed and sparse,  the bootstrap confidence interval may not be appropriate.
+
+For a 90% confidence interval we would want to exclude 10% of samples outside of the confidence interval, i.e. 5% on each tail. 
+With 100 samples, that means we just count off 5 points corresponding to 5 bootstrap sample statistics from each end of the bootstrap distribution to determine what the endpoints of the confidence interval are.
+
+--------------------------------------------------------------------------------------------------
+
+### Question 1
+
+Which of the following is false about bootstrapping?
+
+* **Correct** A bootstrap confidence interval constructed based on a biased sample will still yield an unbiased estimate for the population parameter of interest.
+* ***Incorrect***  Bootstrap distributions are constructed by sampling with replacement from the original sample, while sampling distributions are constructed by sampling with replacement from the population.
+* Bootstrap distributions that are extremely skewed or have isolated clumps of values may yield unreliable confidence intervals.
+* ***Incorrect*** The endpoints of a 95% bootstrap confidence interval are the cutoff values for the top and bottom 2.5% of the bootstrap distribution.
+
+#### Explanation
+
+This question refers to the following learning objective(s): 
+
+* Construct bootstrap confidence intervals using one of the following methods:
+* Percentile method: XX% confidence level is the middle XX% of the bootstrap distribution.
+* Standard  error method: If the standard error of the bootstrap distribution is  known, and the distribution is nearly normal, the bootstrap interval can  also be calculated as \bar{x}_{boot} \pm z^\star SE_{boot} 
+* Recognize  that when the bootstrap distribution is extremely skewed and sparse,  the bootstrap confidence interval may not be appropriate.
+
+This is the difference between the bootstrap and sampling distributions.
+
+------------------------------------------------------------------------------------
+### Question 2
+
+Which of the following is false regarding paired data?
+
+* Each observation in one data set has a natural correspondence with exactly one observation from the other data set.
+* **Correct** Each observation in one data set is subtracted from the average of the other data set's observations.
+* Two data sets of different sizes cannot be analyzed as paired data.
+* In a paired analysis we first subtract the paired observations from each other, and then do inference on the differences.
+
+#### Explanation 
+This question refers to the following learning objective(s): 
+
+Define  observations as paired if each observation in one dataset has a special  correspondence or connection with exactly one observation in the other  data set.
+
+Carry out inference for paired data by first  subtracting the paired observations from each other, and then treating  the set of differences as a new numerical variable on which to do  inference (such as a confidence interval or hypothesis test for the  average difference).
+
+It doesn't make any sense to subtract each observation in one data set from the average of the other data set's observations, we subtract the paired observations from each other.
+
+------------------------------------------------------------------------------------
+### Question 2
+Suppose we wanted to compare the rates of return for two stocks: the technology company Intel and the U.S. airline Southwest Airlines. To compare the rates of return, we take a random sample of 50 days of Intel's stock returns and another random sample of 50 days for Southwest's stock returns (not necessarily the same days). These data should not be treated as paired. Why would these data not be considered paired data?
+
+* The data can't be considered paired data because the two companies are in different industries.
+* ***Incorrect*** 50 observations is not enough to be able to consider the data as paired.
+* **Correct** The data can't be considered paired data because the days for which we have Intel data may be different from the days for which we have Southwest Airlines data.
+* When random sampling is involved, data can't be treated as paired.
+
+#### Explanation 
+This question refers to the following learning objective(s): 
+
+* Define  observations as paired if each observation in one dataset has a special  correspondence or connection with exactly one observation in the other  data set.
+
+* Carry out inference for paired data by first  subtracting the paired observations from each other, and then treating  the set of differences as a new numerical variable on which to do  inference (such as a confidence interval or hypothesis test for the  average difference).
+
+* There is no minimum sample size requirement for pairing.
+
+----------------------------------------------------
+
+### Question 3
+
+Which of the following is false about bootstrap and sampling distributions?
+
+* Both distributions get narrower as the standard deviation decreases.
+* Both distributions are comprised of sample statistics.
+* **Correct** Both distributions are created by sampling with replacement from the population.
+* Bootstrap distributions are centered at the sample statistic, sampling distributions are centered at the population parameter.
+
+#### Explanation 
+
+This question refers to the following learning objective(s): Describe  how bootstrap distributions are constructed, and recognize how they are  different from sampling distributions.
+
+The bootstrap distribution is created by sampling with replacement from the original sample, not the population.
+
+
+----------------------------------------------------
+
+### Question 3
+
+The distribution of duration of unemployment for all 18-24 year-old Americans is nearly normal with mean 12.7 weeks and standard deviation 0.3 weeks. Suppose we randomly sample 20 people from this population, ask them about the duration of their unemployment (in number of weeks), and record the sample mean. We repeat this 5,000 times, and build a a distribution of sample means. What is the name of this distribution?
+
+* ***Incorrect*** bootstrap distribution
+* **Correct** sampling distribution
+* population distribution
+* randomization distribution
+* sample distribution
+
+#### Explanation 
+This question refers to the following learning objective(s): Describe  how bootstrap distributions are constructed, and recognize how they are  different from sampling distributions.
+
+We are collecting a new sample from the population each time, not from a sample.
+
+
+------------------------------------------------------------------------------------
+### Question 4
+
+A study examining the relationship between weight of school children (4th to 6th graders) found a 95% confidence interval for the difference between the average number of school days missed by overweight and normal weight children (μ(overweight) − μ(normal)) to be 1.3 to 2.8 days. Which of the following is true based on this confidence interval?
+
+* At 10% significance level, the data do not provide convincing evidence of a difference between the average number of missed days by overweight and normal weight children.
+* **Correct** We are 95% confident that overweight children on average miss 1.3 to 2.8 days more than children with normal weight.
+* ***Incorrect*** At 5% significance level, the data do not provide convincing evidence of a difference between the average number of missed days by overweight and normal weight children.
+* We are 95% confident that overweight children on average miss 1.3 to 2.8 days fewer than children with normal weight.
+
+#### Explanation 
+
+This question refers to the following learning objective(s): 
+
+* Recognize  that a good interpretation of a confidence interval for the difference  between two parameters includes a comparative statement (mentioning  which group has the larger parameter).
+
+* Recognize that a  confidence interval for the difference between two parameters that  doesn't include 0 is in agreement with a hypothesis test where the null  hypothesis that sets the two parameters equal to each other is rejected.
+
+* Because the 95% confidence interval does not contain 0, the data certainly provide convincing evidence of a difference at the 5% significance level.
+
+------------------------------------------------------------------------------------
+### Question 4
+
+Researchers studying IQ scores of mothers and fathers of *gifted* children collected data from 36 gifted children and their parents. First, differences in IQ scores of the father and the mother were calculated for each child (calculated as father's IQ score - mother's IQ score). The dot plot below shows the bootstrap distribution of means of 200 bootstrap samples taken from this original sample of differences in IQ scores. The mean of the bootstrap distribution is approximately -3.48 points and the bootstrap standard error is 1.3 points. Assume the usual conditions for constructing a bootstrap confidence interval are satisfied. Which of the following statements is false?
+
+* A 90% bootstrap confidence interval for the difference in IQ scores would is approximately (-5.6, -1.3).
+* A 95% bootstrap confidence interval for the difference in IQ scores is approximately (-6, -0.9).
+* ***Incorrect*** It's likely that in the original sample, most mothers had higher IQ scores than the fathers.
+* **Correct** Since 0 is apparently an unusual value for the statistic, then at the 5% significance level we would fail to reject a null hypothesis of that claims that the fathers' and mothers' average IQs are equal.
+
+------------------------------------------------------------------------------------
+### Question 4
+
+Your friend, who took statistics a few years ago, recently read a study which examined whether there is any difference between the average birth weights of babies born to smoking mothers vs. non-smoking mothers. Your friend asked you to remind him what it means when the study says ***a 95% confidence interval for the difference between the average birth weight from non-smoking mothers and smoking mothers (\mu_{non}- \mu_{smoke}) ) is 0.2 to 0.9 pounds.***" 
+
+Of the following possible responses to your friend's question, which is true according to the study?
+
+* The study data does not provide convincing evidence (at 10% significance level) of a difference between the average birth weight from smoking mothers and non-smoking mothers.
+* **Correct** The study's authors are 95% confident that babies born to non-smoking mothers are on average 0.2 to 0.9 pounds heavier than babies born to smoking mothers.
+* The study data does not provide convincing evidence (at 5% significance level) of a difference between the average birth weight from smoking mothers and non-smoking mothers.
+* The study's authors are 95% confident that babies born to non-smoking mothers are on average 0.2 to 0.9 pounds lighter than babies born to smoking mothers.
+
+#### Explanation 
+
+This question refers to the following learning objective(s): 
+
+ Recognize that a good interpretation of a confidence interval for the difference between two parameters includes a comparative statement (mentioning which group has the larger parameter).
+
+ Recognize that a confidence interval for the difference between two parameters that doesn't include 0 is in agreement with a hypothesis test where the null hypothesis that sets the two parameters equal to each other is rejected.
+ 
+------------------------------------------------------
+### Question 5
+An insurance company wants to estimate (using a confidence interval) its average claim amount using data from 20 randomly selected claims. 
+Which of the following is false?
+
+* **Correct** A confidence interval based on this sample is not accurate since the sample size is small.
+* The critical t-score, $t^{\ast}$, has 19 degrees of freedom.
+* The confidence interval can also be calculated using bootstrapping.
+* If the distribution of the sampled claim amounts is not extremely skewed, a T interval is appropriate.
+
+#### Explanation
+
+Low sample size alone does not necessarily preclude an accurate confidence interval; the T interval may be used if conditions are met.
+
+
+------------------------------------------------------
+### Question 5
+When doing inference on a single mean, which of the following is the correct justification for using the tt-distribution rather than the normal distribution? 
+
+* **Correct** Because the standard error estimate may not be accurate.
+* Because the tt-distribution is not symmetric.
+* ***Incorrect*** All of the above.
+* ***Incorrect*** None of the above.
+
+---------------------------------------------
+### Question 6
+How does the shape of the t-distribution change as the sample size increases?
+
+* ****Incorrect*** It becomes wider
+* ***Incorrect*** It becomes skewed
+* It becomes more normal looking
+* ***Incorrect***  It becomes flatter
+
+#### Explanation
+
+This question refers to the following learning objective(s):
+
+Describe how the t-distribution is different from the normal distribution, and what ``heavy tail" means in this context.
+
+Note  that the t-distribution has a single parameter, degrees of freedom,  and as the degrees of freedom increases this distribution approaches  the normal distribution.
+
+As the degrees of freedom increases the t-distribution starts approaching the normal distribution.
+
+---------------------------------------------
+### Question 6
+
+The figure below shows three tt-distribution curves. Which curve has the highest degree of freedom? 
+
+* dashed
+* dotted
+* **Correct** Solid
+
+#### Explanation
+
+This question refers to the following learning objective(s):
+
+Describe how the tt-distribution is different from the normal distribution, and what ``heavy tail" means in this context.
+
+Note  that the tt-distribution has a single parameter, degrees of freedom,  and as the degrees of freedom increases this distribution approaches  the normal distribution.
+
+As the degrees of freedom increases the tt distribution starts approaching the normal distribution, and tt distributions with lower degrees of freedom will have heavier tails than tt distributions with higher degrees of freedom.
+
+-----------------------------------------------------
+
+### Question 7
+Air quality measurements were collected in a random sample of 25 country capitals in 2013, and then again in the same cities in 2014. We would like to use these data to compare average air quality between the two years. Which of the following tests is the most appropriate?
+
+* independent samples t-test with two-sided alternative hypothesis
+* independent samples t-test with one-sided alternative hypothesis
+* **Correct** paired t-test with two-sided alternative hypothesis
+* paired t-test with one-sided alternative hypothesis
+
+#### Explanation
+
+We're looking for a difference between the two years' averages, and the data are collected in the same cities in both years, creating dependency requiring paired analysis.
+
+-----------------------------------------------------
+
+### Question 7
+My friend, Tom, believes that his supermarket's prices are lower than mine, and sets an alternative hypothesis test reflecting this. We construct a list of 10 identical items and purchase them at our respective stores. Tom wants to know if these data support his hypothesis. Which of the following is the correct description of Tom's situation?
+
+* ***Incorrect*** Tom has a two-sided alternative hypothesis and should do an independent samples t-test.
+* Tom has a two-sided alternative hypothesis and should do a paired t-test.
+* Tom has a one-sided alternative hypothesis and should do an independent samples t-test.
+* **Correct** Tom has a one-sided alternative hypothesis and should do a paired t-test.
+
+#### Explanation
+The alternative hypothesis is one-sided because of the phrase ``lower than mine."
+
+----------------------------------------------
+### Question 8
+
+Suppose that a one-tail t test is being applied to find out if the population mean is less than 100. The level of significance is 0.05 and 25 observations were sampled. The null hypothesis would be rejected for t scores in which of the following regions? Choose the best answer.
+
+* **Correct** T < −1.71
+* T > 1.71
+* T > 1.32
+* T < −1.32
+* T < 1.96
+
+----------------------------------------------
+### Question 8
+
+We are testing the following hypotheses: 
+
+H_0: \mu_1 = \mu_2
+H_A: \mu_1 \ne \mu_2
+The sample sizes are n_1 = 20 and n_2 = 40. 
+Your friend who is working on this hypothesis test calculates a Z statistic, Z = 2.5. Which of the following is true?
+
+* She should be using an F statistic instead of a Z statistic.
+* ***Incorrect*** p-value is approximately 0.012.
+* She should be using a T statistic instead of a Z statistic.
+* ***Incorrect*** p-value is approximately 0.006.
+
+----------------------------------------------
+### Question 8
+We are testing the following hypotheses: 
+
+
+H 0 : μ = 0.5
+H A : μ  ≠  0.5
+
+The sample size is 26. The test statistic is calculated as T = 2.485. What is the p-value?
+
+
+* **Correct**  between 0.02 and 0.05
+* between 0.01 and 0.02
+* between 0.005 and 0.01
+
+#### Explanation 
+This question refers to the following learning objective(s):
+
+This question refers to the following learning objective(s):
+
+Use a TT-statistic, with degrees of freedom df = n − 1df=n−1 for inference for a population mean.
+
+Use  a TT-statistic, with degrees of freedom df = min(n_1 − 1, n_2 −  1) for inference for difference between means of two population means  using data from two small samples.
+
+Describe how to obtain a p-value and a critical t-score (t^\star_{df} for a confidence interval.
+
+Using the table: n = 26, df = 25, look up the p-value using computation or the table.
+
+Using R: 
+
+> 2*(1-pt(2.485, df = 25))
+
+[1] 0.0200048
+
+------------------------------------------------------------------------------------
+### Question 9
+When doing an ANOVA, you observe large differences in means between groups. Within the ANOVA framework this would most likely be interpreted as:
+
+
+* **Correct** Evidence strongly favoring the alternative hypothesis.
+* Evidence strongly favoring the null hypothesis.
+* Evidence revealing which group mean is different from the others.
+* None of the above
+
+#### Explanation
+
+If there is more variability between groups compared to within groups, it's likely there is some difference between at least some of the means.
+
+------------------------------------------------------------------------------------
+### Question 10
+
+Which of the following is not a condition required for comparing means across multiple groups using ANOVA?
+
+* **Correct**  There should be at least 10 successes and 10 failures.
+* The observations should be independent within and across groups.
+* The data within each group should be nearly normal.
+* The variability across the groups should be about equal.
+
+------------------------------------------------------------------------------------
+### Question 10
+
+Which of the following is most useful for checking the equal variance across groups condition for ANOVA?
+
+* Summary statistics suggesting that the means of each group are roughly equal.
+* Side-by-side box plots showing roughly equally sized boxes for each group.
+* Histograms suggesting nearly normal distributions of data in each group.
+* Summary statistics suggesting roughly equal ranges for each group.
+
+#### Explanation
+This question refers to the following learning objective(s): 
+
+List the conditions necessary for performing ANOVA
+* the observations should be independent within and across groups
+* the data within each group are nearly normal
+* the variability across the groups is about equal
+and use graphical diagnostics to check if these conditions are met.
+
+Equal variability across groups is one of the required conditions for ANOVA.
+
+------------------------------------------------------------------------------------
+### Question 10
+Which of the following is **not** a condition required for comparing means across multiple groups using ANOVA?
+
+* The data within each group should be nearly normal.
+* The variability across the groups should be about equal.
+* **Correct** There should be at least 10 successes and 10 failures.
+* ***Incorrect*** The observations should be independent within and across groups.
+
+#### Explanation
+
+This question refers to the following learning objective(s): 
+
+* List the conditions necessary for performing ANOVA
+* the observations should be independent within and across groups
+* the data within each group are nearly normal
+* the variability across the groups is about equal
+* and use graphical diagnostics to check if these conditions are met.
+
+Review the associated learning objective.
+
+------------------------------------------------------------------------------------
+### Question 11
+
+A study compared five different methods for teaching descriptive statistics. The five methods were traditional lecture and discussion, programmed textbook instruction, programmed text with lectures, computer instruction, and computer instruction with lectures. 45 students were randomly assigned, 9 to each method. After completing the course, students took a 1-hour exam. 
+
+Which of the following is the correct degrees of freedom for an F-test for evaluating if the average test scores are different for the different teaching methods?
+
+* ***Incorrect*** df_G = 40, df_E = 4
+* df_G = 4, df_E = 44
+* df_G = 5, df_E = 45
+* **Correct** df_G = 4, df_E = 40
+* df_G = 45, df_E = 4
+
+#### Explanation
+This question refers to the following learning objective(s): Recognize that the test statistic for ANOVA, the F statistic, is calculated as the ratio of the mean square between groups (MSG, variability between groups) and mean square error (MSE, variability within errors). 
+
+Also recognize that the F statistic has a right skewed distribution with two different measures of degrees of freedom: one for the numerator ($df_{G} = k - 1$), where $k$ is the number of groups), and one for the denominator (df_{E} = n - k), where nn is the total sample size).
+
+The group degrees of freedom is number of levels (categories) minus 1 ($k - 1 = 5 - 1 = 4$) and the error degrees of freedom is the sample size minus the number of levels ($n  - k = 45 - 5 = 40$).
+
+------------------------------------------------------------------------------------
+### Question 11
+Based on the ANOVA output below, what is the value of the F-statistic? Choose the closest answer.
+
+* **Correct** 1.87
+* 14.45
+* 27.00
+* 10.71
+* 0.54
+
+#### Explanation 
+
+This question refers to the following learning objective(s): Recognize that the test statistic for ANOVA, the F statistic, is calculated as the ratio of the mean square between groups (MSG, variability between groups) and mean square error (MSE, variability within errors). 
+
+Also recognize that the F statistic has a right skewed distribution with two different measures of degrees of freedom: one for the numerator (df_{G} = k - 1), where kk is the number of groups), and one for the denominator (df_{E} = n - k), where nn is the total sample size).
+
+The F statistic is calculated as the ratio of the mean square between groups (MSG, variability between groups) and mean square error (MSE, variability within errors): 75/40.13=1.87
+
+---------------------------------------------------------------------------------
+
+### Question 12
+
+A study compared five different methods for teaching descriptive statistics. The five methods were traditional lecture and discussion, programmed textbook instruction, programmed text with lectures computer instruction, and computer instruction with lectures. 45 students were randomly assigned, 9 to each method. After completing the course, students took a 1-hour exam. We are interested in finding out if the average test scores are different for the different teaching methods.
+
+The p-value of the test is 0.0168. What is the conclusion of the test?
+
+* All five group means are equal to each other.
+* All five group means are significantly different from each other.
+* At most two group means are significantly different from each other.
+* Only two group means are significantly different from each other.
+* **Correct** At least two group means are significantly different from each other.
+
+---------------------------------------------------------------------------------
+### Question 12
+A study compared five different methods for teaching descriptive statistics. The five methods were traditional lecture and discussion, programmed textbook instruction, programmed text with lectures, computer instruction, and computer instruction with lectures. 45 students were randomly assigned, 9 to each method. After completing the course, students took a 1-hour exam. We are interested in finding out if the average test scores are different for the different teaching methods.  Which of the following is the appropriate set of hypotheses?
+
+
+H_0: s_{between} = s_{within}H 
+H_A: s_{between} \neq s_{within}
+
+H_0: \mu_{between} \neq \mu_{within}
+H_A: \sigma_{between} \neq \sigma_{within}
+
+H_0: \mu_{between} = \mu_{within}H 
+H_A: \mu_{between} \neq \mu_{within}H 
+
+H_0: \mu_1 = \mu_2 = \mu_3 = \mu_4 = \mu_5H 
+H_A: \mu_1 \neq \mu_1 \neq \mu_2 \neq \mu_3 \neq \mu_4 \neq \mu_5
+
+**Correct** H_0: \mu_1 = \mu_2 = \mu_3 = \mu_4 = \mu_5
+**Correct** H_A: at least one \mu_iμ is different
+
+#### Explanation 
+This question refers to the following learning objective(s): Recognize that the null hypothesis in ANOVA sets all means equal to each other, and the alternative hypothesis suggest that at least one mean is different.
+
+ H_0: \mu_1 = \mu_2 = \cdots = \mu_k
+ H_A: At least one mean is different
+
+------------------------------------------------------------------------
+
+### Question 13
+
+For given values of the sample mean and the sample standard deviation when n = 25, you conduct a hypothesis test and obtain a p-value of 0.0667, which leads to non-rejection of the null hypothesis. 
+
+What will happen to the p-value if the sample size increases (and all else stays the same)?
+
+* Stay the same
+* Increase
+* **Correct** Decrease
+* May either increase or decrease
+
+------------------------------------------------------------------------
+
+### Question 13
+
+Researchers studying people’s sense of smell devised a measure of smelling ability. A higher score on this scale means the subject can smell better. A random sample of 36 people (18 male and 18 female) were involved in the study. The average score for the males was 10 with a standard deviation of 3.4 and the average score for the females was 11 with a standard deviation of 2.7. Which of the following is the correct standard error for the test evaluating whether the males and females have differing smelling abilities, on average? Choose the closest answer.
+
+* ***Incorrect*** 1.047
+* 0.724
+* 1.023
+* 0.801
+* ***Incorrect***  3.504
+
+#### Explanation
+This question refers to the following learning objective(s):
+
+
+Use a tt-statistic, with degrees of freedom df = n − 1 for inference for a population mean: 
+
+\text{CI:}~\bar{x} \pm t^\star_{df} SE \qquad \qquad \text{HT:}~T_{df} = \frac{\bar{x} - \mu}{SE}
+
+where SE = \frac{s}{\sqrt{n}}.
+
+Use  a t-statistic, with degrees of freedom df = n_{diff} − 1 for  inference for the difference in two paired (dependent) means: 
+
+$$\text{CI:}~\bar{x}_{diff} \pm t^\star_{df} SE \qquad \qquad \text{HT:}~T_{df} = \frac{\bar{x}_{diff} - \mu_{diff}}{SE}$$
+
+where SE = \frac{s}{\sqrt{n}}. 
+
+Note that \mu_{diff} is often 0, since often H_0: \mu_{diff} = 0
+
+SE = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}} 
+
+
+
+ Read the question carefully; both the standard deviations and the sample sizes are given.
+
+
+----------------------------------------------------------
+
+### Question 14
+
+A study compared five different methods for teaching descriptive statistics. The five methods were traditional lecture and discussion, programmed textbook instruction, programmed text with lectures, computer instruction, and computer instruction with lectures. 45 students were randomly assigned, 9 to each method. After completing the course, students took a 1-hour exam. We are interested in finding out if the average test scores are different for the different teaching methods.
+
+If the original significance level for the ANOVA was 0.05, what should be the adjusted significance level for the pairwise tests to compare all pairs of means to each other?
+
+* 0.5
+* **Try** 0.005
+* ***Incorrect*** 0.05
+* ***Incorrect*** 0.01
+* 0.25
+
+#### Explanation
+
+This question refers to the following learning objective(s): Describe  why conducting many tt-tests for differences between each pair of  means leads to an increased Type 1 Error rate, and we use a corrected  significance level (Bonferroni correction, \alpha^\star = \alpha /  K, where KK is the number of comparisons being considered) to  combat inflating this error rate.
+
+Note that K =\frac{k(k - 1)}{2}, where k is the number of groups.
+
+α^{\ast} = α/K, where K is the number of comparisons being considered, and K = \frac{k(k - 1)}{2}  , where k is the number of groups.
+
+----------------------------------------------------------
+
+### Question 14
+A study compared five different methods for teaching descriptive statistics. The five methods were traditional lecture and discussion, programmed textbook instruction, programmed text with lectures computer instruction, and computer instruction with lectures. 45 students were randomly assigned, 9 to each method. After completing the course, students took a 1-hour exam. We are interested in finding out if the average test scores are different for the different teaching methods.
+
+How many pairwise tests would we need to do in order to compare all pairs of means to each other?
+
+* **Correct** 10
+* 5
+* 20
+* 3
+* 4
+
+#### Explanation 
+This question refers to the following learning objective(s): Describe  why conducting many tt-tests for differences between each pair of  means leads to an increased Type 1 Error rate, and we use a corrected  significance level (Bonferroni correction, \alpha^\star = \alpha /  K, where KK is the number of comparisons being considered) to  combat inflating this error rate.
+
+Note that K =\frac{k(k - 1)}{2}, where k is the number of groups.

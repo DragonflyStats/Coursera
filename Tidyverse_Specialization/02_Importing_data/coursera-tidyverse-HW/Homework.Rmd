@@ -1,0 +1,103 @@
+---
+title: "Importing Data into R Project"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+setwd("C:/Users/kilbi/Documents/GitHub/DataAnalyticsCourse/Tidyverse_Specialization/02_Importing_data/coursera-tidyverse-HW")
+```
+
+### Question 1
+For this question you will need to read the `excel_data.xlsx` file into R using the readxl package. 
+There are two sheets in this spreadsheet file named "Sheet1" and "Sheet2". 
+Use the readxl package to read in "Sheet2" from the spreadsheet file directly and answer the question below. 
+Recall that the [[ operator can be used to subset a column of tibble or data frame.
+
+What is the mean of the column labeled "X12" in "Sheet2"? 
+You can use the mean() function to compute the mean of a column. (Choose the closest answer.)
+
+```{r message=FALSE,warning=FALSE}
+library(tidyverse)
+library(readxl)
+exceldata1 <- read_excel("excel_data.xlsx",sheet="Sheet1")
+exceldata2 <- read_excel("excel_data.xlsx",sheet="Sheet2")
+mean(exceldata2$X12)
+```
+### Question 2
+Continuing from Question 1 above, use the readxl package to read in both "Sheet1" and "Sheet2" from the <tt>excel_data.xlsx</tt> file. 
+
+What is the correlation between column "X5" in "Sheet1" and column "X8" in "Sheet2"? 
+Use the <tt>cor()</tt> function to compute the correlation between two columns.
+
+```{r message=FALSE,warning=FALSE}
+X <- exceldata1$X5
+Y <- exceldata2$X8
+cor(X,Y)
+```
+
+### Question 3
+
+For this question you will need to read in the database file <tt>sqlite_data.db</tt> using the RSQLite package. 
+In this database file there is table named "table1". You will need to read that table to answer this question.
+
+The "ID" column in "table1" serves as and identification number for elements in the database table. 
+What is the correlation between columns "S2" and "S3" for rows with ID equal to 8 only? 
+(Hint: There should be 100 rows where ID = 8.)
+
+```{r message=FALSE,warning=FALSE}
+library(RSQLite)
+hw_db <- dbConnect(RSQLite::SQLite(), "sqlite_data.db")
+thisdata <- dbGetQuery(hw_db, "SELECT * FROM table1")
+```
+
+```{r}
+thisdata %>% group_by(ID) %>% summarise(mycor=cor(S2,S3))
+```
+
+The correct answer is 0.219
+
+
+### Question 4
+
+For this question you need to read in "Sheet2" from the <tt>excel_data.xlsx</tt> file using the readxl package and the data from the table2.json file using the jsonlite package. 
+
+Then you need to inner join the two tables by their corresponding ID columns to create a new data frame.
+What is the mean of column "J2" in the joined data frame?
+
+
+```{r message=FALSE,warning=FALSE}
+# install.packages("rjson")
+library("rjson")
+# Give the input file name to the function.
+json_data <- fromJSON(file="table2.json")
+# Print the result.
+```
+
+```{r message=FALSE,warning=FALSE}
+json_as_df <- enframe(unlist(json_data))
+json_as_df <- json_as_df %>% pivot_wider(names_from = "name",values_from = "value",values_fn = list) %>% 
+unnest(c(ID, J1, J2, J3, J4))
+
+json_as_df %>% head(4)
+```
+
+
+
+```{r message=FALSE,warning=FALSE}
+joindata <- inner_join(exceldata2,json_as_df,by="ID")
+```
+
+```{r message=FALSE,warning=FALSE}
+## Answer to Question 4
+mean(joindata$J2)
+
+```
+
+### Question 5
+Continuing from Question 4 above, what is the correlation between column "X2" and column "J4" in the joined data frame?
+
+```{r message=FALSE,warning=FALSE}
+## Answer to Question 5
+cor(joindata$X2,joindata$J4)
+```

@@ -1,0 +1,364 @@
+
+---------------------------------------------------------
+### Question 1
+
+We modeled the prices of 93 cars (in $1,000s) using its city MPG (miles per gallon) and its manufacturing site (foreign or domestic). The regression output is provided below. Note that domestic is the reference level for manufacturing site. Data are outdated so the prices may seem low.
+
+
+Which of the following is the degrees of freedom associated with the p-value for city MPG? 
+
+* ***Incorrect***  1
+* 91
+* 90
+* 92
+
+---------------------------------------------------------
+### Question 1
+We modeled the gas mileage of 398 cars built in the 1970’s and early 1980’s using engine displacement (in cubic inches), year of manufacture in relation to 1970 (e.g. 4 means the car was built in 1974; 12 means built in 1982, etc.), and manufacturing site (domestic to the USA = 0; foreign to the USA = 1). 
+
+The regression output is provided below. Note that domestic is the reference level for manufacturing site.
+
+Which of the following is the degrees of freedom associated with the p-value for site? 
+
+* 395 
+* 398 
+* ***Incorrect*** 2
+* 3 
+* **Correct** 394
+
+#### Explanation
+
+This question refers to the following learning objective(s): Note that the p-values associated with each predictor are conditional on other variables being included in the model, so they can be used to assess if a given predictor is significant, given that all others are in the model. These p-values are calculated based on a 
+$t$ distribution with $n−k−1$ degrees of freedom.
+
+* $n=398$
+* $k=3$
+* Therefore ($ df = n-k-1 = 398-3-1 = 394$)
+
+---------------------------------------------------------
+
+### Question 2
+
+We modeled the gas mileage of 398 cars built in the 1970’s and early 1980’s using engine displacement (in cubic inches), year of manufacture in relation to 1970 (e.g. 4 means the car was built in 1974; 12 means built in 1982, etc.), and manufacturing site (domestic to the USA = 0; foreign to the USA = 1). The regression output is provided below. Note that domestic is the reference level for manufacturing site.
+
+
+Which of the following is the correct predicted gas mileage (in miles per gallon) for a domestic car with an engine displacement of 350 cubic inches built in 1975?
+
+
+* 26.86−0.04×350+0.72×1975+2.21
+* −0.04×350+0.72×5+2.21
+* −0.04×350+0.72×1975
+* **Correct** 26.86−0.04×350+0.72×5
+
+#### Explanation
+
+This question refers to the following learning objective(s): Define the multiple linear regression model as
+
+$$\hat{y} = \beta_{0} + \beta_{1}x_{1} + \beta_{2}x_{2} + \ldots + \beta_{k}x_{k}$$
+  
+where there are $k$ predictors (explanatory variables).
+
+---------------------------------------------------------
+
+### Question 3
+
+Body fat percentage can be complicated to estimate, while variables such as Age, Height, Weight, and measurements of various body parts are easy to measure. Based on data1 on body fat percentage and other various measurements, a linear regression model was developed to predict body fat percentage, based on easy to obtain measurements. The model output is shown below.
+
+
+Based on this output, what is the correct interpretation of the coefficient for wrist?
+
+* **Correct** For every 1 inch increase in wrist circumference, we would expect body fat percentage to be lower by 1.14%, on average.
+* For every 1 inch decrease in wrist circumference, we’d expect a decrease in body fat percentage of about (13.57+1.14)%, on average.
+* For every 1 inch decrease in wrist circumference, we’d expect a decrease in body fat percentage of 1.14%, on average.
+* For every 1 inch increase in wrist circumference, we’d expect a decrease in body fat percentage of about 1.14% plus or minus 1.96+/-0.47%, on average.
+
+
+#### Reference 
+Penrose, K., Nelson, A., and Fisher, A. (1985), Generalized Body Composition Prediction Equation for Men Using Simple Measurement Techniques, Medicine and Science in Sports and Exercise, 7(2), 189.
+
+#### Explanation
+
+This question refers to the following learning objective(s):
+
+* Interpret the estimate for the intercept ($b_0$) as the expected value of $y$ when all predictors are equal to $0$, on average.
+* Interpret the estimate for a slope (say $b_1$) as “All else held constant, for each unit increase in $x_1$, we would expect $y$ to be higher/lower on average by $b_1$.”
+
+---------------------------------------------------------
+### Question 4
+We modeled the prices of 93 cars (in $1,000s) using its city MPG (miles per gallon) and its manufacturing site (foreign or domestic). 
+The regression output is provided below. Note that domestic is the reference level for manufacturing site. 
+Data are outdated so the prices may seem low.
+
+
+Which of the following is false?
+
+If we add another variable to the model, say highway MPG, the p-values associated with city MPG and manufacturing site may change.
+
+
+* **Correct** The 95% confidence interval for the slope of city MPG can be calculated as −1.14±(−8.03∗0.14).
+* City MPG is a significant predictor of car price, given information on the manufacturing site of the car.
+* Manufacturing site is a significant predictor of car price, given information on the city MPG of the car.
+
+#### Explanation
+Use critical T score, not the calculated T score, for the confidence interval.
+
+This question refers to the following learning objective(s):
+
+-The significance of the model as a whole is assessed using an F-test.
+
+- 
+�
+0
+:
+�
+1
+=
+�
+2
+=
+⋅
+⋅
+⋅
+=
+�
+�
+H 
+0
+​
+ :β 
+1
+​
+ =β 
+2
+​
+ =⋅⋅⋅=β 
+k
+​
+ 
+
+�
+�
+HA: At least one 
+�
+�
+≠
+0
+β 
+i
+​
+  
+
+​
+ =0.
+
+- 
+�
+�
+=
+�
+−
+�
+−
+1
+df=n−k−1 degrees of freedom.
+
+- Usually reported at the bottom of the regression output.
+
+- Note that the p-values associated with each predictor are conditional on other variables being included in the model, so they can be used to assess if a given predictor is significant, given that all others are in the model.
+
+- These p-values are calculated based on a t distribution with n − k − 1 degrees of freedom.
+
+- The same degrees of freedom can be used to construct a confidence interval for the slope parameter of each predictor:
+
+�
+�
+±
+�
+�
+−
+�
+−
+1
+⋆
+�
+�
+�
+�
+b 
+i
+​
+ ±t 
+n−k−1
+⋆
+​
+ SE 
+b 
+i
+​​
+ 
+
+---------------------------------------------------------
+### Question 5
+
+$R^2$  will never decrease when a predictor is added to a linear model.
+
+* **Correct** True
+* False
+
+#### Explanation 
+
+This question refers to the following learning objective(s): 
+Note that $R^2$  will increase with each explanatory variable added to the model, regardless of whether or not the added 
+variable is a meaningful predictor of the response variable. 
+Therefore we use adjusted $R^2$, which applies a penalty for the number of predictors included in the model, to better assess the strength of a multiple linear regression model:
+
+$$ R^2_{adj} = 1− \frac{SST/(n−1)}{SSE/(n−k−1)}$$
+​
+ 
+
+where 
+
+* $n$ is the number of cases and 
+* $k$ is the number of predictors.
+
+    - Note that 
+R^2_{adj} will only increase if the added variable has a meaningful contribution to the amount of explained variability in 
+�
+y, i.e. if the gains from adding the variable exceeds the penalty.
+
+----------------------------------------------------------------
+### Question 6
+Which of the following is false?
+
+
+
+* $R^2$ is always greater than or equal to adjusted $R^2$.
+* In backwards model selection using p-value as the criterion, we start with the full model, and drop the variable with highest p-value, one at a time, until all the variables in the model are significant given the others.
+* **Correct** In backwards model selection using p-value as the criterion, we start with the full model, and in the first step simultaneously drop all variables that are not significant.
+* One of the consequences of collinearity in multiple regression is biased estimates on the slope coefficients.
+
+#### Explanation
+
+We drop the variables one at a time.
+
+This question refers to the following learning objective(s): The general idea behind backward-selection is to start with the full model and eliminate one variable at a time until the ideal model is reached.
+
+#### p-value method:
+
+(i) Start with the full model.
+(ii) Drop the variable with the highest p-value and refit the model.
+(iii) Repeat until all remaining variables are significant.
+
+#### adjusted $R^2$ method:
+
+(i) Start with the full model.
+(ii) Refit all possible models omitting one variable at a time, and choose the model with the highest adjusted $R^2$.
+(iii) Repeat until maximum possible adjusted $R^2$ is reached.
+
+-----------------------------------------------------------------------
+### Question 6
+The data in this question come from the Second International Mathematics Study on 8th graders from randomly sampled classrooms in the US who completed mathematics achievement tests at the beginning and at the end of the academic year. Students also answered questions regarding their attitudes toward mathematics. The linear model output below is for predicting the gain score in this test (posttest - pretest score) using the following explanatory variables:
+
+    •  pretest: score on the exam taken at the beginning of the semester
+
+    •  gender: male or female
+
+    •  more_ed: expected number of years for continued education (up to 2 years, 2 to 5 years, 5 to 6 years, 8 or more years)
+
+    •  useful: Math is useful in everyday life (strongly disagree, disagree, undecided, agree, strongly agree)
+
+    •  ethnic: ethnicity of student (African American, Anglo, Other)
+
+In model selection using backwards elimination based on p-values, which of the following variables would be dropped first?
+
+* useful
+* more ed
+* ***Incorrect*** ethnic
+* gender
+* pre-test
+
+----------------------------------------------------------------
+### Question 7
+As part of the Second International Mathematics Study on 8th graders from randomly sampled classrooms in the US who completed mathematics achievement tests at the beginning and at the end of the academic year. Students also answered questioners regarding their attitudes toward mathematics. 
+The linear model output predicts the gain score in this test (post-test - pretest score) using the following explanatory variables:
+
+*  pretest: score on the exam taken at the beginning of the semester
+*  gender: male or female
+*  more_ed: expected number of years for continued education (up to 2 years, 2 to 5 years, 5 to 6 years, 8 or more years)
+*  useful: Math is useful in everyday life (strongly disagree, disagree, undecided, agree, strongly agree)
+*  ethnic: ethnicity of student (African American, Anglo, Other)
+
+The following is the residuals plot for this model. Which of the following conditions can this plot be used to check?
+
+* **Correct** Constant variability of residuals
+* Nearly normal residuals
+* Non-collinear explanatory variables.
+* Independent residuals
+
+#### Explanation
+
+This question refers to the following learning objective(s): List the conditions for multiple linear regression as
+
+(1) linear relationship between each (numerical) explanatory variable and the response - checked using scatterplots of $y$ vs. each $x$, and residuals plots of residuals vs. each $x$
+(2) nearly normal residuals with mean $0$ - checked using a normal probability plot and histogram of residuals
+(3) constant variability of residuals - checked using residuals plots of residuals vs. $\hat{y}$, and residuals vs. each $x$
+(4) independence of residuals (and hence observations) - checked using a scatterplot of residuals vs. order of data collection (will reveal non-independence if data have time series structure)
+
+----------------------------------------------------------------
+###  Question 8
+Which of the following is the best definition of a parsimonious model?
+
+
+* The model with the least amount of collinearity between predictors.
+* The model with the most number of predictors.
+* **Correct** The simplest model with the highest predictive power.
+* The model with the least number of predictors.
+
+#### Explanation
+
+This question refers to the following learning objective(s): Note that we usually prefer simple (parsimonious) models over more complicated ones.
+
+----------------------------------------------------------------
+###  Question 9
+A high correlation between two explanatory variables such that the two variables contribute redundant information to the model is known as
+
+* heteroscedasticity
+* homogeneity
+* **Correct** collinearity
+* heterogeneity
+* multiple correlation
+* multiple interaction
+* adjusted $R^2$
+* homoscedasticity
+
+#### Explanation
+
+This question refers to the following learning objective(s): 
+* Define collinearity as a high correlation between two independent variables such that the two variables contribute redundant information to the model – which is something we want to avoid in multiple linear regression.
+
+----------------------------------------------------------------
+
+### Question 10
+Suppose you have performed forward selection using adjusted $R^2$ as the criterion and have chosen a model with 6 predictors. 
+Based on your studies of model selection, which of the following is most likely to be true?
+
+
+* All 6 predictors will be significant in the model.
+* The model you’ve arrived at is the most parsimonious model.
+* If any of your 6 predictors is not significant in the model, given the other predictors, then your slope coefficients will be biased.
+* **Correct** Your final model has a higher adjusted $R^2$ than any of the smaller models you tried.
+
+#### Explanation 
+This question refers to the following learning objective(s): The general idea behind forward-selection is to start with only one variable and adding one variable at a time until the ideal model is reached.
+
+####- p-value method:
+
+(i) Try all possible simple linear regression models predicting $y$ using one explanatory variable at a time. Choose the model where the explanatory variable of choice has the lowest p-value.
+(ii) Try all possible models adding one more explanatory variable at a time, and choose the model where the added explanatory variable has the lowest p-value.
+(iii) Repeat until all added variables are significant.
+
+#### - adjusted $R^2$ method:
+
+(i) Try all possible simple linear regression models predicting $y$ using one explanatory variable at a time. Choose the model with the highest adjusted $R^2$.
+(ii) Try all possible models adding one more explanatory variable at a time, and choose the model with the highest adjusted $R^2$.
+(iii) Repeat until maximum possible adjusted $R^2$ is reached.

@@ -1,0 +1,385 @@
+
+### Question 1
+
+The scatterplot on the right shows the relationship between  percentage of white residents and percentage of households with a female head in all 50 US States and the District of Columbia (DC). 
+Which of  the below best describes the two points marked as DC and Hawaii?
+
+* **Correct** Hawaii has higher leverage and is more influential than DC.
+* DC has higher leverage and is more influential than Hawaii.
+* DC is more influential than Hawaii, but it has lower leverage than Hawaii.
+* DC is not an outlier, and Hawaii is a leverage point.
+
+#### Explanation
+
+Hawaii has higher leverage than DC because it is farther away from the bulk of the data in the x direction.
+
+This question refers to the following learning objective(s): 
+
+* Define a leverage point as a point that lies away from the center of the data in the horizontal direction. 
+* Define an influential point as a point that influences (changes) the slope of the regression line.
+* This is usually a leverage point that is away from the trajectory of the rest of the data. 
+
+---------------------------------------------------------
+
+### Question 2
+
+The model below is for predicting the heart weight (in g) of cats  from their body weight (in kg). 
+The coefficients are estimated using a  dataset of 144 domestic cats. 
+The correlation between the heart and body  weight is 0.8. Which of the following is false?
+
+* The intercept is meaningless in context of the data and only serves to adjust the height of the regression line.
+* The correlation coefficient would not change if body weights were measured in pounds.
+* **Correct** The slope estimate would not change if body weights were measured in pounds.
+* The explanatory variable is body weight, and the response variable is heart weight.
+
+#### Explanation
+
+The correlation coefficient is unitless but the slope is not therefore this statement is false.
+
+------------------------------------------------
+
+### Question 2
+The scatterplot below shows the relationship between socioeconomic status measured as the percentage of children in a neighborhood receiving reduced-fee lunches at school (lunch) and bike helmet use  measured as the percentage of bike riders in the neighborhood wearing  helmets (helmet). 
+The equation of the regression line is
+
+$$ helmet=47.49−0.54 lunch $$
+
+and the $R^2$ is 72%. Which of the following is true?
+
+* Decreasing the percentage of children receiving reduced-fee lunches  at school by 5% will increase the percentage of bike riders wearing  helmets in that neighborhood by 2.7%.
+* 72% of the percentage of children receiving reduced-fee lunches at school can be accurately predicted by the model. 
+* **Correct** Neighborhoods where no students receive reduced-fee lunches are  expected on average to have 47.49% of bike riders wearing helmets.
+* ***Incorrect*** The correlation coefficient is 0.85.
+
+#### Explanation
+
+Incorrect for(d)
+
+The association is negative, so the correlation coefficient would be negative rather than positive.
+
+-----------------------------------------------------------
+
+### Question 3
+
+The model below is for predicting the heart weight (in g) of cats  from their gender (female and male). 
+The coefficients are estimated  using a dataset of 144 domestic cats. Which of the following is false?
+
+* The expected heart weight for male cats is, on average, 11.32 grams.
+* If the regression equation is written 
+$$\hat{y} = \beta_{0} + \beta_{1}x $$ , then plugging in $x=0$ would give you the predicted heart weight for a female cat.
+
+* Female cats on average are expected to have hearts that weigh 2.12 grams less than those of male cats.
+* **Correct** The intercept is meaningless.
+
+#### Explanation
+
+For a categorical explanatory variable like we have here (gender), a  value of 0 for the explanatory variable corresponds to the baseline  level.
+
+
+
+-----------------------------------
+### Question 4
+
+Determine if I or II is higher, or if they are equal:
+ 
+The uncertainty associated with the slope estimate when 
+
+I. there is a lot of scatter around the regression line
+
+II. there is very little scatter around the regression line
+
+* **Correct** I is higher
+* ***Incorrect*** II is higher
+* I and II are equal
+
+
+This question refers to the following learning objective(s): 
+
+- Calculate a confidence interval for the slope as
+
+�
+1
+±
+�
+�
+�
+⋆
+�
+�
+�
+1
+b 
+1
+​
+ ±t 
+df
+⋆
+​
+ SE 
+b 
+1
+​
+ 
+​
+ , 
+
+where  $df=n−2$ and $t^{\ast}(df)$ is the critical score associated  with the given confidence level at the desired degrees of freedom.
+
+- Note that the standard error of the slope estimate $SE_{b1}$ can be found on the regression output.
+  
+-----------------------------------
+
+### Question 4
+
+We fit a linear regression model for predicting the best used price  of 23 GMC pickup trucks from their list price, both measured in  thousands. 
+Which of the following is false based on this model output?
+
+The linear model is 
+�
+�
+�
+�
+_
+�
+�
+�
+�
+_
+�
+�
+�
+�
+�
+^
+=
+0.43
++
+0.85
+ 
+�
+�
+�
+�
+_
+�
+�
+�
+�
+�
+best_used_price
+​
+ =0.43+0.85 list_price.
+
+
+* **Correct** The 95% confidence interval for the slope can be calculated as $0.85±84.7×0.01$.
+* For each additional $1,000 in the list price of a GMC pickup truck we would expect the best used price to be higher on average by $850.
+* The intercept is meaningless in this context.
+* List price is a significant predictor of the best used price.
+
+#### Correct
+False. We need the critical t score, not the observed t score, in calculation of the margin of error.
+
+This question refers to the following learning objective(s): 
+
+- Calculate a confidence interval for the slope as
+
+�
+1
+±
+�
+�
+�
+⋆
+�
+�
+�
+1
+b 
+1
+​
+ ±t 
+df
+⋆
+​
+ SE 
+b 
+1
+​
+ 
+​
+ , 
+
+where 
+�
+�
+=
+�
+−
+2
+df=n−2 and 
+�
+�
+�
+⋆
+t 
+df
+⋆
+​
+  is the critical score associated with the given confidence level at the desired degrees of freedom.
+
+- Note that the standard error of the slope estimate 
+�
+�
+�
+1
+SE 
+b 
+1
+​
+ 
+​
+  can be found on the regression output.
+
+--------------------------------------------------------------------------------
+### For Questions 5, 6 and 7
+Answer Question 5, 6 and 7 based on the information below:
+
+Body fat percentage can be complicated to estimate, while variables such age, height, weight, and measurements of various body parts are easy to measure. 
+Based on data on body fat percentage and other various easy to obtain measurements, we develop a model to predict body fat percentage based on the following variables:
+
+-age (years)  - abdomen circumference (cm)   - forearm circumference (cm)
+
+-wight (pounds)  - hip circumference (cm)     - wrist circumference (cm)
+
+-neck circumference (cm)    - thigh circumference (cm)
+
+The plot below shows the relationship between each of these variables and body fat percentage (the response variable) as well as the correlation coefficients between these variables:
+
+
+And the following are the model outputs associated with this analysis:
+
+
+Source: Penrose, K., Nelson, A., and Fisher, A. (1985), Generalized Body Composition Prediction Equation for Men Using Simple Measurement Techniques, Medicine and Science in Sports and Exercise, 7(2), 189.
+
+-----------------------------------------------------------------------------
+
+### Question 5
+
+Which of the following is not supported by information provided in the model outputs above?
+
+* The sample size is 252.
+* The F-test for the significance of the model overall suggests that at least one of the slope coefficients is significantly different than 0.
+* **Correct** Wrist circumference is the most significant predictor of body fat percentage since the slope associated with this variable has the highest magnitude.
+* All else held constant, for each additional cm the forearm circumference is higher, body fat percentage is expected to be higher by 0.483 percentage points.
+* All else held constant, people with wider hips tend to have lower body fat percentages.
+
+#### Explanation
+This question refers to the following learning objective:
+
+Determine whether an explanatory variable is a significant predictor for the response variable using the t-test and the associated p-value in the regression output.
+
+-----------------------------------------------------------------------------
+
+### Question 6
+
+Do these data provide convincing evidence that age and body fat percentage are significantly positively associated?  Why or why not? Use quantitative information based on the model output to support your answer, and make sure to note the p-value you use to make this decision.
+
+* Yes, the p-value for testing for a positive correlation between age and body fat percentage is 2e$^{-16}$. Since the p-value is small we reject the null hypothesis of no relationship.
+* **Correct** Yes, the p-value for testing for a positive correlation between age and body fat percentage is 0.039 / 2 = 0.0195. Since the p-value is small we reject the null hypothesis of no relationship.
+* Yes, the p-value for testing for a positive correlation between age and body fat percentage is 0.039. Since the p-value is small we reject the null hypothesis of no relationship.
+* Yes, the p-value for testing for a positive correlation between age and body fat percentage is 0.000. Since the p-value is small we reject the null hypothesis of no relationship.
+
+#### Explanation
+
+This question refers to the following learning objective:
+
+Determine  whether an explanatory variable is a significant predictor for the  response variable using the t-test and the associated p-value in the  regression output.
+
+-----------------------------------------------------------------------------
+
+### Question 7
+
+Construct a 95% confidence interval for the slope of abdomen circumference and interpret it in context of the data.
+
+* (-0.00539, 1.75); All else held constant, for each additional cm in abdomen circumference, body fat percentage is expected to change by -0.00539 to 1.75 percentage points.
+* (0.00539, 0.88239); All else held constant, for each additional cm in abdomen circumference, body fat percentage is expected to be higher by 0.00539 to 0.88239 percentage points.
+* **Correct** (0.745, 1.009); All else held constant, for each additional cm in abdomen circumference, body fat percentage is expected to be higher by 0.745 to 1.009 percentage points.
+* (0.745, 1.009); All else held constant, for each additional percentage point increase in body fat, abdomen circumference is expected to be higher by 0.745 to 1.009 cm.
+
+#### Explanation 
+
+Correct
+
+We recall that this confidence interval is supposed to capture 
+�
+�
+�
+�
+�
+�
+�
+�
+β 
+abdomen
+​
+ , ie the impact of increasing abdomen circumference by 1 cm on the response of body fat percentage.
+
+This question refers to the following learning objective:
+
+Calculate a confidence interval for the slope as 
+�
+1
+±
+�
+�
+�
+∗
+�
+�
+�
+1
+b 
+1
+​
+ ±t 
+df
+∗
+​
+ SE 
+b 
+1
+​
+ 
+​
+  
+ where  $df=n−2$ and $t^{\ast}(df)$ is the critical score associated  with the given confidence level at the desired degrees of freedom.
+ 
+ Note that the standard error of the slope estimate 
+�
+�
+�
+1
+SE 
+b 
+1
+​
+ 
+​
+  can be found on the regression output.
+
+-----------------------------------------------------------------------------
+
+### Question 8
+
+Physical activity in the US. The CDC monitors the physical activity level of Americans. A recent survey on a random sample of 23,129 Americans 
+yielded a 95% confidence interval of 61.1% to 62.9% for the proportion of Americans who walk for at least 10 minutes per day. 
+Which of the following is the correct interpretation of this confidence interval?
+
+* ***Incorrect*** 61.1% to 62.9% of the time Americans walk for at least 10 minutes per day.
+* ***Incorrect*** 95% of the time the true proportion of Americans who walk for at least 10 minutes per day is between 61.1% to 62.9%.
+* Between 61.1% to 62.9% of random samples of 23,129 Americans are expected to yield confidence intervals that contain the true proportion of Americans who walk for at least 10 minutes per day.
+* 95% of random samples of 23,129 Americans will yield confidence intervals between 61.1% to 62.9%.
+* None of these.
+
+#### Explanation 
+Incorrect for (a) False, this statement doesn’t make much sense. The confidence interval is about the population proportion of Americans who walk for at least 10 minutes per day.

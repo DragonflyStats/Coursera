@@ -1,0 +1,31 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Example Dataset: diamonds
+To build your first plot in ggplot2 we’ll make use of the fact that there are some datasets already available in R. One frequently-used dataset is known as diamonds. This dataset contains prices and other attributes of 53,940 diamonds, with each row containing information about a different diamond. If you look at the first few rows of data, you can get an idea of what data are included in this dataset.
+
+12345678910111213141516
+diamonds <- as_tibble(diamonds)
+diamonds
+## # A tibble: 53,940 x 10
+##    carat cut       color clarity depth table price     x     y     z
+##    <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+##  1 0.23  Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43
+##  2 0.21  Premium   E     SI1      59.8    61   326  3.89  3.84  2.31
+##  3 0.23  Good      E     VS1      56.9    65   327  4.05  4.07  2.31
+##  4 0.290 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
+
+
+Figure: First 12 rows of diamonds dataset
+
+Here you see a lot of numbers and can get an idea of what data are available in this dataset. For example, in looking at the column names across the top, you can see that we have information about how many carats each diamond is (carat), some information on the quality of the diamond cut (cut), the color of the diamond from J (worst) to D (best) (color), along with a number of other pieces of information about each diamond.
+
+We will use this dataset to better understand how to generate plots in R, using ggplot2.
+
+

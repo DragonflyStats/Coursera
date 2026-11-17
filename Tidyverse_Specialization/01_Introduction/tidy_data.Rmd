@@ -1,0 +1,48 @@
+
+### Tidy Data Benefits
+There are a number of benefits to working within a tidy data framework:
+
+* Tidy data have a consistent data structure - This eliminates the many different ways in which data can be stored. By imposing a uniform data structure, the cognitive load imposed on the analyst is minimized for each new project.
+
+* Tidy data foster tool development - Software that all work within the tidy data framework can all work well with one another, even when developed by different individuals, ultimately increasing the variety and scope of tools available, without requiring analysts to learn an entirely new mental model with each new tool.
+
+* Tidy data require only a small set of tools to be learned - When using a consistent data format, only a small set of tools is required and these tools can be reused from one project to the next.
+
+* Tidy data allow for datasets to be combined - Data are often stored in multiple tables or in different locations. By getting each table into a tidy format, combining across tables or sources becomes trivial.
+
+
+
+#### Rules for Storing Tidy Data
+In addition to the four tidy data principles, there are a number of rules to follow when entering data to be stored, or when re-organizing untidy data that you have already been given for a project into a tidy format. They are rules that will help make data analysis and visualization easier down the road. They were formalized in a paper called “Data organization in spreadsheets”, written by two prominent data scientists, Karl Broman and Kara Woo. In this paper, in addition to ensuring that the data are tidy, they suggest following these guidelines when entering data into spreadsheets:
+
+Be consistent
+
+Choose good names for things
+
+Write dates as YYYY-MM-DD
+
+No empty cells
+
+Put just one thing in a cell
+
+Don’t use font color or highlighting as data
+
+Save the data as plain text files
+
+We’ll go through each of these to make sure we’re all clear on what a great tidy spreadsheet looks like.
+
+#### Be consistent
+Being consistent in data entry and throughout an analysis is key. It minimizes confusion and makes analysis simpler. For example, here we see sex is coded as “female” or “male.” Those are the only two ways in which sex was entered into the data. This is an example of consistent data entry. You want to avoid sometimes coding a female’s sex as “female” and then entering it as “F” in other cases. Simply, you want to pick a way to code sex and stick to it.
+
+With regard to entering a person’s sex, we were talking about how to code observations for a specific variable; however, consistency also matters when you’re choosing how to name a variable. If you use the variable name “ID” in one spreadsheet, use the same variable name (“ID”) in the next spreadsheet. Do not change it to “id” (capitalization matters!) or “identifier” or anything else in the next spreadsheet. Be consistent!
+
+Consistency matters across every step of the analysis. Name your files in a consistent format. Always code dates in a consistent format (discussed further below). Avoid extra spaces in cells. Being careful and consistent in data entry will be incredibly helpful when you get to the point of analyzing your data.
+
+
+Figure: Be Consistent!
+
+#### Choose good names for things
+Choosing good variable names is important. Generally, avoid spaces in variable names and file names. You’ll see why this is important as we learn more about programming, but for now, know that “Doctor Visit 1” is not a good file name. “doctor_visit_v1” is much better. Stick to using underscores instead of spaces or any other symbol when possible. The same thing goes for variable names. “FirstName” is a good variable name while “First Name” with a space in the middle of it is not.
+
+Additionally, make sure that file and variable names are as short as possible while still being meaningful. “F1” is short, but it doesn’t really tell you anything about what is in that file. “doctor_visit_v1” is a more meaningful file name. We know now that this spreadsheet contains information about a doctor’s visit. ‘v1’ specifies version 1 allowing for updates to this file later which would create a new file “doctor_visit_v2.”
+

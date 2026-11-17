@@ -1,0 +1,49 @@
+---
+title: "Predicting Annual Air Pollution" 
+subtitle: "A Tidyverse Approach to Statistical Inference in R"
+author: "Tidyverse Coursera Specialization"
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+**Title: Predicting Annual Air Pollution**
+
+**Objective:** 
+The case study aims to predict the annual average air pollution concentrations in the United States and explore the correlation between socioeconomic status and the number of filter-based particulate matter monitors placed in a region.
+
+**Introduction:**
+
+The study investigates the impact of air pollution on human health, particularly focusing on particulate matter (PM) and its association with socioeconomic factors. Previous research has shown that exposure to air pollution is linked to oxidative stress, inflammation, chronic diseases, and cancer. Lower-income individuals are more likely to be exposed to higher levels of pollution and experience greater health issues.
+
+**Data Sources:**
+
+The data used in this study comes from multiple sources, including the US Environmental Protection Agency (EPA), National Aeronautics and Space Administration (NASA), US Census, and the National Center for Health Statistics (NCHS). The dataset contains information from 876 gravimetric monitors, each with 48 features, including population density, road density, urbanization levels, and satellite data.
+
+**Methodology:**
+
+1. **Data Wrangling:** 
+   - Convert CSV files into readable dataframes.
+   - Adjust variable types and inspect the dataset for completeness.
+   
+2. **Exploratory Data Analysis (EDA):**
+   - Use correlation heatmaps to identify relationships between variables.
+   - Examine groups of variables (e.g., impervious surface measures, emission variables, road density) for strong correlations.
+   
+3. **Predictive Modeling:**
+   - Develop models to predict annual air pollution concentrations based on the dataset.
+   - Evaluate model performance and identify key predictors.
+
+**Key Findings:**
+
+- The analysis aims to determine the accuracy of predicting annual average air pollution concentrations.
+- Investigate whether a correlation exists between socioeconomic status and the placement of air pollution monitors.
+
+**Conclusion:**
+The study seeks to provide insights into the distribution and impact of air pollution across different socioeconomic regions in the United States. It aims to highlight potential disparities and inform policy decisions to improve air quality and public health outcomes.

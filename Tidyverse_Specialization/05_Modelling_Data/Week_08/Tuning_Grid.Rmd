@@ -1,0 +1,185 @@
+---
+title: "Tuning Models with Tune Grid in Tidymodels" 
+subtitle: "Modeling Data with {tidymodels} - Week 08"
+author: "Tidyverse Coursera Specialization"
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Tuning Models with Tune Grid in Tidymodels
+
+Tidymodels provides a powerful framework for building and tuning machine learning models in R. The `tune` package, a core component of tidymodels, allows you to systematically search for the best combination of hyperparameters for your model using techniques like grid search. This tutorial will guide you through using `tune_grid` to optimize your model.
+
+**1. Installation and Loading**
+
+First, install and load the necessary packages:
+
+```R
+install.packages(c("tidymodels", "tune", "workflows", "recipes", "dplyr", "ggplot2"))
+
+library(tidymodels)
+```
+
+**2. Data Preparation**
+
+We'll use the `penguins` dataset for this tutorial.
+
+```R
+data(penguins, package = "palmerpenguins")
+penguins <- penguins %>%
+  drop_na()
+
+# Split the data into training and testing sets
+set.seed(123)
+penguins_split <- initial_split(penguins, prop = 0.8, strata = species)
+penguins_train <- training(penguins_split)
+penguins_test <- testing(penguins_split)
+```
+
+**3. Feature Engineering with Recipes**
+
+We'll create a recipe to preprocess the data.
+
+```R
+penguins_recipe <- recipe(species ~ ., data = penguins_train) %>%
+  step_dummy(all_nominal_predictors()) %>%
+  step_zv(all_predictors()) %>%
+  step_normalize(all_numeric_predictors())
+```
+
+**4. Model Specification**
+
+Let's use a random forest model as an example.
+
+```R
+rf_model <- rand_forest(
+  mtry = tune(),
+  trees = 500,
+  min_n = tune()
+) %>%
+  set_mode("classification") %>%
+  set_engine("ranger")
+```
+
+Note that `mtry` and `min_n` are set to `tune()`, indicating that we want to optimize these hyperparameters.
+
+**5. Workflow Creation**
+
+We'll combine the recipe and model into a workflow.
+
+```R
+penguins_workflow <- workflow() %>%
+  add_recipe(penguins_recipe) %>%
+  add_model(rf_model)
+```
+
+**6. Tuning Grid Setup**
+
+We'll create a tuning grid to specify the hyperparameter combinations to evaluate.
+
+```R
+penguins_grid <- grid_regular(
+  mtry(range = c(1, 6)),
+  min_n(range = c(2, 10)),
+  levels = 5
+)
+
+penguins_grid
+```
+
+* `grid_regular()`: Creates a regular grid of hyperparameter combinations.
+* `mtry(range = c(1, 6))` and `min_n(range = c(2, 10))`: Specify the range of values for each hyperparameter.
+* `levels = 5`: Specifies the number of levels for each hyperparameter, leading to a 5x5 grid in this case.
+
+**7. Resampling Strategy**
+
+We'll use cross-validation to evaluate the model's performance.
+
+```R
+penguins_folds <- vfold_cv(penguins_train, v = 5)
+```
+
+**8. Tuning the Model with `tune_grid`**
+
+Now, we'll use `tune_grid` to evaluate the model with the specified hyperparameter grid and resampling strategy.
+
+```R
+tune_results <- penguins_workflow %>%
+  tune_grid(
+    resamples = penguins_folds,
+    grid = penguins_grid,
+    metrics = metric_set(accuracy, roc_auc, precision, recall)
+  )
+```
+
+* `resamples = penguins_folds`: Specifies the resampling strategy.
+* `grid = penguins_grid`: Specifies the hyperparameter grid.
+* `metrics = metric_set(accuracy, roc_auc, precision, recall)`: Specifies the metrics to evaluate.
+
+**9. Analyzing Tuning Results**
+
+We can visualize the tuning results using `autoplot()`.
+
+```R
+autoplot(tune_results)
+```
+
+We can also extract the best performing hyperparameters using `select_best()`.
+
+```R
+best_params <- tune_results %>%
+  select_best("roc_auc")
+
+best_params
+```
+
+**10. Finalizing the Workflow**
+
+We'll finalize the workflow using the best hyperparameters.
+
+```R
+final_workflow <- penguins_workflow %>%
+  finalize_workflow(best_params)
+```
+
+**11. Fitting the Final Model**
+
+We'll fit the final model using the training data.
+
+```R
+final_fit <- final_workflow %>%
+  last_fit(penguins_split)
+```
+
+**12. Evaluating the Final Model**
+
+We can evaluate the final model's performance on the test data.
+
+```R
+final_fit %>%
+  collect_metrics()
+```
+
+We can also generate predictions and evaluate them.
+
+```R
+final_fit %>%
+  collect_predictions() %>%
+  conf_mat(truth = species, estimate = .pred_class)
+```
+
+**Key Advantages of `tune_grid`:**
+
+* **Systematic Hyperparameter Tuning:** Efficiently searches for the best hyperparameter combinations.
+* **Integration with Tidymodels:** Seamlessly integrates with recipes, workflows, and other tidymodels components.
+* **Flexibility:** Supports various resampling strategies and metrics.
+* **Visualization and Analysis:** Provides tools for visualizing and analyzing tuning results.
+
+This tutorial provides a basic introduction to `tune_grid`. Explore the tidymodels documentation for more advanced features and examples, such as custom tuning grids, parallel processing, and more complex model tuning scenarios.

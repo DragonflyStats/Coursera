@@ -1,0 +1,533 @@
+---
+title: "Visualizing Data in the Tidyverse course project"
+author: "Jirapanakorn Sutham"
+date: "2022-05-18"
+output: html_document
+---
+This is a part of Visualizing Data in the Tidyverse course project.  
+
+**Setting Environment**
+
+Load tidyverse package
+```{r message=FALSE, warning=FALSE, paged.print=FALSE}
+library(tidyverse)
+```
+Load provided dataset, which were downloaded in working directory,into R.  
+
+```{r}
+fast_food_sale <- read.csv(here::here('data_fastfood_sales.csv'))
+fast_food_sale <- fast_food_sale %>%
+				  rename('restaurant'="X.ปฟrestaurant") ##rename the first column.
+fast_food_cal <- read.csv(here::here('data_fastfood_calories.csv'))
+```  
+
+
+
+**Problem 1**  
+	Task 1 : Create a scatter plot with column `us_sales` along the x-axis and the column `unit_count` along the y-axis. 
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+project_plot1 <- ggplot(data = fast_food_sale)+
+						geom_point(aes(x= us_sales,
+									   y= unit_count),shape = 16)
+project_plot1
+```     
+
+	Task 2 : Each axis should be transformed to a `log10` scale and should be appropriately labeled.
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+project_plot1 <- ggplot(data = fast_food_sale)+
+						geom_point(aes(x= us_sales,
+									   y= unit_count),shape = 16)+
+						scale_y_continuous(trans = 'log10')+
+						scale_x_continuous(trans = 'log10')
+project_plot1
+	
+```       
+
+	Task 3 : Color each point by the proportion of franchised stores (i.e. `num_franchised_stores` divided by `unit_count`).  
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+fast_food_sale <- fast_food_sale %>%
+					mutate(franchised_prop = num_franchised_stores/unit_count)
+project_plot1 <- ggplot(data = fast_food_sale)+
+						geom_point(aes(x= us_sales,
+									   y= unit_count,
+								       color = franchised_prop),shape = 16) +
+						scale_y_continuous(trans = 'log10')+
+						scale_x_continuous(trans = 'log10') 
+project_plot1
+	
+```        
+
+
+	Task 4 : Label each point with the name of the fast food restaurant using the `ggrepel` package.  
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(ggrepel)
+project_plot1 <- ggplot(data = fast_food_sale)+
+						geom_text_repel(aes(x= us_sales,
+											y= unit_count,
+											label= restaurant))+
+						geom_point(aes(x= us_sales,
+									   y= unit_count,
+								       color = franchised_prop),shape = 16) +
+						scale_y_continuous(trans = 'log10')+
+						scale_x_continuous(trans = 'log10')
+					    
+	
+project_plot1
+	
+```       
+
+	
+	Task 5 : Use the classic dark-on-light ggplot2 theme.  
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(ggrepel)
+project_plot1 <- ggplot(data = fast_food_sale)+
+						geom_text_repel(aes(x= us_sales,
+											y= unit_count,
+											label= restaurant))+
+						geom_point(aes(x= us_sales,
+									   y= unit_count,
+								       color = franchised_prop),shape = 16) +
+						scale_y_continuous(trans = 'log10')+
+						scale_x_continuous(trans = 'log10')+
+				theme_bw()
+					    
+	
+project_plot1
+	
+```      
+
+	Task 6 : Rename the legend appropriately.   
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(ggrepel)
+project_plot1 <- ggplot(data = fast_food_sale)+
+						geom_text_repel(aes(x= us_sales,
+											y= unit_count,
+											label= restaurant))+
+						geom_point(aes(x= us_sales,
+									   y= unit_count,
+								       color = franchised_prop),shape = 16) +
+						scale_y_continuous(trans = 'log10')+
+						scale_x_continuous(trans = 'log10')+
+				theme_bw()+
+				labs(x='U.S. sales in millions(log10 scale)', 
+					 y='Total number of stores(log10 scale)',
+					 color='Proportion of stores franchised')
+
+project_plot1
+	
+```   
+
+**Problem 2**  
+
+Task1 : Create a bar plot with the `average_sales` on the x-axis and `restaurant` on the y-axis (Hint: consider using the `coord_flip()` function).  
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+
+project_plot2 <-ggplot(data = fast_food_sale)+
+				geom_col(aes(x=restaurant,y= average_sales))+
+				coord_flip()
+						
+project_plot2
+	
+```     
+
+
+Task2 : The order of restaurants on the y-axis should be in decreasing order of average sales with the restaurant with the largest average sales at the top and the restaurant with the smallest average sales at the bottom.   
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+project_plot2 <-ggplot(data = fast_food_sale)+
+				geom_col(aes(x=reorder(restaurant,average_sales),
+							 y= average_sales))+
+				coord_flip()
+						
+project_plot2
+	
+```     
+
+
+Task3 : Add text to each bar on the plot with the average sales (in the thousands) for each restaurant. 
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(ggrepel)
+project_plot2 <-ggplot(data = fast_food_sale)+
+	geom_col(aes(x=reorder(restaurant,average_sales),
+				 y= average_sales))+
+	coord_flip()+
+	geom_text_repel(aes(x=reorder(restaurant,average_sales),
+				   y= average_sales,
+				   label=paste("$",round(average_sales,0))),
+					hjust=0.8,
+					nudge_y = 3,
+					direction = "x",
+					size=3)
+
+project_plot2
+	
+```     
+
+
+Task4 : Each axis should be appropriately labeled.  
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(ggrepel)
+project_plot2 <-ggplot(data = fast_food_sale)+
+	geom_col(aes(x=reorder(restaurant,average_sales),
+				 y= average_sales))+
+	coord_flip()+
+	geom_text_repel(aes(x=reorder(restaurant,average_sales),
+				   y= average_sales,
+				   label=paste("$",round(average_sales,0))),
+					hjust=0.8,
+					nudge_y = 3,
+					direction = "x",
+					size=3)+
+	labs(x='Restaurant',
+		 y='Average sals per unite store (in thousands)')
+
+project_plot2
+	 
+```     
+
+
+Task5 : Along the x-axis, transform the text labels to include a dollar sign in front of each number.  
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(ggrepel)
+project_plot2 <-ggplot(data = fast_food_sale)+
+	geom_col(aes(x=reorder(restaurant,average_sales),
+				 y= average_sales))+
+	coord_flip()+
+	geom_text_repel(aes(x=reorder(restaurant,average_sales),
+				   y= average_sales,
+				   label=paste("$",round(average_sales,0))),
+					hjust=0.8,
+					nudge_y = 3,
+					direction = "x",
+					size=3)+
+	labs(x='Restaurant',
+		 y='Average sals per unite store (in thousands)')+
+	scale_y_continuous(labels = scales::label_dollar())
+
+project_plot2
+	 
+```     
+
+
+Task6 : Use the classic ggplot2 theme.   
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(ggrepel)
+project_plot2 <-ggplot(data = fast_food_sale)+
+	geom_col(aes(x=reorder(restaurant,average_sales),
+				 y= average_sales))+
+	coord_flip()+
+	geom_text_repel(aes(x=reorder(restaurant,average_sales),
+				   y= average_sales,
+				   label=paste("$",round(average_sales,0))),
+					hjust=0.8,
+					nudge_y = 3,
+					direction = "x",
+					size=3)+
+	labs(x='Restaurant',
+		 y='Average sals per unite store (in thousands)')+
+	scale_y_continuous(labels = scales::label_dollar())+
+	theme_classic()
+
+project_plot2
+	
+```         
+
+
+**Problem3**  
+
+Task1 : Create a scatter plot with the column `calories` along the x-axis and the column `sodium` along the y-axis.  
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+project_plot3 <-ggplot(data = fast_food_cal)+
+				geom_point(aes(x=calories,y= sodium),shape = 16)
+						
+project_plot3
+	
+```     
+
+
+Task2 : Each restaurant should have its own scatter plot (Hint: consider the facet functions).  
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+project_plot3 <-ggplot(data = fast_food_cal)+
+				geom_point(aes(x=calories,y= sodium),shape = 16)+
+				facet_wrap(~restaurant)
+						
+project_plot3
+	
+```     
+
+
+Task3 : Add a horizontal line at y=2300 in each scatter plot.  
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+project_plot3 <-ggplot(data = fast_food_cal)+
+				geom_point(aes(x=calories,y= sodium),shape = 16)+
+				facet_wrap(~restaurant)+
+				geom_hline(yintercept =2300)
+						
+project_plot3
+	
+```   
+
+
+Task4 : Each axis of the scatter plot should have an appropriately labeled x-axis and y-axis.    
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+project_plot3 <-ggplot(data = fast_food_cal)+
+				geom_point(aes(x=calories,y= sodium),shape = 16)+
+				facet_wrap(~restaurant)+
+				geom_hline(yintercept =2300)+
+				labs(x="Calories",
+					 y="Sodium (mg)")
+						
+project_plot3
+	
+```     
+
+
+Task5 : For all food items with a sodium level of greater than 2300 (mg) (the maximum daily intake from the Centers for Disease Control), add a text label each point with the name of the entree food item using the `ggrepel` package.    
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(ggrepel)
+project_plot3 <-ggplot(data = fast_food_cal)+
+				geom_point(aes(x=calories,
+							   y= sodium),shape = 16)+
+				facet_wrap(~restaurant)+
+				geom_hline(yintercept =2300)+
+				labs(x="Calories",
+					 y="Sodium (mg)")+
+				geom_text_repel(data = filter(fast_food_cal, sodium>2300),
+								aes(x=calories,
+									y= sodium,
+									label= item),
+								nudge_y = 1000,
+								nudge_x = 500,
+								Vjust = 50,
+								direction = 'y',
+								size=2)
+						
+project_plot3
+	
+```     
+
+
+Task6 : Use the classic dark-on-light ggplot2 theme.   
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(ggrepel)
+project_plot3 <-ggplot(data = fast_food_cal)+
+				geom_point(aes(x=calories,
+							   y= sodium),shape = 16)+
+				facet_wrap(~restaurant)+
+				geom_hline(yintercept =2300)+
+				labs(x="Calories",
+					 y="Sodium (mg)")+
+				geom_text_repel(data = filter(fast_food_cal, sodium>2300),
+								aes(x=calories,
+									y= sodium,
+									label= item),
+								nudge_y = 1000,
+								nudge_x = 500,
+								Vjust = 50,
+								direction = 'y',
+								size=2)+
+				theme_bw()+
+				theme(plot.margin = margin(.5,1,.5,1),aspect.ratio = 0.5)
+						
+project_plot3
+	
+```       
+**Problem4**   
+Task1 : Create a new column titled `is_salad` that contains a `TRUE` or `FALSE` value of whether or not the name of entree food item contains the character string "salad" in it.     
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+fast_food_cal <-fast_food_cal %>%
+				mutate('is_salad' = str_detect(tolower(item),'salad'))
+				
+						
+fast_food_cal %>%
+	select(restaurant,item,is_salad)%>%
+	filter(is_salad == TRUE)%>%
+	head() ##Show some result
+	
+```    
+
+Task2 : Create boxplots with `calories` on the x-axis and `restaurant` on the y-axis. 
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+project_plot4 <-ggplot(data = fast_food_cal)+
+				geom_boxplot(aes(x=calories,y= restaurant))
+						
+project_plot4
+	
+```  
+
+
+Task3 : The order of restaurants on the y-axis should be in decreasing order of calories with the restaurant with the median calories at the top and the restaurant with the smallest median calories at the bottom.  
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+fast_food_cal<-fast_food_cal%>%
+					group_by(restaurant)%>%
+					mutate(med_cal_by_restaurant = median(calories))
+##Create new column of median each restaurant's items calories.
+project_plot4 <-ggplot(data = fast_food_cal)+
+				geom_boxplot(aes(x=calories,
+								 y=reorder(restaurant,med_cal_by_restaurant)))
+						
+project_plot4
+	
+```  
+
+
+Task4 : Hide any outliers in the boxplots.  
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+project_plot4 <-ggplot(data = fast_food_cal)+
+				geom_boxplot(aes(x=calories,
+								 y=reorder(restaurant,med_cal_by_restaurant)),
+							 outlier.shape = NA)
+						
+project_plot4
+	
+``` 
+
+Task5 : On top of the boxplots add a set of jittered points representing each food item. 
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+project_plot4 <-ggplot(data = fast_food_cal)+
+				geom_boxplot(aes(x=calories,
+								 y=reorder(restaurant,med_cal_by_restaurant)),
+							 outlier.shape = NA)+
+				geom_jitter(aes(x=calories,
+								y=restaurant))
+						
+project_plot4
+	
+``` 
+
+Task6 : Each point should be colored based on whether it is an item with the word "salad" in it or not.  
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+project_plot4 <-ggplot(data = fast_food_cal)+
+				geom_boxplot(aes(x=calories,
+								 y=reorder(restaurant,med_cal_by_restaurant)),
+							 outlier.shape = NA)+
+				geom_jitter(aes(x=calories,
+								y=restaurant,
+								color=is_salad))
+						
+project_plot4
+	
+``` 
+
+
+Task7 : Each axis should be appropriately labeled, the legend should be appropriately labeled, and the x-axis should be transformed to a log10 scale.  
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+project_plot4 <-ggplot(data = fast_food_cal)+
+				geom_boxplot(aes(x=calories,
+								 y=reorder(restaurant,med_cal_by_restaurant)),
+							 outlier.shape = NA)+
+				geom_jitter(aes(x=calories,
+								y=restaurant,
+								color=is_salad))+
+				labs(x='Calories (log10 scale)',
+					 y='Restaurant')+
+				scale_x_continuous(trans = 'log10')+
+				scale_color_discrete(name = "Is the entree \na salad?",
+									labels= c("Is not a salad","salad"))
+						
+project_plot4
+	
+``` 
+
+Task8 : Use the classic dark-on-light ggplot2 theme.   
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+project_plot4 <-ggplot(data = fast_food_cal)+
+				geom_boxplot(aes(x=calories,
+								 y=reorder(restaurant,med_cal_by_restaurant)),
+							 outlier.shape = NA)+
+				geom_jitter(aes(x=calories,
+								y=restaurant,
+								color=is_salad))+
+				labs(x='Calories (log10 scale)',
+					 y='Restaurant')+
+				scale_x_continuous(trans = 'log10')+
+				scale_color_discrete(name = "Is the entree \na salad?",
+									labels= c("Is not a salad","salad"))+
+				theme_bw()
+						
+project_plot4
+	
+```      
+
+
+**Problem5**   
+
+Task1: For each restaurant calculate the median amount of sugar in each entree item.   
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+median_sugar<-fast_food_cal %>%
+	group_by(restaurant)%>%
+	summarize('sugar_median'=median(sugar))
+median_sugar
+	
+```   
+
+Task2 : Using this summarized dataset, combine this summarized dataset with the data_fastfood_sales.csv dataset. The combined dataset should only include restaurants that are included in both datasets.  
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+sale_join_sugar <- fast_food_sale %>%
+					inner_join(median_sugar, by= 'restaurant')
+
+sale_join_sugar%>%
+	select(restaurant,us_sales,sugar_median)
+	
+```    
+Task3 : Using this new dataset, create a bar plot with `restaurant` on the x-axis and on the `us_sales` y-axis.  
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+project_plot5 <- ggplot(data= sale_join_sugar)+
+					geom_col(aes(x=restaurant, 
+								 y=us_sales))
+project_plot5	
+```    
+
+Task4 : The order of restaurants on the x-axis should be in increasing order of US sales with the restaurant with the largest average sales on the right and the restaurant with the smallest US sales on the left.  
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+project_plot5 <- ggplot(data= sale_join_sugar)+
+					geom_col(aes(x=reorder(restaurant,us_sales), 
+								 y=us_sales))
+project_plot5	
+```   
+
+Task5 : Color the bars by the median amount of sugar in the entree items from that restaurant.
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(viridis)
+project_plot5 <- ggplot(data= sale_join_sugar)+
+					geom_col(aes(x=reorder(restaurant,us_sales), 
+								 y=us_sales,
+								 fill = sugar_median))+
+			scale_fill_gradientn(colors=viridis(6))
+							
+project_plot5	
+```   
+
+Task6 : Each axis should be appropriately labeled.   
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(viridis)
+project_plot5 <- ggplot(data= sale_join_sugar)+
+					geom_col(aes(x=reorder(restaurant,us_sales), 
+								 y=us_sales,
+								 fill = sugar_median))+
+			scale_fill_gradientn(colors=viridis(6))+
+			labs(x="Restaurant",
+				 y="U.S. sales(in millions)",
+				 fill ="Median sugar (grams) \nin fast food entrees")
+							
+project_plot5	
+```  
+
+Task7 : Use the classic ggplot2 theme.    
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(viridis)
+project_plot5 <- ggplot(data= sale_join_sugar)+
+					geom_col(aes(x=reorder(restaurant,us_sales), 
+								 y=us_sales,
+								 fill = sugar_median))+
+			scale_fill_gradientn(colors=viridis(6))+
+			labs(x="Restaurant",
+				 y="U.S. sales(in millions)",
+				 fill ="Median sugar (grams) \nin fast food entrees")+
+			theme_classic()
+							
+project_plot5	
+```  
+
+
+
+

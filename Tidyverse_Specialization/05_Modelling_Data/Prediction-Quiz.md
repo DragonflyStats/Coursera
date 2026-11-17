@@ -1,0 +1,20 @@
+- 1 - Student Loan
+- 2 - Vehicle loan or lease
+- 3 - Student Loan
+- 4 - Mortgage
+- 5 - Vehicle loan or lease
+- 6 - Credit Card
+- 7 - Credit Card
+- 8 - Credit Card
+- 9 - Student Loan
+- 10 - Vehicle loan or lease
+- 11 - Student Loan
+- 12 - Mortgage
+- 13 - Vehicle loan or lease
+- 14 - Credit Card
+- 15 - Mortgage
+- 16 - Credit Card
+- 17 - Mortgage
+- 18 - Student Loan
+- 19 - Vehicle loan or lease
+- 20 - Mortgage

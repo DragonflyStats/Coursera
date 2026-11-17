@@ -1,0 +1,228 @@
+### Question 1
+Suppose that scores on a national entrance exam are normally distributed with mean 1000 and standard deviation 100. Which of the following is false?
+
+* **Correct** We would expect the number of people scoring above 1200 to be more than the number of people scoring below 900.
+* Roughly 68% of people have scores between 900 and 1100.
+* A score greater than 1300 is more unusual than a score less than 800.
+* A normal probability plot of national entrance exam scores of a random sample of 1,000 people should show a straight line.
+
+
+#### Explanation
+
+1200 is 2 SD above the mean, 900 is only 1 SD below the mean. Fewer people will be more than 2SD away than just 1 SD away.
+
+----------------------------------------------------
+
+### Question 1
+Suppose that scores on a national entrance exam are normally distributed with mean 1000 and standard deviation 100. Which of the following is false?
+
+* ***Incorrect*** A score greater than 1300 is more unusual than a score less than 800.
+* We would expect the number of people scoring above 1200 to be more than the number of people scoring below 900.
+* A normal probability plot of national entrance exam scores of a random sample of 1,000 people should show a straight line.
+* Roughly 68% of people have scores between 900 and 1100.
+
+#### Explantion
+This question refers to the following learning objective: Use the Z score
+
+* if the distribution is normal: to determine the percentile score of a data point (using technology or normal probability tables)
+* regardless  of the shape of the distribution: to assess whether or not the  particular observation is considered to be unusual (more than 2 standard  deviations away from the mean).
+
+* 1300 is 3 SD above the mean, 800 is 2 SD below the mean, therefore 1300 is more unusual.
+
+
+------------------------------------------------
+
+### Question 2
+
+A 2005 survey found that 7% of teenagers (ages 13 to 17) suffer from an extreme fear of spiders (arachnophobia). At a summer camp there are 10 teenagers sleeping in each tent. Assume that these 10 teenagers are independent of each other. What is the probability that at least one of them suffers from arachnophobia?
+
+* 72%
+* 42%
+* 82%
+* **Correct** 52%
+* 62%
+
+------------------------------------------------
+
+### Question 2
+
+The National Vaccine Information Center estimates that 90% of Americans have had the disease chickenpox by the time they reach adulthood. 
+What is the probability that exactly 92 out of 100 randomly sampled American adults had chickenpox during childhood?
+
+* **Correct** 0.11
+* 0.10
+* 0.02
+* 0.07
+* 0.14
+
+#### Explanation
+
+This question refers to the following learning objective: Calculate the  probability of a given number of successes in a given number of trials  using the binomial distribution.
+
+Use the binomial distribution with n=100, k=92, and p=0.9. 
+Then 
+
+
+$$P(k=92) = ( \choose{100, 92} )(0.9^92)(0.1)^8 = 0.1148 $$
+
+-------------------------------------------------------------------------------------------
+
+### Question 3
+
+Your roommate loves to eat Chinese food for dinner. He estimates that on any given night, there’s a 30% chance he’ll choose to eat Chinese food. Although he loves Chinese food, he doesn’t like to eat it too much in a short period of time, so on most weeks he eats several different kinds of foods for dinner. Suppose you wanted to calculate the probability that, over the next 7 days, you friend eats Chinese food at least 3 times. Which of the following is the most accurate statement about calculating this probability?
+
+
+* Because “success” or “failure” have no real meaning in the context of this problem, we cannot use the binomial distribution to calculate the desired probability.
+* **Correct** Because he doesn’t like to eat Chinese food too much in a short period of time, p is not really the same for each trial and so we cannot use the binomial distribution to calculate the desired probability.
+* Because we know n = 7, k = 3, and p = 0.30, we can use the binomial distribution to calculate the desired probability.
+* Because we do not know the probabilities of your roommate eating any other types of foods, we cannot use the binomial distribution to calculate the desired probability.
+* Because we know n = 3, k = 7, and p = 0.30, we can use the binomial distribution to calculate the desired probability.
+
+#### Explanation 
+This question refers to the following learning objective: Determine if a random variable is binomial using the four conditions.
+
+* The trials are independent.
+* The number of trials, n, is fixed.
+* Each trial outcome can be classified as a success or failure. 
+* The probability of a success, p, is the same for each trial.
+
+The statement that he doesn’t like to eat Chinese food too much in a short period of time suggests that p is not constant over each of the n = 7 trials (days).
+
+-------------------------------------------------
+
+### Question 4 (Variant)
+Which of the following, on its own, is the least useful method for assessing if the data follow a normal distribution?
+
+* ***Incorrect*** Check if 68% of the data are within 1 SD of the mean, 95% of data are within 2 SDs of the mean, and 99.7% of data are within 3 SDs of the mean.
+* Check if the points are on a straight line on a normal probability plot.
+* Check if the mean and median are equal.
+* Check if the distribution is unimodal and symmetric.
+
+#### Explantion
+
+This question refers to the following learning objective: Assess whether  or not a distribution is nearly normal using the 68-95-99.7% rule or  graphical methods such as a normal probability plot.
+
+All of these are feasible methods for checking for normality of a distribution, but the least useful is whether the mean and median are equal since this will be true for any symmetric distribution regardless of whether it’s normal or not. For example, imagine a perfectly symmetric bimodal distribution (like an m shape), the mean and the median of this distribution will be equal however the shape is certainly not normal.
+
+-------------------------------------------------
+
+### Question 4 (Variant)
+
+Suppose you observe a data point x = 12 and it is known that this data point came from a normal distribution with mean 5 and standard deviation 2. Which of the following statements is true regarding the observation of x = 12?
+
+* The observation would not be considered unusual because it is only about three standard deviations from the mean.
+* **Correct** The observation would be considered unusual because it is farther than three standard deviations from the mean.
+* The observation would not be considered unusual, because we know exactly which normal distribution it comes from.
+* The observation would be considered unusual because x = 12 is over twice as large as the mean of the distribution.
+* The observation would not be considered unusual, because it comes from a normal distribution.
+
+#### Explanation
+
+This question refers to the following learning objective: Assess whether  or not a distribution is nearly normal using the 68-95-99.7% rule or  graphical methods such as a normal probability plot.
+
+The observation x = 12 is more than three standard deviations from the mean (mean+3×SD = 5+3×2 = 11; we observed 12). Recall that 99.7% of data following a normal distribution are within 3 standard deviations of the mean of that distribution.
+
+
+-------------------------------------------------------
+### Question 5
+
+Which of the following is true? Hint: It might be useful to sketch the distributions.
+
+* The Z score for the median is undefined if the distribution is bimodal.
+* **Correct** The Z score for the median is approximately 0 if the distribution is bimodal and symmetric.
+* The Z score for the mean is undefined if the distribution is bimodal and skewed.
+* The Z score for the median will usually be 0 if the distribution is unimodal and right- skewed.
+
+#### Explanation 
+
+This question refers to the following learning objective: Depending on the shape of the distribution determine whether the median would have a negative, positive, or 0 Z score keeping in mind that the mean always has a Z score of 0.
+
+Note the Z score is always defined, regardless of the shape and skew of a distribution. In a symmetric bimodal distribution, the median will roughly equal the mean and so the Z score for the median will be approximately 0.
+
+
+--------------------------------------------------------------------
+
+### Question 6
+
+At any given time about 5.5% of women (age 15-45) are pregnant. 
+A home pregnancy test is accurate 99% of the time if the woman taking the test is actually pregnant and 99.5% accurate if the woman is not pregnant. 
+If the test yields a positive result, what is the posterior probability of the hypothesis that the woman is pregnant?
+
+* 0.99
+* 0.995
+* ***Incorrect*** 0.08
+* **Try** 0.92
+
+#### Explantion
+
+This question refers to the following learning objective: Distinguish between marginal and conditional probabilities. 
+Construct tree diagrams to calculate conditional probabilities and probabilities of intersection of non-independent events using Bayes’ theorem: 
+$$P(A|B) = P(A and B) / P(B)$$
+
+Let P and N denote the events “is pregnant” and “is not pregnant” respectively. Let “+” and “−” denote a positive and negative test result. 
+We are given that P(P) = 0.055, P (+|P ) = 0.99, P (−|N ) = 0.995. Now let’s write down the desired quantity, use Bayes’ Theorem on it, and see what we have. 
+We are asked to calculate P(P|+), which we write as 
+
+P(+∣P)P(P)+P(+∣N)P(N)
+P(+∣P)P(P)
+​
+ . 
+We weren’t given P(N) or P(+|N), but we can calculate them using given information. 
+Specifically $P (N ) = 1 − P (P ) = 0.945$ and $P(+|N) = 1 − P(−|N) = 0.005$. 
+Then plug in to Bayes’ Theorem to find 
+
+$$ P(P|+) =  \frac{0.99(0.055)+0.005(0.945)}{0.99(0.055) }   = 0.92. $$
+
+Your answer may vary slightly due to rounding.
+
+---------------------------------------------
+
+### Question 7
+
+Your boss is a biologist who needs wood samples from long-leaf pine trees with a fungal disease which is only visible under a microscope, and she sends you on an assignment to collect the samples. She wants at least 50 different diseased samples. She tells you that approximately 28% of long-leaf pine trees currently have the fungal disease. If you sample 160 long-leaf pine trees at random, what is the probability you’ll have at least 50 diseased samples to return to your boss? (Use the normal approximation to calculate this probability and chose the closest answer to the question.)
+
+* **Try** 18%
+* ***Incorrect*** 13%
+* 82%
+* 28%
+* 92%
+
+---------------------------------------------
+
+### Question 7
+
+One strange phenomenon that sometimes occurs at U.S. airport security gates is that an otherwise law-abiding passenger is caught with a gun in his/her carry-on bag. 
+Usually the passenger claims he/she forgot to remove the handgun from a rarely-used bag before packing it for airline travel. 
+It’s estimated that every day 3,000,000 gun owners fly on domestic U.S. flights. 
+Suppose the probability a gun owner will mistakenly take a gun to the airport is 0.00001. 
+What is the probability that tomorrow more than 35 domestic passengers will accidentally get caught with a gun at the airport? Choose the closest answer.
+
+* 0.28
+* ***Incorrect*** 0.02
+* 0.91
+* **Try** 0.18
+* 0.82
+
+This question refers to the following learning objective: When number of trials is sufficiently large, use normal approximation to calculate binomial probabilities, and explain why this approach works.
+
+This calculation would involve the sum of many binomial probabilities, so after checking conditions for the normal approximation to the binomial, (
+�
+=
+�
+�
+=
+3
+μ=np=3,000,000 
+×
+× 0.00001 = 30 > 10 and n(1 - p) = 2,999,970 >10) and calculating 
+
+$$ σ=  np(1−p) = 5.48$$, we let G denote the number of domestic passengers who get caught with a gun on a particular day. 
+
+Then calculate
+
+\begin{eqnarray*}
+P(G>35) &=& P((G−30)/5.48)\\
+ &=&  P((35 - 30)/5.48)\\
+ &=& P(Z > .91)\\
+ &=&  0.18\\
+ \end{eqnarray*}

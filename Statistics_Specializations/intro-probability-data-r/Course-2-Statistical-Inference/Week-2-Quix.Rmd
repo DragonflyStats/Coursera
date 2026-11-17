@@ -1,0 +1,276 @@
+
+### Question 1
+An insurance company is reviewing its current policy rates. When originally setting the rates they believed that the average claim amount
+was $1,800. They are concerned that the true mean is actually higher than this, because they could potentially lose a lot of money. They 
+randomly select 40 claims, which yield a sample mean of $1,950. 
+
+Which of the following is the correct set of hypotheses for this scenario?
+
+
+
+H_0: \bar{x} = 1,800
+H_A: \bar{x} > 1,800H 
+
+H_0: \mu = 1,800H 
+H_A: \mu > 1,950H 
+
+H_0: \mu = 1,800H 
+H_A: \mu > 1,800H 
+
+H_0: \mu = 1,950H 
+H_A: \mu > 1,800H 
+
+Correct
+This question refers to the following learning objective(s):
+
+Always construct hypotheses about population parameters (e.g. population mean, \muμ) and not the sample statistics (e.g. sample mean, \bar{x} ). 
+Note that the population parameter is unknown while the sample statistic is measured using the observed data and hence there is no point in hypothesizing about it.
+
+Define the null value as the value the parameter is set to equal in the null hypothesis.
+
+Note that the alternative hypothesis might be one-sided (\mu << or >> the null value) or two-sided (\mu \ne the null value), and the choice depends on the research question.
+
+### Question 2
+Your friend likes to show off to his coworkers using statistical 
+terminology, but he makes errors so much that you often have to correct 
+him. He just completed the following hypothesis test:
+
+H0 : μ = 100 ; HA : μ ≠ 100
+
+x = 105, s = 10, n = 40
+
+p-value = 0.0016
+
+He claims the definition of this p-value is
+
+“the probability of obtaining a sample mean of 105 from a random sample of n = 40 when the true population mean is assumed to be 100.”
+
+Which of the following is true? (You may assume his calculations are correct, only focus on his interpretation.)
+
+
+* Your friend is wrong, the sample size is irrelevant.
+* Your friend is wrong, the statement should be revised as “the probability of obtaining a sample mean of 105 or more extreme from a 
+random sample of n = 40 when the true population mean is assumed to be 100."
+* Your friend is right.
+* Your friend is wrong, the statement should be revised as “the probability of obtaining a sample mean of 105 from a random sample of n = 40 when the true population mean is assumed to be different than 105.”
+
+#### Explanation
+This question refers to the following learning objective(s): Define a p-value as the conditional probability of obtaining a sample statistic 
+at least as extreme as the one observed given that the null hypothesis is true.
+
+  $$ p-value = P(observed or more extreme sample statistic | H0 true) $$
+
+---------------------------------------------------------------------------
+### Question 3
+Two-sided alternative hypotheses are phrased in terms of:
+
+0 / 1 point
+
+* < or >
+* ≈ or =
+* ≠
+* ≤ or ≥
+
+Incorrect
+This question refers to the following learning objective(s): Note 
+that the alternative hypothesis might be one-sided (\mu <μ< or 
+>> the null value) or two-sided (\mu \neμ 
+
+​
+ = the null value), and the choice depends on the research question.
+
+Review hypothesis testing examples to see how the null $H_0$ and alternative H_A are phrased.
+
+------------------------------------------------------------------
+
+### Question 4
+A Type 1 error occurs when the null hypothesis is
+
+* not rejected when it is false
+* rejected when it is true
+* rejected when it is false 
+* not rejected when it is true
+
+#### Explanation 
+This question refers to the following learning objective(s): Note that the conclusion of a hypothesis test might be erroneous regardless 
+of the decision we make.
+
+ Define a Type 1 error as rejecting the null hypothesis when the null hypothesis is actually true.
+
+ Define a Type 2 error as failing to reject the null hypothesis when the alternative hypothesis is actually true.
+
+---------------------------------------------------------------------------------
+### Question 5
+A statistician is studying blood pressure levels of Italians in the 
+age range 75-80. The following is some information about her study:
+
+
+ The data were collected by responses to a survey conducted by email, 
+and no measures were taken to get information from those who did not 
+respond to the initial survey email.
+
+ The sample observations only make up about 4% of the population.
+
+ The sample size is 2,047.
+
+ The distribution of sample observations is skewed - the skew is easy to see, although not very extreme.
+
+The
+ researcher is ready to use the Central Limit Theorem (CLT) in the main 
+part of her analysis. Which aspect of the her study is most likely to 
+prevent her from using the CLT?
+
+0 / 1 point
+
+(I), because the sample may not be random and hence observations may not be independent.
+
+
+ (II), because she only has data from a small proportion of the whole population.
+
+
+ (III), because the sample size is too small compared to all Italians in the age range 75-80.
+
+
+(IV), because there is some skew in the sample distribution.
+
+Incorrect
+This question refers to the following learning objective(s): 
+
+Recognize
+ that the Central Limit Theorem (CLT) is about the distribution of point estimates, and that given certain conditions, this distribution will be
+ nearly normal. In the case of the mean the CLT tells us that if  
+
+(1a) the sample size is sufficiently large (n ≥ 30 or larger if the data are considerably skewed), or (1b) the population is known to have a normal distribution, and 
+
+(2) the observations in the sample are independent, 
+
+then
+ the distribution of the sample mean will be nearly normal, centered at 
+the true population mean and with a standard error of 
+\frac{\sigma}{\sqrt{n}} 
+n
+​
+ 
+σ
+​
+ : 
+
+\bar{x} \sim N \left( mean = \mu, SE = \frac{\sigma}{\sqrt{n}} \right)
+x
+ˉ
+ ∼N(mean=μ,SE= 
+n
+​
+ 
+σ
+​
+ )
+ 
+
+When the population distribution is unknown, condition (1a) can be checked using a histogram or some other visualization of the distribution of the observed data in the sample. 
+The larger the sample size (nn), the less important the shape of the distribution becomes, i.e. when n is very large the sampling 
+distribution will be nearly normal regardless of the shape of the population distribution. 
+
+If the conditions necessary 
+for the CLT to hold are not met, note this and do not go forward with the analysis. (We will later learn about methods to use in these 
+situations.)
+
+Since we can be more lenient with skew when the sample size is much higher than 30 ($n=2,047$), the skew should not be a problem. 
+
+---------------------------------------------------------------------------------------
+### Question 6
+SAT scores are distributed with a mean of 1,500 and a standard 
+deviation of 300. You are interested in estimating the average SAT score
+ of first year students at your college. If you would like to limit the 
+margin of error of your 95% confidence interval to 25 points, at least 
+how many students should you sample?
+
+0 / 1 point
+
+392
+
+
+393
+
+
+553
+
+
+554
+
+
+13,830
+
+Incorrect
+This question refers to the following learning objective(s): Calculate the required sample size to obtain a given margin of error at a given confidence level by working backwards from the given margin of error.
+
+ME = z^\star \frac{s}{\sqrt{n}} \rightarrow 25 = 1.96 \frac{300}{\sqrt{n}}ME=z 
+⋆
+  
+n
+​
+ 
+s
+​
+ →25=1.96 
+n
+​
+ 
+300
+​
+ 
+------------------------------------------------------------------------------------
+
+### Question 7
+
+If it’s relatively riskier to reject the null hypothesis when it might be true, should a smaller or a larger significance level be used?
+
+* larger
+* smaller
+
+#### Explanation
+
+This question refers to the following learning objective(s): Note that the probability of making a Type 1 error is equivalent to the significance level when the null hypothesis is true, and choose a significance level depending on the risks associated with Type 1 and Type 2 errors.
+
+Use a smaller α if Type 1 error is relatively riskier.
+
+Use a larger α if Type 2 error is relatively riskier.
+
+If it's relatively riskier to reject the null hypothesis when it 
+might be true, that means it's relatively riskier to make a Type 1 
+error, therefore we should decrease the probability of making a Type 1 
+error, which means decreasing the significance level.
+
+-------------------------------------------------------------------
+
+### Question 8
+
+The nutrition label on a bag of potato chips says that a one ounce (28 gram) serving of potato chips has 130 calories and contains ten 
+grams of fat, with three grams of saturated fat. A random sample of 35 bags yielded a sample mean of 134 calories with a standard deviation of 
+17 calories. We are evaluating whether these data provide convincing evidence that the nutrition label does not provide an accurate measure 
+of calories in the bags of potato chips at the 10% significance level. 
+
+Which of the following is correct?
+
+* The p-value is approximately 8%, which means we should reject the null hypothesis and determine that these data provide convincing 
+evidence the nutrition label does not provide an accurate measure of calories in the bags of potato chips.
+
+* The p-value is approximately 8%, which means we should fail to reject the null hypothesis and determine that these data do not provide convincing evidence the nutrition label does not provide an accurate measure of calories in the bags of potato chips.
+
+* The p-value is approximately 16%, which means we should reject the null hypothesis and determine that these data provide convincing 
+evidence the nutrition label does not provide an accurate measure of calories in the bags of potato chips.
+
+* The p-value is approximately 16%, which means we should fail to reject the null hypothesis and determine that these data  do not provide convincing evidence the nutrition label does not provide an accurate measure of calories in the bags of potato chips.
+
+#### Explanation
+
+This question refers to the following learning objective(s): 
+Calculate a p-value as the area under the normal curve beyond the observed sample mean (either in one tail or both, depending on the 
+alternative hypothesis). Note that in doing so you can use a Z score, where
+
+$$Z = \frac{sample~statistic - null~value}{SE} = \frac{\bar{x} - \mu_0}{SE} $$
+ 
+Always sketch the normal curve when calculating the p-value, and shade the appropriate area(s) depending on whether the alternative hypothesis is 
+one- or two-sided.
+
+If the p-value is 8% and we're using a 10% significance level, we should be rejecting the null hypothesis so this cannot be true. (Note also that the p-value isn't actually 8%.)

@@ -1,0 +1,53 @@
+---
+title: "Prediction Modeling" 
+subtitle: "Week 07 Predictive Modeling"
+author: "Tidyverse Coursera Specialization"
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Prediction Modeling
+
+## Introduction
+Prediction modeling is an essential activity in data science that involves building systems to make predictions based on previously observed data. These models are typically very flexible and can capture a range of different relationships, making them valuable tools for various applications.
+
+## What is Machine Learning?
+Machine learning is a subset of artificial intelligence that enables systems to learn and improve from experience without being explicitly programmed. It involves developing algorithms that can identify patterns and make decisions based on data. Machine learning is at the heart of prediction modeling, as it provides the methods and tools needed to create predictive models.
+
+## Machine Learning Steps
+
+### Data Splitting
+For predictive analysis (or machine learning), you need data to train your model. These are the set of observations and corresponding variables that you’ll use to build your predictive model. However, a predictive model is only valuable if it can predict accurately in a future dataset. Therefore, in machine learning, three datasets are often used to build a predictive model: train, test, and validate. The names of these datasets may vary slightly, but their purposes remain consistent.
+
+1. **Train:** The training dataset is used to build and train the model. It comprises a subset of the original data that the model learns from.
+2. **Test:** The test dataset is used to evaluate the model's performance during the training phase. It helps tune the model and assess its accuracy.
+3. **Validate:** The validation dataset is used to provide an unbiased evaluation of the final model's performance. It ensures that the model can generalize well to new, unseen data.
+
+Using these three datasets helps ensure that the predictive model can perform accurately on future data.
+
+### Variable Selection
+Variable selection involves choosing the most relevant variables (features) to include in the predictive model. The goal is to select variables that contribute significantly to the model's accuracy and reduce redundancy. This step is crucial for building an efficient and effective model.
+
+### Model Selection
+Model selection refers to choosing the appropriate machine learning algorithm for the prediction task. Different models are developed for various purposes, and selecting the right one depends on the nature of the data and the specific prediction problem. Regardless of the model chosen, it’s important to remember two key principles:
+
+1. **More Data:** The more observations and variables you have, the more likely you are to generate an accurate predictive model. However, large datasets with lots of missing or incorrect data are not better than small, complete, and accurate datasets. Having a trustworthy dataset is critical.
+2. **Simple Models:** Simple models that accurately predict outcomes are preferable to complicated ones. If a single variable can generate accurate predictions, there’s no need to include additional variables. A simple model that predicts accurately is better than a complex one.
+
+### Regression vs. Classification
+Regression and classification are two common types of prediction tasks in machine learning. Regression involves predicting a continuous output (e.g., predicting house prices), while classification involves predicting a categorical output (e.g., classifying emails as spam or not spam). The choice between regression and classification depends on the nature of the prediction problem.
+
+### Model Accuracy
+Model accuracy measures how well the predictive model performs on new, unseen data. It is assessed using various metrics, such as mean squared error for regression and accuracy, precision, and recall for classification. Evaluating model accuracy is essential to ensure the model's reliability and effectiveness.
+
+## Conclusion
+Prediction modeling is a vital aspect of data science that leverages machine learning techniques to make accurate predictions based on historical data. By following systematic steps, such as data splitting, variable selection, model selection, and evaluating model accuracy, data scientists can build robust predictive models. The key to successful prediction modeling lies in having high-quality data, choosing simple and effective models, and continuously validating and optimizing the model's performance.
+
+

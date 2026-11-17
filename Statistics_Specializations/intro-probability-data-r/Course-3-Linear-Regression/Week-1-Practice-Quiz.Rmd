@@ -1,0 +1,158 @@
+Congratulations! You passed!
+Grade received 100%
+To pass 80% or higher
+1.
+Question 1
+A statistics instructor wants to use the number of hours studied to  predict exam scores in her class. She wants to use a linear regression  model. Data from previous years shows that the correlation between these  two variables is 0.76. Which of the following is the best  response for whether or not the instructor should use linear regression  to predict exam scores for a student who studied 10 hours for the  final? 
+
+1 / 1 point
+
+Linear regression could be appropriate if the scatterplot shows a clear linear relationship.
+
+
+No, because there is no way to prove that more hours of study causes higher exam scores.
+
+
+Yes, because linear regression is the statistical method used to make predictions when you have bivariate quantitative data.
+
+
+ Yes, there is a high correlation, so it is appropriate to use linear regression.
+
+Correct
+This question refers to the following learning objective(s): When  describing the association between two numerical variables, evaluate
+
+direction: positive (
+�
+x ↑, 
+�
+y ↑), negative (
+�
+x ↓, 
+�
+y ↑)
+
+form: linear or not
+
+strength: determined by the scatter around the underlying relationship
+
+2.
+Question 2
+Which of the following is false?
+
+1 / 1 point
+
+Two numerical variables with a correlation of 0.01 have very weak linear association.
+
+
+The magnitude of the correlation coefficient measures the strength of the linear association between two numerical variables.
+
+
+Correlation coefficient and the slope always have the same sign (positive or negative).
+
+
+If the correlation coefficient is 1, then the slope must be 1 as well.
+
+Correct
+This question refers to the following learning objective(s): Note that correlation coefficient (R, also called Pearson's R) has the following properties:
+
+the  magnitude (absolute value) of the correlation coefficient measures the  strength of the linear association between two numerical variables
+
+the sign of the correlation coefficient indicates the direction of association
+
+the  correlation coefficient is always between -1 and 1, -1 indicating  perfect negative linear association, +1 indicating perfect positive  linear association, and 0 indicating no linear relationship
+
+the correlation coefficient is unitless
+
+since  the correlation coefficient is unitless, it is not affected by changes  in the center or scale of either variable (such as unit conversions)
+
+the correlation of X with Y is the same as of Y with X 
+
+the correlation coefficient is sensitive to outliers
+
+The slope does not necessarily have to be 1. Imagine a dependent  variable which increases by precisely 2 units for every 1 unit increase  in the explanatory variable. These variables have correlation  coefficient 
+�
+R = 1 yet the slope of the regression line would be 2.
+
+3.
+Question 3
+Sixteen student volunteers at Ohio State University drank a randomly  assigned number of beers. Thirty minutes later, a police officer  measured their blood alcohol content (BAC) in grams of alcohol per  deciliter of blood. The scatterplot displays the relationship between  BAC and number of beers consumed. If the student who drank the highest  number of beers (9 beers) actually had a BAC of 0.15 grams/deciliter,  how would the strength of the association change?
+
+
+
+1 / 1 point
+
+Increase
+
+
+Decrease
+
+
+Cannot tell
+
+
+Stay the same
+
+Correct
+This question refers to the following learning objective(s): When  describing the association between two numerical variables, evaluate
+
+direction: positive (
+�
+x ↑, 
+�
+y ↑), negative (
+�
+x ↓, 
+�
+y ↑)
+
+form: linear or not
+
+strength: determined by the scatter around the underlying relationship
+
+If the data point all the way on the right were moved (lowered) to a  BAC of 0.15 grams/deciliter, that would move the point closer to the  trend in the rest of the data. This would increase the strength of the  association. The reason that “cannot tell” is not the correct answer is  that all of the other data points follow a fairly strong linear  relationship. If those points were more spread out in the 
+�
+y  direction, then “cannot tell” may have been the correct answer.
+
+4.
+Question 4
+The 
+�
+2
+R 
+2
+  for the linear regression of two variables 
+�
+x and  
+�
+y is 0.60. The variables are negatively associated. Which of the  following is the correct correlation coefficient? Choose the closest answer.
+
+1 / 1 point
+
+-0.77
+
+
+0.40
+
+
+-0.36
+
+
+0.36
+
+
+0.77
+
+Correct
+This question refers to the following learning objective(s): Define R2 as the percentage of the variability in the response variable explained by the the explanatory variable. 
+
+For a good model, we would like this number to be as close to 100% as possible.
+
+This value is calculated as the square of the correlation coefficient.
+
+0.60
+≈
+0.77
+0.60
+​
+ ≈0.77, but the correlation coefficient is negative since the variables are negatively associated.
+

@@ -1,0 +1,35 @@
+rf_model <- rand_forest(
+    mode = "classification",
+    engine = "ranger",
+    mtry = tune(),
+    trees = 40, # Consider increasing trees only if necessary
+    min_n = tune()
+) %>% 
+    set_engine("ranger", importance = "impurity") # Adds variable importance without extra computational cost
+
+```  
+
+```{r cores, include=FALSE}
+# Detect all available cores
+all_cores <- parallel::detectCores(logical = TRUE) # Use logical cores for more workers
+
+# Register parallel backend
+cl <- makePSOCKcluster(all_cores) 
+registerDoParallel(cl)
+
+# Use parallel processing within your resampling tasks
+on.exit(stopCluster(cl)) # Safely stop the cluster after completion
+```
+
+```{r tuning_grid, include=FALSE}
+
+# tuning grid for resampling
+tune_resample <- tune_grid(
+    rf_workflow,
+    resamples = folds,
+    grid = 10)
+
+
+Warning: No tuning parameters have been detected, performance will be evaluated using the resamples with no tuning. Did you want to [tune()] parameters?Warning: ! tune detected a parallel backend registered with foreach but no backend registered with future.
+ℹ Support for parallel processing with foreach was soft-deprecated in tune 1.2.1.
+ℹ See ?parallelism to learn more.Error: unexpected ')' in ")"

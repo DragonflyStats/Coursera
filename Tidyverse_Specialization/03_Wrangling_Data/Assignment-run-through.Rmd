@@ -1,0 +1,131 @@
+---
+title: "Wrangling Data in the Tidyverse Course Project"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+#setwd("C:/Users/kilbi/Documents/GitHub/DataAnalyticsCourse/Tidyverse_Specialization/3_Wrangling_Data/")
+```
+
+### Preparation
+
+Load <tt>data_complaints.csv</tt> file in R. 
+
+Please consider the following before loading the data into R:  The data set has 191,096 rows and 18 columns. First calculate a rough estimate of how much memory the dataset will require in memory before reading into R. Make sure your computer has enough memory (most modern computer should be fine).  
+
+### Question 1
+
+Consider the column titled `Date received` and filter rows for all Student loan complaints received after January 1, 2018.  Count the number of student loan complaints received by each US state and rank in a decreasing order with the state with the most complaints at the top and the states with the least complaints at the bottom. 
+
+How many student loan complaints did the US state with second most complaints have?  
+
+```{r message=FALSE,warning=FALSE}
+
+library(janitor)
+library(tidyverse)
+library(lubridate)
+```
+
+```{r message=FALSE,warning=FALSE}
+complaints <- read_csv("Data_Complaints.csv")
+complaints <- janitor::clean_names(complaints)
+complaints <- complaints %>% mutate(date_received = mdy(date_received),.after = date_received)
+complaints <- complaints %>% mutate(date_sent_to_company = mdy(date_sent_to_company) )
+head(complaints)
+
+
+Q1data <- complaints %>% filter(product=="Student loan")
+Q1data <- Q1data %>% filter(date_received > as.Date("2018-01-01"))
+Q1data %>% group_by(state) %>% tally() %>% arrange(desc(n)) %>% head()
+```
+
+### Question 2
+
+Complaints can be submitted in different ways to the CFPB. For example, someone can submit a complaint on the web, but they can also submit a complaint by phone. 
+
+Consider all complaints that were submitted by phone. 
+
+For this subset of complaints, what is the average amount of time between the complaint being received by CFPB (`Date received`) and the CFPB sending the complaint to the company (`Date sent to company`) ?  
+
+Round to the nearest tenths digit. 
+
+
+```{r message=FALSE,warning=FALSE}
+Q2data <- complaints 
+Q2data <- Q2data %>% mutate(process_time = as.Date(date_sent_to_company) - as.Date(date_received))
+Q2data %>% group_by(submitted_via) %>%summarize(mean_times = mean(process_time,na.rm=T)) %>% mutate(mean_times = round(mean_times,1))
+```
+
+
+The average amount of time is 2.571 days, which rounds to 2.6 days using the nearest tenths digit. 
+
+### Question 3
+
+Consider all Mortgage complaints.  
+
+How many times does the string "student" appear in the string of text in the `Consumer complaint narrative` column? 
+
+```{r message=FALSE,warning=FALSE}
+Q3data <- complaints %>% filter(product   == "Mortgage"  )
+str_count(Q3data$consumer_complaint_narrative,"student") %>% sum(na.rm=TRUE)
+```
+
+```{r message=FALSE,warning=FALSE}
+Q3data <- complaints %>% filter(product   == "Credit card or prepaid card"  )
+str_count(Q3data$consumer_complaint_narrative,"student") %>% sum(na.rm=TRUE)
+```
+
+```{r}
+Q3data <- complaints %>% filter(product   == "Vehicle loan or lease"  )
+str_count(Q3data$consumer_complaint_narrative,"student") %>% sum(na.rm=TRUE)
+```
+
+
+
+### Question 4
+
+Consider only Vehicle loan or lease complaints. 
+
+The `Issue` column contains a set of plain text categorical variables that the consumer identified in the complaint. For example, one type of issue is "Trouble during payment process" for Mortgage complaints.  
+
+For each `Issue`, calculate what is the average length of characters in the string text in the `Consumer complaint narrative` column. 
+
+Which `Issue` has the longest complaint length on average?
+
+```{r message=FALSE,warning=FALSE}
+Q4data <- complaints %>% filter(product   == "Vehicle loan or lease"  )
+Q4data <- Q4data %>% mutate(charlength = nchar(consumer_complaint_narrative))
+Q4data %>% group_by(issue) %>% summarise(charlength = mean(charlength,na.rm=T)) %>% arrange(desc(charlength))
+```
+
+### Question 5
+
+Consider only Mortgage complaints. Consider the two columns `Product` and `Consumer complaint narrative`.
+
+For the string text in the `Consumer complaint narrative` column, drop any rows with `NA` in the column and remove any strings such as "XX", "XXX", "XXXX" in the complaint.
+
+Transform this data frame with two columns into a data frame with three columns (`Product`, `id_number`, and `word`)  where the text in the `Consumer complaint narrative` column gets converted into a format where each row corresponds to one word of the complaint (`word`) while also keeping track of which complaint we are working with (`id_number)`. 
+
+Remove any stop words.   
+
+What are the top three most frequently used words for this type of complaint?  
+
+```{r message=FALSE,warning=FALSE}
+Q5data <- complaints %>% filter(product   == "Credit card or prepaid card"  )
+
+str_count(Q5data$consumer_complaint_narrative,"account") %>% sum(na.rm=TRUE)
+str_count(Q5data$consumer_complaint_narrative,"card") %>% sum(na.rm=TRUE)
+str_count(Q5data$consumer_complaint_narrative,"credit") %>% sum(na.rm=TRUE)
+str_count(Q5data$consumer_complaint_narrative,"bank") %>% sum(na.rm=TRUE)
+str_count(Q5data$consumer_complaint_narrative,"payment") %>% sum(na.rm=TRUE)
+```
+```{r message=FALSE,warning=FALSE}
+## Mortage: Home: Loan and Payment
+Q5data <- complaints %>% filter(product   == "Mortgage"  )
+str_count(Q5data$consumer_complaint_narrative,"loan") %>% sum(na.rm=TRUE)
+str_count(Q5data$consumer_complaint_narrative,"home") %>% sum(na.rm=TRUE)
+str_count(Q5data$consumer_complaint_narrative,"payments") %>% sum(na.rm=TRUE)
+str_count(Q5data$consumer_complaint_narrative,"mortgage") %>% sum(na.rm=TRUE)
+str_count(Q5data$consumer_complaint_narrative,"payment") %>% sum(na.rm=TRUE)
+```

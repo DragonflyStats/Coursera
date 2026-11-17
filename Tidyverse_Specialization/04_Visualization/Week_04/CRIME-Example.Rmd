@@ -1,0 +1,74 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Relationship between Fatal Police Shootings and Legislation
+
+Ultimately, we’re interested in firearm legislation and fatal police shootings, so let’s focus on Brady scores, which measure legislation, and gunshot_tally, a measure of the rate of fatal police shootings.
+
+We see that the average brady_score (mean) is 3.94, with state values ranging from -39 to 76.
+
+When it comes to the rate of police shootings (gunshot_rate), we see the average number (mean) for a state is 1.74, with state values ranging from 0.28 to 5.12, depending on the state.
+
+To start understanding the relationship between the two, we’ll visualize this relationship using a scatterplot:
+
+```{r}
+# Visualize legislation and shootings
+ggplot(firearms, aes(x = brady_scores, y = gunshot_rate)) + 
+  geom_point() +
+  labs(x = "Firearm Legislative Strength Score",
+       y = "Annualized Rate of Fatal \n Police Shootings per 1,000,000") + 
+  theme_classic()
+## Warning: Removed 2 rows containing missing values (geom_point).
+```
+
+In this plot, we see that there is a relationship, but it is non-linear. Overall, the higher the legislative strength score (brady_scores), the lower the rate of police shootings; however, this decrease is nonlinear, as all states with a positive Brady Score have a similar police shooting rate.
+
+For now, we won’t explore a model, but we will label the points to better contextualize the information displayed. To see which states are at either end of the distribution, using `geom_text()` is a good option:
+
+```{r}
+# Label points with state name
+ggplot(firearms, aes(x = brady_scores, y = gunshot_rate)) + 
+  geom_point() +
+  labs(x = "Firearm Legislative Strength Score",
+       y = "Annualized Rate of Fatal \n Police Shootings per 1,000,000") + 
+  theme_classic() +
+  geom_text(aes(label = NAME), nudge_x = 7)
+## Warning: Removed 2 rows containing missing values (geom_point).
+```
+
+This makes it clear that Wyoming, New Mexico, Oklahoma, Arizona, and Nevada have some of the highest rates of fatal police shootings, while Connecticut, New York, Pennsylvania, and North Dakota are among the lowest.
+
+However, a number of labels overlap, so it can be helpful to use `ggrepel` if you want to match each point to its label:
+
+```{r}
+library(ggrepel)
+
+# Repel points with state name 
+ggplot(firearms, aes(x = brady_scores, y = gunshot_rate)) + 
+  geom_point() +
+  labs(x = "Firearm Legislative Strength Score",
+       y = "Annualized Rate of Fatal \n Police Shootings per 1,000,000") + 
+  theme_classic() +
+  geom_text_repel(aes(label = NAME))
+```
+
+If we wanted to save this particular plot as a PDF, we could do so like this to save the plot in a directory called `exploratory` within a directory called `figures`:
+
+```{r}
+pdf(here::here("figures", "exploratory", "Fatal_police_shootings_and_firearm_legislative_strength.pdf"))
+
+ggplot(firearms, aes(x = brady_scores, y = gunshot_rate)) + 
+  geom_point() +
+  labs(x = "Firearm Legislative Strength Score",
+       y = "Annualized Rate of Fatal \n Police Shootings per 1,000,000") + 
+  theme_classic() +
+  geom_text_repel(aes(label = NAME))
+## Warning: Removed 2 rows containing missing values (geom_point).
+```
+

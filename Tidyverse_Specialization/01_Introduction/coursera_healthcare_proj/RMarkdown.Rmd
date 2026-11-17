@@ -1,0 +1,24 @@
+---
+title: "Coursera Exercise"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown for Final Report
+
+Introduction to the Tidyverse Course Project
+
+#### Purpose
+
+The Purpose of the project is to use the R statistical programming language
+to analyze two healthcare datasets to derive insights that promote positive 
+outcomes for patient recovery, while optimizing value for money in terms of 
+spending, and reducing waste and inefficiency
+
+```{r rcode1}
+#some R Code
+source("Healthcare_R_Script.R")
+```

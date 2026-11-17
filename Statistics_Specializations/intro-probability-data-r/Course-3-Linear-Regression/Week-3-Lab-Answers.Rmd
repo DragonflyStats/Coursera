@@ -1,0 +1,108 @@
+
+---------------------------------------------------------
+
+### Question 1
+Is this an observational study or an experiment?
+
+* **Correct** Observational study
+* Experiment
+
+---------------------------------------------------------
+
+### Question 2
+The original research question posed in the paper is whether beauty leads directly to the differences in course evaluations. Given the study design, should the question be rephrased? If so, how?
+
+* No, the question is worded accurately.
+* **Correct** Yes, revise wording to ”Is there an association between beauty and course evaluations?”
+* Yes, revise wording to ”Does beauty score increase the professor’s course evaluations?”
+* Yes, revise wording to ”Does beauty score decrease the professor’s course evaluations?”
+
+---------------------------------------------------------
+
+### Question 3
+
+Which of the following statements is false about the distribution of score?
+
+* 11 of students gave a professor a score below 3.
+* ***Incorrect*** 25% of the students gave their professors a score of over 4.6.
+* **Correct** The left skewness of the data suggests that the students are less likely to rate the professors highly.
+* The median of the distribution is 4.3.
+
+---------------------------------------------------------
+
+### Question 4
+
+Average beauty score is a statistically significant predictor of evaluation score.
+
+* **Correct** True
+* False
+
+
+---------------------------------------------------------
+
+### Question 5
+
+Use residual plots to evaluate whether the conditions of least squares regression are reasonable. 
+Which of the following statements is an incorrect analysis of the residual plots and conditions
+
+* ***Incorrect*** Independent observations: Classes sampled randomly, no order effect
+* Linear association: The residuals plot shows a random scatter.
+* Constant variance of residuals: No fan shape in residuals plot.
+* **Correct** Nearly normal residuals: Residuals are right skewed, but the sample size is large, so this may not be an important violation of conditions.
+
+---------------------------------------------------------
+
+### Question 6
+
+P-values and parameter estimates should only be trusted if the conditions for the regression are reasonable. 
+Using diagnostic plots, we can conclude that the conditions for this model are reasonable.
+
+* **Correct** True
+* False
+
+---------------------------------------------------------
+
+### Question 7
+
+For two professors (one male and one female) who received the same beauty rating, the male professor is predicted to have the higher course evaluation score than the female.
+
+* **Correct** True
+* ***Incorrect*** False
+
+---------------------------------------------------------
+
+### Question 8
+
+Which of the following is the correct order of the three levels of rank if we were to order them from lowest predicted course evaluation score to highest predicted course evaluation score?
+
+* ***Incorrect*** Teaching, Tenure Track, Tenured
+* Teaching, Tenured, Tenure Track
+* **Correct** Tenure Track, Tenured, Teaching
+* ***Incorrect*** Tenure track, Tenured
+
+---------------------------------------------------------
+
+### Question 9
+
+Which of the following is the correct interpretation of the coefficient associated with the ethnicity variable. 
+Non-minority professors are expected on average to score ...
+
+
+
+* ***Incorrect*** 0.12 points lower than minority professors, all else held constant.
+* ***Incorrect*** 0.02 points lower than minority professors, all else held constant.
+* 0.12 points higher than minority professors, all else held constant.
+* ***Incorrect*** 0.02 points higher than minority professors, all else held constant.
+
+
+---------------------------------------------------------
+
+### Question 10
+
+Elimination of which variable from the full model yielded the highest adjusted $R^2$?
+
+
+* ***Incorrect*** <tt>bty_avg</tt>
+* * **Correct** <tt>cls_profs</tt>
+* ***Incorrect*** <tt>cls_students</tt>
+* <tt>rank</tt>

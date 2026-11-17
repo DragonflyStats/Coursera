@@ -1,0 +1,58 @@
+---
+title: "Modelling Data (tidymodels)" 
+subtitle: "Week 06 Overview"
+author: "Tidyverse Coursera Specialization"
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Hypothesis Testing: An Essential Tool in Statistics
+
+## Introduction
+Hypothesis testing is a cornerstone of statistical analysis, providing a structured framework for making inferences about unknown parameters based on collected data. It encompasses a family of techniques designed to determine whether the observed data offers sufficient evidence to support a specific hypothesis or claim about a population parameter. The primary goal of hypothesis testing is to account for variability in the data, minimizing the risk of spurious results and ensuring robust conclusions.
+
+## Understanding Hypothesis Testing
+
+### What is Hypothesis Testing?
+Hypothesis testing involves formulating a null hypothesis (\(H_0\)) and an alternative hypothesis (\(H_1\)), and then using statistical methods to determine whether the data provides enough evidence to reject the null hypothesis in favor of the alternative hypothesis. The null hypothesis typically represents the status quo or a baseline assumption, while the alternative hypothesis represents the research question or claim being tested.
+
+### Key Steps in Hypothesis Testing
+1. **Formulating Hypotheses:**
+   - Null Hypothesis (\(H_0\)): The statement being tested, usually representing no effect or no difference.
+   - Alternative Hypothesis (\(H_1\)): The statement indicating the presence of an effect or difference.
+   
+2. **Selecting a Significance Level (\(\alpha\)):**
+   - The significance level is the threshold for determining whether to reject the null hypothesis. Common choices are 0.05, 0.01, and 0.10.
+
+3. **Choosing a Test Statistic:**
+   - The test statistic is a standardized value calculated from the sample data, used to evaluate the hypotheses. Examples include the t-statistic, z-statistic, and chi-square statistic.
+
+4. **Calculating the P-value:**
+   - The P-value is the probability of observing the test statistic or a more extreme value, assuming the null hypothesis is true. A small P-value (less than \(\alpha\)) indicates strong evidence against \(H_0\).
+
+5. **Making a Decision:**
+   - Compare the P-value to the significance level. If the P-value is less than \(\alpha\), reject the null hypothesis in favor of the alternative hypothesis.
+
+## More Statistical Tests
+
+### Linear Models
+Linear models are a fundamental class of statistical tests used to understand relationships between variables. They include simple linear regression, multiple regression, and analysis of variance (ANOVA). These models are widely used to teach statistics because they provide a clear and intuitive way to analyze data.
+
+## The infer Package
+The `infer` package in R is a powerful tool for conducting hypothesis tests. It provides functions to streamline the process of specifying hypotheses, calculating test statistics, and generating P-values. The `infer` package makes it easy to perform robust statistical tests and draw reliable conclusions from data.
+
+### Hypothesis Testing with infer
+Using the `infer` package, researchers can:
+- Specify null and alternative hypotheses.
+- Calculate test statistics and P-values.
+- Visualize the distribution of test statistics under the null hypothesis.
+- Perform permutation tests and bootstrap simulations for more complex analyses.
+
+## Conclusion
+Hypothesis testing is a vital statistical technique that allows researchers to make informed inferences about unknown parameters while accounting for data variability. By following a structured process and utilizing tools like the `infer` package, researchers can ensure the robustness and reliability of their conclusions. Understanding and applying hypothesis testing is essential for anyone engaged in data analysis, as it provides the foundation for making sound, data-driven decisions.

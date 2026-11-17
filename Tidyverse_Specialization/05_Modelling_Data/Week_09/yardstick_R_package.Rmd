@@ -1,0 +1,79 @@
+## The `yardstick` R package
+
+The `yardstick` package in R is a powerful tool for assessing and comparing the performance of different models. It provides a consistent interface for a wide range of performance metrics, making it easier to evaluate your models. Here's a basic tutorial to get you started:
+
+### 1. Installation
+First, you need to install the `yardstick` package from CRAN if you haven't already:
+
+```R
+install.packages("yardstick")
+```
+
+Then, load the package:
+
+```R
+library(yardstick)
+```
+
+### 2. Basic Usage
+Let's start with a simple example of using `yardstick` to evaluate a classification model. We'll use a built-in dataset and the `rpart` package to fit a decision tree model.
+
+```R
+# Load necessary packages
+library(yardstick)
+library(rpart)
+
+# Use the iris dataset
+data(iris)
+
+# Split the data into training and testing sets
+set.seed(123)
+train_index <- sample(1:nrow(iris), 0.7 * nrow(iris))
+train_data <- iris[train_index, ]
+test_data <- iris[-train_index, ]
+
+# Fit a decision tree model
+model <- rpart(Species ~ ., data = train_data)
+
+# Make predictions on the test set
+predictions <- predict(model, test_data, type = "class")
+```
+
+### 3. Evaluate Model Performance
+Now, we'll use `yardstick` to evaluate the performance of our model. Let's calculate some common performance metrics such as accuracy, precision, recall, and F1 score.
+
+```R
+# Create a data frame with the true and predicted values
+results <- data.frame(
+  truth = test_data$Species,
+  estimate = predictions
+)
+
+# Calculate accuracy
+accuracy(results, truth, estimate)
+
+# Calculate precision
+precision(results, truth, estimate)
+
+# Calculate recall
+recall(results, truth, estimate)
+
+# Calculate F1 score
+f_meas(results, truth, estimate)
+```
+
+### 4. Visualize Performance Metrics
+`yardstick` also provides functions for visualizing performance metrics. For example, you can create a confusion matrix heatmap:
+
+```R
+library(ggplot2)
+
+# Create a confusion matrix
+cm <- conf_mat(results, truth, estimate)
+
+# Plot the confusion matrix
+autoplot(cm, type = "heatmap")
+```
+
+### 5. Conclusion
+This is just a basic introduction to the `yardstick` package. It offers many other metrics and functions for model evaluation, so be sure to explore the documentation for more details: [yardstick documentation](https://yardstick.tidymodels.org/).

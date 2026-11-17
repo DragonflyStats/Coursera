@@ -1,0 +1,3 @@
+In the videos and exercises to come, you will be working with some data from the Cooperative Congressional Election Study, a major academic survey about American politics. We are working with a random sample of this data from the 2019 study. I have slightly modified these data for teaching purposes. If you want to do any actual analysis with these data, you should download the original data files from the CCES website.
+
+Ansolabehere, Stephen; Schaffner, Brian; Luks, Samantha, 2020, "CCES Common Content, 2019", https://doi.org/10.7910/DVN/WOT7O8, Harvard Dataverse, V1, UNF:6:34vNKfe/vAMemliFcOkbvw== [fileUNF]

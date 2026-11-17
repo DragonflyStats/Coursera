@@ -1,0 +1,171 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(skimr)
+library(ggrepel)
+```
+
+## Firearms Data
+
+This dataset contains state level information about
+* firearm ownership (broken down by ethnicity and gender), 
+* the population of each state (total_pop), 
+* the number of violent crimes (violent_crime), 
+* the “total state points” from the Brady Scorecard (brady_scores),
+* the number of gunshots (gunshot_tally), 
+* the number of gunshots from armed, non-white, male individuals (gunshot_filtered), 
+* the annualized rate per 1,000,000 residents (gunshot_rate),
+* the unemployment rate and unemployment_rank, 
+* population density (density), 
+* firearm ownership as a percent of firearm suicides to all suicides (ownership).
+
+### Exploratory Data Analysis (EDA)
+Similar to how we approached the health care case study, let’s get an overall understanding of the data in our dataset, starting with understanding where data are missing in our dataset:
+
+```{r}
+# visualize missingness
+vis_dat(firearms)
+```
+
+We see that we have data for all 50 states (and Washington, D.C.) for most variables in our dataset; however, we’re missing information for one state when it comes to gunshot information and another state when it comes to Brady scores and ownership by suicide rates.
+
+Additionally, we see that most of our variables are numeric (either integers or numeric) while the state name (NAME) is a character, confirming what we expect for these data.
+
+We will also again use <tt>skim()</tt> to get a better sense of the values in our dataset:
+
+```{r}
+# summarize data
+skim(firearms)
+```
+
+Ultimately, we’re interested in firearm legislation and fatal police shootings, which we’ll get to, but let’s explore the relationship between other variables in our dataset first to gain a more complete understanding.
+
+For example, determining if there’s a relationship between the number of violent crimes and the total population in a state is good to know. Outliers in this relationship would be important to note as they would be states with either lower or higher crime by population. Let’s use a scatterplot to better understand this relationship:
+
+```{r}
+# violent crimes
+ggplot(firearms, 
+       aes(x = total_pop,
+           y = violent_crime)) + 
+  geom_point() +
+  labs(x = "Total Population",
+       y = "Violent Crime") + 
+  theme_classic() + 
+  geom_text_repel(aes(label = NAME))
+```
+
+```{r}
+# violent crimes
+ggplot(firearms, 
+       aes(x = unemployment_rate,
+           y = violent_crime)) + 
+  geom_point() +
+  labs(x = "Unemployment Rate",
+       y = "Violent Crime") + 
+  theme_classic()
+```
+
+Here, there appears to be some relationship with states that have higher rates of unemployment having slightly more violent crimes, but violent crimes is not adjusted by population, so this is likely not that helpful.
+
+What about the relationship between fatal police shootings and gun ownership as a percent of firearm suicides to all suicides.
+
+```{r}
+# violent crimes
+ggplot(firearms, 
+       aes(x = gunshot_rate,
+           y = ownership)) + 
+  geom_point() +
+  labs(x = "Annualized Rate of Fatal \n Police Shootings per 1,000,000",
+       y = "Gun Ownership \n (firearm suicides:all suicides)") + 
+  theme_classic()
+## Warning: Removed 2 rows containing missing values (geom_point).
+```
+
+
+This suggests that states with more fatal police shootings tend to have more firearm suicides relative to non-firearm suicides; however, this relationship is non linear.
+
+With these plots, we’re starting to get an understanding of the data and see that there are patterns and don’t appear to be wild outliers in any one variable (although, we should keep an eye on Washington, D.C. as it appeared as an outlier in a few plots). With that we’re confident we can move on to start looking into our question of interest.
+
+-----------------------------------------------
+
+#### Q: Relationship between Fatal Police Shootings and Legislation?
+Ultimately, we’re interested in firearm legislation and fatal police shootings, so let’s focus in on Brady scores here, which measure legislation and gunshot_tally, a measure of the rate of fatal police shootings.
+
+We see that the average brady_score (mean) is 3.94, with state values ranging from -39 to 76.
+
+When it comes to the rate of police shootings (gunshot_rate), we see the average number (mean) for a state is is 1.74, with state values ranging from 0.28 to 5.12, depending on the state.
+
+To start to understand the relationship between the two, we’ll want to visualize this relationship using a scatterplot:
+
+```{r}
+# visualize legistlation and shootings
+ggplot(firearms, aes(x = brady_scores, 
+                     y = gunshot_rate)) + 
+  geom_point() +
+  labs(x = "Firearm Legislative Strength Score",
+       y = "Annualized Rate of Fatal \n Police Shootings per 1,000,000") + 
+  theme_classic()
+## Warning: Removed 2 rows containing missing values (geom_point).
+```
+
+In this plot, we see that there is a relationship, but it is non-linear. Overall, the higher the legislative strength score (brady_scores), the lower the rate of police shootings; however, this decrease is nonlinear, as all states with a positive Brady Score have a similar police shooting rate.
+
+For now, we won’t explore a model, but we will label the points to better contextualize the information displayed. To see which states are at either end of the distribution, using geom_text() is a good option:
+
+```{r}
+# label points with state name
+ggplot(firearms, aes(x = brady_scores, 
+                     y = gunshot_rate)) + 
+  geom_point() +
+  labs(x = "Firearm Legislative Strength Score",
+       y = "Annualized Rate of Fatal \n Police Shootings per 1,000,000") + 
+  theme_classic() +
+  geom_text(aes(label = NAME), 
+            nudge_x = 7)
+## Warning: Removed 2 rows containing missing values (geom_point).
+```
+
+
+This makes it clear that Wyoming, New Mexico, Oklahoma, Arizona, and Nevada have some of the highest rates of fatal police shootings, while Connecticut, New York, Pennsylvania, and North Dakota are among the lowest.
+
+However, a number of labels overlap there, so it can be helpful to use ggrepel if you want to be able to match each point to its label:
+
+```{r}
+library(ggrepel)
+
+# repel points with state name 
+ggplot(firearms, aes(x = brady_scores, 
+                     y = gunshot_rate)) + 
+  geom_point() +
+  labs(x = "Firearm Legislative Strength Score",
+       y = "Annualized Rate of Fatal \n Police Shootings per 1,000,000") + 
+  theme_classic() +
+  geom_text_repel(aes(label = NAME))
+```
+
+
+If we wanted to save this particular plot as a pdf, we could do so like this to save the plot in a directory called exploratory within a directory called figures:
+
+```{r}
+pdf(here::here("figures", "exploratory", "Fatal_police_shootings_and_firearm_legislative_strength.pdf"))
+
+ggplot(firearms, aes(x = brady_scores, 
+                     y = gunshot_rate)) + 
+  geom_point() +
+  labs(x = "Firearm Legislative Strength Score",
+       y = "Annualized Rate of Fatal \n Police Shootings per 1,000,000") + 
+  theme_classic() +
+  geom_text_repel(aes(label = NAME))
+## Warning: Removed 2 rows containing missing values (geom_point).
+```
+
+
+

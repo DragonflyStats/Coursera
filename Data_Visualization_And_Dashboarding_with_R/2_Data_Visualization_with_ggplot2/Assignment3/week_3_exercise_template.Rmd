@@ -1,0 +1,230 @@
+---
+title: "Week 3 Peer Review"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+
+######DO NOT MODIFY. This will load required packages and data.
+
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+
+cces <- drop_na(read_csv(url("https://www.dropbox.com/s/ahmt12y39unicd2/cces_sample_coursera.csv?raw=1")))
+
+cel <- drop_na(read_csv(url("https://www.dropbox.com/s/4ebgnkdhhxo5rac/cel_volden_wiseman%20_coursera.csv?raw=1")))
+
+```
+
+Following the directions on the Coursera assignment page, you will make four original visualizations. Note that the data for the CCES and CEL data are imported in code in the R Markdown file.
+
+### Put your name here: Kevin O'Brien
+
+## Exercise 1
+
+*Explain what you are visualizing here:*
+
+For this analysis, I am using the CEL data. The purpose of this visualization is assess the change in
+the ideology of the members of Congress (as measured by the DW-Nominate
+score) over a time period of the last 10 Congresses included in the dataset. A series of boxplots is created for both parties. The $i$-th box will show the
+distribution of the `dwnom1` variable corresponding to the $i$-th Congress.
+
+* Plot Type: Boxplots factted by Political party
+
+*Put your figure here:*
+
+```{r exercise1,echo=FALSE}
+
+####PUT YOUR CODE HERE
+  
+# Get only the data corresponding to the last 10 Congresses.
+# Select only the `congress`, `dwnom1` and `dem` columns.
+prep_plot_1 <- cel %>%
+    filter(congress > 105) %>%
+    select(congress, dwnom1, dem) %>%
+  rename("Party" =dem)
+# Recode the `congress` variable:
+prep_plot_1<- prep_plot_1 %>% mutate( congress = recode(
+    congress,
+    `106` = "106th",    `107` = "107th",
+    `108` = "108th",    `109` = "109th",
+    `110` = "110th",    `111` = "111th",
+    `112` = "112th",    `113` = "113th",    
+    `114` = "114th",    `115` = "115th"
+), Party = recode(
+     Party,
+    `0` = "Republican",    `1` = "Democrat"
+))
+
+# Plot the figure:
+
+ggplot(prep_plot_1, aes(x = congress, y = dwnom1, fill = Party)) +
+    geom_boxplot() +
+    labs(
+        x = "Congress",y = "Ideology (DW-Nominate Score)",
+        title = "Change in Ideology of Members of Congress",
+        subtitle = "Variations over last 10 congresses by party",
+        caption = "Source: CEL Data Set"
+    ) +
+  geom_hline(yintercept=0, linetype="dashed", color = "black") + 
+    facet_wrap(.~Party) +
+    theme_bw(base_size = 16) +
+    theme(
+        plot.title = element_text(size = 16, face = "bold"),
+        plot.subtitle = element_text(size = 14, face = "bold"),
+        plot.caption = element_text(color = "gray", face = "italic"),
+        legend.direction = "horizontal",
+        legend.position = "top",
+        strip.background = element_blank(),
+        strip.text = element_blank(),
+        axis.text.x = element_text(angle = 90)
+    ) +
+    scale_fill_manual(
+        values = c("Democrat" = "#0000FF", "Republican" = "#FF0000")
+    )
+```
+
+## Exercise 2
+
+*Explain what you are visualizing here:*
+
+For this analysis, I shall use the crabs data set, that is available in R using the {MASS} R package. The crabs data frame has 200 rows and 8 columns, describing 5 morphological measurements on 50 crabs each of two colour forms (Blue or Orange) and both sexes, of the species Leptograpsus variegatus collected at Fremantle, W. Australia. The plot will comprise a linear regression line to assess the relationship between Carapace Width (CW) and Frontal Lobe Dimensions (FL), both measured in units of millimetres. Comparisons between the colour types and sexs are enabled by the plot settings.
+
+* Plot Type: Scatter plot with colour contrast and facetting
+
+*Put your figure here:*
+
+```{r exercise2,echo=FALSE, message=FALSE}
+
+####PUT YOUR CODE HERE
+
+library(MASS)
+data(crabs)
+
+crabs_data <- crabs %>% rename("Species" =sp) %>%
+  mutate(Species = case_when(  # trying out case_when instead of recode
+    Species =="B" ~ "Blue",
+    Species =="O" ~ "Orange"
+  ),sex = case_when(
+    sex == "F" ~ "Female",
+    sex == "M" ~ "Male"
+  ))
+
+ggplot(data=crabs_data,aes(x=FL,y=CW,colour=Species)) + 
+  geom_point() + 
+  geom_smooth(aes(group=Species), method="lm", color = "black", size=0.5) + 
+  facet_wrap(.~sex)+ 
+  theme_bw() + 
+  xlab("Frontal Lobe Size (mm)") + 
+  ylab("Carapace Width (mm)") + 
+    scale_colour_manual(
+        values = c("Blue" = "#0000FF", "Orange" = "#FFA500")
+    )+
+  labs(title = "Relationship between Frontal Lobesize and Carapace Width",
+              subtitle = "Comparison by Species and Sex",
+              caption = "Data source: crabs data (MASS R package)")
+
+```
+
+## Exercise 3
+
+*Explain what you are visualizing here:*
+In this visualization, I will use a "fake" data set, i.e a simulated data created using random number generation functions.
+This investigation will compare the distribution of averages of 40 exponentials over 1000 simulations. For this analysis, the lambda will be set to 0.2 for all of the simulations. 
+The purpose of this analysis is to investigate the exponential distribution
+and demonstrate how the Central Limit Theorem shall apply to the distribution of sample means. 
+The plot demonstrates that distribution of sample means is normally distributed.
+
+* Plot Type: Histogram with super-imposed density curve.
+
+
+*Put your figure here:*
+
+```{r exercise3,echo=FALSE}
+
+####PUT YOUR CODE HERE
+
+N  <- 1000
+samplesize <- 40
+lambda <-  0.2
+mu <- (1/lambda)
+sderror <-  mu/sqrt(samplesize)
+simMeans <- numeric(N)
+
+for (i in 1 : N){simMeans[i] =  mean(rexp(samplesize, lambda))}
+
+library(ggplot2)
+ggplot(data.frame(y=simMeans), aes(x=y)) + 
+  geom_histogram(aes(y=..density..), binwidth=0.2, fill="lightblue", 
+                 color="black") +
+  stat_function(fun=dnorm, n=101, args=list(mean=mu, sd=sderror), col="red") +
+  labs(title="Plot of the Simulations", x="Sample Means",y="Frequency")
+
+```
+
+## Exercise 4
+
+*Explain what you are visualizing here:*
+
+This is a contrived data set based on the mpg data set included in {ggplot2}. This dataset contains information on the characteristics of 238 cars. The purpose of this exercise is to provide a frequence of the cars by manufacturer and fuel type.
+
+
+* Plot Type: Stacked Bar-plot with annoted text and use of ggthemes, and a bespoke colour palette
+
+*Put your figure here:*
+
+
+
+```{r exercise4,echo=FALSE}
+
+####PUT YOUR CODE HERE
+
+require(ggplot2)
+
+mpg_df <- mpg %>% group_by(manufacturer,fl) %>% tally()
+
+mpg_df <- mpg_df %>% 
+  mutate(fl=recode(fl,
+     "e" = "Ethanol", 
+     "d" = "Diesel",
+     "r" = "Regular" ,
+     "p" = "Premium",
+    "c" = "CNG"))%>%
+  rename("Fuel" = fl) %>%
+  mutate( Fuel = factor(Fuel,levels=c("Regular","Premium",
+                                      "Diesel","Ethanol","CNG")))
+
+totals <- mpg_df %>%
+    group_by(manufacturer) %>%
+    summarize(total = sum(n))
+
+ggplot(mpg_df, aes(x = manufacturer, y = n)) +
+     geom_bar(aes(fill = Fuel), stat="identity") +
+  geom_text(aes(manufacturer, total + 2, 
+                label = total, fill = NULL), data = totals)+
+  labs(
+        y = "Frequency",
+        title = "Frequency of Fuel Type by Manufacturer",
+        caption = "mpg data set in {ggplot2}"
+    ) + 
+  ggthemes::theme_hc(base_size = 16) + 
+    theme(
+        plot.title = element_text(size = 14, face = "bold"),
+        plot.subtitle = element_text(size = 12, face = "bold"),
+        plot.caption = element_text(color = "gray", face = "italic"),
+        legend.direction = "vertical",
+        legend.position = "right",
+        strip.background = element_blank(),
+        strip.text = element_blank(),
+        axis.text.x = element_text(angle = 90)
+    ) +
+    scale_fill_manual(
+        values = c("CNG" = "darkgreen",
+                   "Ethanol" ="lightgreen", 
+                   "Diesel" = "#005b96",
+                   "Premium" = "#6497b1",
+                   "Regular"="#b3cde0")
+
+    )
+
+```

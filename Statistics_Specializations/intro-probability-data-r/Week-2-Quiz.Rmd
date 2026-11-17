@@ -1,0 +1,114 @@
+
+### Question 1
+Which of the following is the width of the box in a box plot (shown in orange in the following figure)?
+
+* mean
+* standard deviation 
+* range
+* median 
+* **Correct** IQR
+
+#### Explantion 
+
+This question refers to the following learning objective(s): 
+
+Note that there are three commonly used measures of center and spread:
+
+* center: mean (the arithmetic average), median (the midpoint), mode (the most frequent observation)
+
+* spread: standard deviation (variability around the mean), range (max-min), interquartile range (middle 50% of the distribution)
+
+--------------------------------------------
+
+### Question 2
+
+The distribution of exam scores (ranging from 0 - 100%) where the mean score is 75%, the standard deviation is 12%, and the median is 78% is most likely
+
+* uniform
+* left skewed 
+* **Incorrect** right skewed
+* symmetric
+
+#### Explanation 
+
+This question refers to the following learning objective(s): 
+
+* Identify the shape of a distribution as symmetric, right skewed, or left skewed, and unimodal, bimodoal, multimodal, or uniform.
+
+* The mean is lower than the median, and the mean is closer to the upper bound of the distribution with a large standard deviation.
+
+--------------------------------------------
+
+### Question 3
+Two distributions (A and B) are shown on the box plot below. Which of the following statements is not supported by the plot?
+
+* **Correct** Both distributions are unimodal. 
+* B is more variable than A.
+* Median of A is higher than median of B.
+* Both distributions are roughly symmetric. 
+
+#### Correct
+This question refers to the following learning objective(s): 
+
+Use histograms and box plots to visualize the shape, center, and spread of numerical distributions, and intensity maps for visualizing the spatial distribution of the data.
+
+Box plots do not provide any information about the modality of a distribution. The box plot for a bimodal symmetric distribution and a unimodal symmetric distribution might look exactly the same. Therefore based on this plot we can’t determine whether the distributions are unimodal or not.
+
+--------------------------------------------
+
+### Question 4
+Which is more affected by extreme observations, the mean or median? And how about the standard deviation or IQR?
+
+* median, SD
+* mean, IQR 
+* **Correct** mean, SD 
+* median, IQR
+
+#### Correct
+This question refers to the following learning objective(s):
+
+* Define  a robust statistic (e.g. median, IQR) as a statistics that is not  heavily affected by skewness and extreme outliers, and determine when  such statistics are more appropriate measures of center and spread  compared to other similar statistics.
+* For a classic example illustrating this idea, suppose there are a few people (30 for example) in a bar and they all earn fairly normal incomes. The mean, SD, median, and IQR of their salaries are at fairly normal levels. Now suppose a very wealthy businessman who earned $700 million this year walks into the bar. Suddenly, the mean and SD of the incomes of people in the bar go up by a lot due to the wealthy businessman being an outlier and due to mean and SD not being robust to outliers. However, the median income and IQR would still be very close to what they were before the businessman walked in.
+
+--------------------------------------------
+
+### Question 5
+
+It is relatively common for fish to be mislabeled in supermarkets and even in restaurants. 
+The table below shows the results of a study where a random sample of 156 fish for sale were collected and genetically tested. 
+The researchers classified each sample as being labeled properly or being mislabeled. 
+What fraction of smoked fish in the sample were mislabeled? Choose the closest answer.
+
+* 9% 
+* 72% 
+* 28%
+* ***Incorrect*** 18%
+* 78% 
+
+#### Explanation 
+This question refers to the following learning objective(s): 
+
+* Use contingency tables and segmented bar plots or mosaic plots to assess the relationship between two categorical variables.
+* Look among only the smoked fish, and find the proportion of those that are mislabeled.
+
+------------------------------------------------
+
+### Question 6
+Professors regularly give two versions of an exam. The professor may also provide summary statistics for each version. Suppose the following summary is provided: 
+
+
+A student who took Version A says that he should get an extra point because his exam was harder as evidenced by the lower mean score for Version A, as shown by the mean score. Does the student have a good argument? Pick the best answer below.
+
+* No. The median of Version A is higher. 
+* We need to know the shape of the distribution for each version to determine if this argument is valid.
+* Yes. Only 53 students took exam Version A while 65 students took exam Version B. 
+* We need to know the minimum and the maximum for each version to determine if this argument is valid.
+* Yes. The difference in the exam scores means that there is a difference in difficulty between the versions.
+* **Correct** No. The average scores are relatively close when considering the spread of the distributions. The difference might just be due to just chance.
+
+#### Explanation
+
+This question refers to the following learning objective: 
+
+* Note that an observed difference in sample statistics suggesting dependence  between variables may be due to random chance, and that we need to use  hypothesis testing to determine if this difference is too large to be  attributed to random chance. Set up null and alternative hypotheses for  testing for independence between variables, and evaluate the data  support for these hypotheses using a simulation technique.
+* The mean scores are off by only about 1 point, when the standard deviations of the distributions are much larger than the difference. It is likely that such a small difference (with respect to how variable these distributions are) could be due to chance.

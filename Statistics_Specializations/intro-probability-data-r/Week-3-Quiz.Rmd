@@ -1,0 +1,138 @@
+### Question 1
+
+Which of the following explains the phenomenon that while in 10 flips of a fair coin it may not be very surprising to get 8 Heads, it would be very surprising to get 8,000 Heads in 10,000 flips of the coin.
+
+* General addition rule
+* Law of averages
+* **Correct** Law of large numbers
+* Bayes’ theorem
+
+This question refers to the following learning objective: Explain why the long-run relative frequency of repeated independent events settles down to the true probability as the number of trials increases, i.e. why the law of large numbers holds.
+
+----------------------------------------------------------------
+
+### Question 1
+
+Which of the following states that the proportion of occurrences with a particular outcome converges to the probability of that outcome?
+
+* Bayes’ theorem
+* General addition rule 
+* **Incorrect** Law of large numbers
+* Law of averages
+
+#### Explanation
+
+This question refers to the following learning objective: Explain why the long-run relative frequency of repeated independent events settles down to the true probability as the number of trials increases, i.e. why the law of large numbers holds.
+
+-------------------------------------------------------------------------
+
+### Question 1
+Which of the following states that the proportion of occurrences with a particular outcome converges to the probability of that outcome?
+
+* Bayes’ theorem
+* General addition rule 
+* **Correct** Law of large numbers
+* Law of averages
+
+#### Explanation 
+
+This question refers to the following learning objective: Explain why the long-run relative frequency of repeated independent events settles down to the true probability as the number of trials increases, i.e. why the law of large numbers holds.
+
+----------------------------------------------------------------------
+
+### Question 2
+Shown below are four Venn diagrams. In which of the diagrams does the shaded area represent ***A and B but not C***?
+
+#### Explanation
+
+Watch the wording
+
+This question refers to the following learning objective: Draw Venn diagrams representing events and their probabilities.
+
+We need the area common to events A and B to be entirely shaded except for that portion common to event C: “A and B but not C”.
+
+----------------------------------------------------------------------
+
+### Question 3
+Each choice below shows a suggested probability distribution for letter grades in a class (Possible grades are A, B, C, or D or lower). Determine which is a proper probability distribution.
+
+* A: 0.30, B: 0.30, C: 0.30, D or lower: 0.30
+* ***Correct*** A: 0.30, B: 0.30, C: 0.40, D or lower: 0 
+* A: 0.10, B: 0.20, C: 0.50, D or lower: 0.10
+* A: 0.20, B: 0.40, C: 0.50, D or lower: -0.10
+
+
+#### Explanation 
+
+This question refers to the following learning objective: Define a  probability distribution as a list of the possible outcomes with  corresponding probabilities that satisfies three rules:
+
+The outcomes listed must be disjoint. 
+
+Each probability must be between 0 and 1. 
+
+The probabilities must total 1.
+
+Sum of all probabilities must equal 1 and each probability must be a value between 0 and 1.
+
+----------------------------------------------------------------------
+
+### Question 4
+Last semester, out of 170 students taking a particular statistics class, 71 students were “majoring” in social sciences and 53 students were majoring in pre-medical studies. 
+There were 6 students who were majoring in both pre-medical studies and social sciences. 
+What is the probability that a randomly chosen student is majoring in pre-medical studies, given that s/he is majoring in social sciences?
+
+* 6/170
+* ***Incorrect*** 6/53
+* 6/71
+* ***Incorrect*** (71+53−6)/170
+
+#### Explanation 
+
+This question refers to the following learning objective: Distinguish marginal and conditional probabilities.
+
+If M is the event a student is majoring in pre-medical studies and S is the event s/he is majoring in social sciences, then calculate 
+
+$$ P(M∣S)=  \frac{P(M&S)}{P(S)}$$
+
+
+-------------------------------------------------------
+### Question 5
+Which of the following statements is false?
+
+* Two complementary outcomes (of the same event) cannot occur at the same time.
+* **Correct** Two independent events cannot occur at the same time.
+* Two mutually exclusive outcomes (of the same event) cannot occur at the same time.
+* Two disjoint outcomes (of the same event) cannot occur at the same time.
+
+
+#### Explanation
+
+This question refers to the following learning objective(s):
+
+Define  disjoint (mutually exclusive) events as events that cannot both happen  at the same time: If A and B are disjoint, P(A and B) = 0.
+
+Distinguish between disjoint and independent events.<br>
+
+If A and B are independent, then having information on A does not tell us anything about B (and vice versa).
+
+If A and B are disjoint, then knowing that A occurs tells us that B cannot occur (and vice versa).
+
+Disjoint (mutually exclusive) events are always dependent since if one event occurs we know the other one cannot.
+
+Independent events are not necessarily mutually exclusive.
+
+-------------------------------------------------------
+
+### Question 5
+
+Which of the following is false?
+
+
+* If two outcomes of a random process (both with probability greater than 0) are mutually exclusive, they are not necessarily complements.
+* **Correct** If two events (both with probability greater than 0) are mutually exclusive, they could be independent.
+* When computing the probability that a card drawn randomly from a standard deck is either a Jack or a 4, you can use the addition rule.
+* If the probabilities of two mutually exclusive outcomes of a random process add up to 1, they are complements.
+
+#### Explanation
+
+Mutually exclusive events may be complements (e.g. if a coin is flipped the probability of a Head and a Tail are both 0.5, adding up to 1) but they also might not be if there are more than two possible outcomes of the random process (e.g. a voter might be Democrat, Republican, or Independent, since being Democrat and Republican are mutually exclusive but not complements). However mutually exclusive events cannot be independent; the events are always dependent since if one event occurs we know the other one cannot.

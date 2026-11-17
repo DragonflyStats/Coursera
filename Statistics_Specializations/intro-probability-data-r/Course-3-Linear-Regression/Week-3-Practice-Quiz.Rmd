@@ -1,0 +1,748 @@
+1.
+Question 1
+Data were collected on 200 high schools students’ scores on various tests, including science, math, reading and social studies as well as the gender of the students. The model output for predicting science scores from the rest of the variables is shown below. Which of the following is the linear model for female students?
+
+
+
+0 / 1 point
+
+�
+�
+�
+�
+�
+�
+�
+^
+science
+  = 12.325 + 0.389 math + 0.050 social studies - 1.675 reading
+
+
+�
+�
+�
+�
+�
+�
+�
+^
+science
+  = 12.325 + 0.389 math + 0.050 social studies + 0.335 reading
+
+
+�
+�
+�
+�
+�
+�
+�
+^
+science
+  = 14.335 + 0.389 math + 0.050 social studies + 0.335 reading
+
+
+�
+�
+�
+�
+�
+�
+�
+^
+science
+  = 10.315 + 0.389 math + 0.050 social studies + 0.335 reading
+
+Incorrect
+This question refers to the following learning objective(s): Define the multiple linear regression model as
+
+�
+^
+=
+�
+0
++
+�
+1
+�
+1
++
+�
+2
+�
+2
++
+⋅
+⋅
+⋅
++
+�
+�
+�
+�
+y
+^
+​
+ =β 
+0
+​
+ +β 
+1
+​
+ x 
+1
+​
+ +β 
+2
+​
+ x 
+2
+​
+ +⋅⋅⋅+β 
+k
+​
+ x 
+k
+​
+ 
+
+where there are 
+�
+k predictors (explanatory variables).
+
+Also note: Since female is the non-reference level, plug in 1 for female to determine the linear model for females, and note that the slope for gender is negative (from male to female).
+
+2.
+-----------------------------------------------------------------------------------------
+### Question 2
+We modeled the gas mileage of 398 cars built in the 1970’s and early 1980’s using engine displacement (in cubic inches), year of manufacture in relation to 1970 (e.g. 4 means the car was built in 1974; 12 means built in 1982, etc.), and manufacturing site (domestic to the USA = 0; foreign to the USA = 1). The regression output is provided below. Note that domestic is the reference level for manufacturing site.
+
+
+Which of the following is the best interpretation of the slope of year?
+
+0 / 1 point
+
+* All else held constant, the model predicts that later model cars will get an average of 0.72 additional miles per gallon for each year difference in the date of manufacture.
+* All else held constant, the model predicts that as the date of manufacture increases by 1 year, gas mileage changes 2.21 times as fast for foreign cars as it does for domestic cars.
+* When a particular car is manufactured again in the following year, its gas mileage will improve by 0.72 miles per gallon.
+* All else held constant, the model predicts that later model cars will get an average of 12.48 additional miles per gallon for each year difference in the date of manufacture.
+
+Incorrect
+This question refers to the following learning objective(s):
+
+    - Interpret the estimate for the intercept (
+�
+0
+b 
+0
+​
+ ) as the expected value of 
+�
+y when all predictors are equal to 
+0
+0, on average.
+
+    - Interpret the estimate for a slope (say 
+�
+1
+b 
+1
+​
+ ) as “All else held constant, for each unit increase in 
+�
+1
+x 
+1
+​
+ , we would expect 
+�
+y to be higher/lower on average by 
+�
+1
+b 
+1
+​
+ .”
+
+Also note: 2.21 means that all else equal between two cars, the average foreign car will get 2.21 more miles per gallon than the average domestic car.
+
+---------------------------------------------------------------------------------------
+### Question 3
+We modeled the gas mileage of 398 cars built in the 1970’s and early 1980’s using engine displacement (in cubic inches), year of manufacture in relation to 1970 (e.g. 4 means the car was built in 1974; 12 means built in 1982, etc.), and manufacturing site (domestic to the USA = 0; foreign to the USA = 1). The regression output is provided below. Note that domestic is the reference level for manufacturing site.
+
+
+Which of the following is false?
+
+1 / 1 point
+
+Given information on the manufacturing site of the car and the year of manufacture, engine displacement is a significant predictor of gas mileage.
+
+
+The 
+95
+95% confidence interval for the slope of the displacement coefficient can be calculated as 
+−
+0.04
+±
+(
+1.96
+∗
+−
+16.42
+)
+−0.04±(1.96∗−16.42).
+
+
+Given the engine displacement and manufacturing site, year of manufacture is a significant predictor of gas mileage.
+
+
+If we add another variable to the model, for example the price of the car, the p-values associated with year of manufacture, site of manufacture, and engine displacement may change.
+
+Correct
+−
+16.42
+−16.42 is the T score, not the standard error.
+
+This question refers to the following learning objective(s):
+
+-The significance of the model as a whole is assessed using an F-test.
+
+- 
+�
+0
+:
+�
+1
+=
+�
+2
+=
+⋅
+⋅
+⋅
+=
+�
+�
+H 
+0
+​
+ :β 
+1
+​
+ =β 
+2
+​
+ =⋅⋅⋅=β 
+k
+​
+ 
+
+�
+�
+HA: At least one 
+�
+�
+≠
+0
+β 
+i
+​
+  
+
+​
+ =0.
+
+- 
+�
+�
+=
+�
+−
+�
+−
+1
+df=n−k−1 degrees of freedom.
+
+- Usually reported at the bottom of the regression output.
+
+- Note that the p-values associated with each predictor are conditional on other variables being included in the model, so they can be used to assess if a given predictor is significant, given that all others are in the model.
+
+- These p-values are calculated based on a t distribution with n − k − 1 degrees of freedom.
+
+- The same degrees of freedom can be used to construct a confidence interval for the slope parameter of each predictor:
+
+�
+�
+±
+�
+�
+−
+�
+−
+1
+⋆
+�
+�
+�
+�
+b 
+i
+​
+ ±t 
+n−k−1
+⋆
+​
+ SE 
+b 
+i
+​
+ 
+​
+ 
+
+4.
+Question 4
+You are considering adding an explanatory variable to an existing multiple linear regression model. Which of the following statements is generally true regarding 
+�
+2
+R 
+2
+  and adjusted 
+�
+2
+R 
+2
+  as a result of adding the variable?
+
+0 / 1 point
+
+If the variable is a meaningful predictor, 
+�
+2
+R 
+2
+  will increase while adjusted 
+�
+2
+R 
+2
+  will stay about the same.
+
+
+If the variable is not a meaningful predictor, 
+�
+2
+R 
+2
+  and adjusted 
+�
+2
+R 
+2
+  will both decrease.
+
+
+If the variable is not a meaningful predictor, 
+�
+2
+R 
+2
+  will decrease and adjusted 
+�
+2
+R 
+2
+  will stay about the same.
+
+
+If the variable is not a meaningful predictor, 
+�
+2
+R 
+2
+  will be very close to 
+1
+1 and adjusted 
+�
+2
+R 
+2
+  will decrease.
+
+
+If the variable is a meaningful predictor, 
+�
+2
+R 
+2
+  and adjusted 
+�
+2
+R 
+2
+  will both increase.
+
+
+If the variable is a meaningful predictor, 
+�
+2
+R 
+2
+  will increase while adjusted 
+�
+2
+R 
+2
+  will decrease and become closer to the value of 
+�
+2
+R 
+2
+ .
+
+
+If the variable is a meaningful predictor, adjusted 
+�
+2
+R 
+2
+  will increase and be higher than 
+�
+2
+R 
+2
+ .
+
+Incorrect
+�
+2
+R 
+2
+  never decreases when variables are added to the model.
+
+This question refers to the following learning objective(s): Note that 
+�
+2
+R 
+2
+  will increase with each explanatory variable added to the model, regardless of whether or not the added variable is a meaningful predictor of the response variable. Therefore we use adjusted 
+�
+2
+R 
+2
+ , which applies a penalty for the number of predictors included in the model, to better assess the strength of a multiple linear regression model:
+
+            
+�
+�
+�
+�
+2
+=
+1
+−
+�
+�
+�
+/
+(
+�
+−
+�
+−
+1
+)
+�
+�
+�
+/
+(
+�
+−
+1
+)
+R 
+adj
+2
+​
+ =1− 
+SST/(n−1)
+SSE/(n−k−1)
+​
+ 
+
+where 
+�
+n is the number of cases and 
+�
+k is the number of predictors.
+
+    - Note that 
+�
+�
+�
+�
+2
+R 
+adj
+2
+​
+  will only increase if the added variable has a meaningful contribution to the amount of explained variability in 
+�
+y, i.e. if the gains from adding the variable exceeds the penalty.
+
+---------------------------------------------------------------------------------------
+### Question 5
+Which of the following is true?
+
+0 / 1 point
+
+A model selected using the adjusted 
+�
+2
+R 
+2
+  backwards selection approach will only contain explanatory variables that are significant at the 
+5
+5% level.
+
+
+Adjusted 
+�
+2
+R 
+2
+  may or may not be smaller than 
+�
+2
+R 
+2
+ , depending on the sample size and the number of predictors in the model.
+
+
+A parsimonious model is the model containing the highest possible number of predictors.
+
+
+Adjusted 
+�
+2
+R 
+2
+  applies a penalty for the number of predictors included in the regression model.
+
+Incorrect
+Adjusted 
+�
+2
+R 
+2
+  will always be smaller than 
+�
+2
+R 
+2
+  due to its penalty on the number of predictors in the model.
+
+This question refers to the following learning objective(s): The general idea behind backward-selection is to start with the full model and eliminate one variable at a time until the ideal model is reached.
+
+    - p-value method:
+
+      (i) Start with the full model.
+
+      (ii) Drop the variable with the highest p-value and refit the model.
+
+      (iii) Repeat until all remaining variables are significant.
+
+    - adjusted 
+�
+2
+R 
+2
+  method:
+
+      (i) Start with the full model.
+
+      (ii) Refit all possible models omitting one variable at a time, and choose the model with the highest adjusted 
+�
+2
+R 
+2
+ .
+
+      (iii) Repeat until maximum possible adjusted 
+�
+2
+R 
+2
+  is reached.
+
+-------------------------------------------------------------------
+### Question 6
+Which of the following is false about conditions for multiple linear regression?
+
+0 / 1 point
+
+The residuals plot should show constant variability of residuals around 
+0
+0.
+
+
+It is ideal for there to be no strong relationships between any of the explanatory variables.
+
+
+When the residuals are plotted in a histogram, they should appear normally distributed around 
+0
+0.
+
+
+With multiple predictors in the model, it’s not necessary for each of the numerical explanatory variables to have a linear relationship with the response variable.
+
+Incorrect
+This question refers to the following learning objective(s): List the conditions for multiple linear regression as
+
+(1) linear relationship between each (numerical) explanatory variable and the response - checked using scatterplots of 
+�
+y vs. each 
+�
+x, and residuals plots of residuals vs. each 
+�
+x
+
+(2) nearly normal residuals with mean 
+0
+0 - checked using a normal probability plot and histogram of residuals
+
+(3) constant variability of residuals - checked using residuals plots of residuals vs. 
+�
+^
+y
+^
+​
+ , and residuals vs. each 
+�
+x
+
+(4) independence of residuals (and hence observations) - checked using a scatterplot of residuals vs. order of data collection (will reveal non-independence if data have time series structure)
+
+7.
+Question 7
+Which of the following is false?
+
+0 / 1 point
+
+�
+2
+R 
+2
+  is always greater than or equal to adjusted 
+�
+2
+R 
+2
+ .
+
+
+In backwards model selection using adjusted 
+�
+2
+R 
+2
+  as the criterion, we drop variables from the model, one at a time, until adjusted 
+�
+2
+R 
+2
+  is maximized.
+
+
+When dealing with collinearity, a useful strategy is to add more  predictors to the model, one at a time, until the bad effects of  collinearity disappear from the analysis.
+
+Incorrect
+This question refers to the following learning objective(s): The  general idea behind backward-selection is to start with the full model  and eliminate one variable at a time until the ideal model is reached.
+
+    - p-value method:
+
+      (i) Start with the full model.
+
+      (ii) Drop the variable with the highest p-value and refit the model.
+
+      (iii) Repeat until all remaining variables are significant.
+
+    - adjusted 
+�
+2
+R 
+2
+  method:
+
+      (i) Start with the full model.
+
+      (ii) Refit all possible models omitting one variable at a time, and choose the model with the highest adjusted 
+�
+2
+R 
+2
+ .
+
+      (iii) Repeat until maximum possible adjusted 
+�
+2
+R 
+2
+  is reached.
+
+8.
+
+---------------------------------------------------------------------------------------------------------
+
+### Question 8
+True / False. If the F-test assessing the overall significance of a multiple linear regression yields a significant p-value, all variables included in the model must be significant predictors.
+
+0 / 1 point
+
+True
+
+
+False
+
+Incorrect
+The null hypothesis for the F-test assessing the overall significance of a multiple linear regression model is
+
+�
+0
+=
+�
+1
+=
+�
+2
+=
+⋅
+⋅
+⋅
+=
+�
+�
+=
+0
+H 
+0
+​
+ =β 
+1
+​
+ =β 
+2
+​
+ =⋅⋅⋅=β 
+k
+​
+ =0
+
+A significant F-test means that at least one of these 
+�
+βs is different than 
+0
+0, not that all of them are different than 
+0
+0.

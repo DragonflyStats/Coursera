@@ -1,0 +1,112 @@
+### Question 1
+Consider the table below describing a data set of individuals who have registered to volunteer at a public school. Which of the following is a discrete numerical variable?
+
+* annual income
+* phone number
+* **Correct** number of siblings
+* name
+
+#### Explanation
+This question refers to the following learning objective(s): 
+
+* Identify variables as numerical and categorical.
+* If  variable is numerical, further classify as continuous or discrete based  on whether or not the variable can take on an infinite number of values  or only non-negative whole numbers, respectively.
+* If variable is categorical, determine if it is ordinal based on whether or not the levels have a natural ordering.
+* Counted data are discrete numerical variables since they can’t take on non-whole values.
+
+-------------------------------------------------------
+
+### Question 2
+The General Social Survey conducted annually in the United States asks how many friends people have and how they would rate their happiness level (very happy, pretty happy, not too happy). In order to evaluate the relationship between these two variables a researcher calculates the average number of friends for people who categorize themselves as very happy, pretty happy, and not too happy. Which of the following correctly identifies the variables used in the study as explanatory and response?
+
+* **Incorrect** explanatory:number of friends
+* **Incorrect** response: happiness level (categorical with 3 levels)
+
+* explanatory:happiness level (categorical with 3 levels)
+* response: number of friends
+
+* explanatory:number of friends
+* response: very happy, pretty happy, not too happy
+
+* ***Incorrect***  explanatory:very happy, pretty happy, not too happy
+* ***Incorrect***  response: number of friends
+
+#### Explanation
+This question refers to the following learning objective(s): 
+
+* Identify the explanatory variable in a pair of variables as the variable  suspected of affecting the other, however note that labeling variables  as explanatory and response does not guarantee that the relationship  between the two is actually causal, even if there is an association  identified between the two variables.
+
+* Having more friends might cause people to be happier or being happier might cause people to have more friends. So we can’t easily determine which variable is the explanatory and which the response based on which we might expect to affect which. However in this particular analysis the happiness level is the explanatory variable since we first divide the data into groups based on this variable, and then analyze summary statistics of number of friends of people who fall into these three categories. Therefore, number of friends is the response variable.
+
+-------------------------------------------------
+###  Question 3
+Past research suggests that students who study with fewer distractions (internet, cell phone, etc.) tend to get higher grades. Which of the following is the best scenario for being able to generalize this finding to the population of all students?
+
+
+* **Incorrect**  Sample only includes students who are in classes that the researcher teaches.
+* A student list for the college is obtained and students are randomly selected from the list, and all selected students participate in the study.
+* The students participate in the study after seeing signs about the survey posted around campus.
+* **Incorrect**  A survey is emailed to all registered students, and the results are based on the sample of returned surveys.
+
+#### Explanation
+
+This question refers to the following learning objective(s):
+
+* Classify  a study as observational or experimental, and determine whether the  study’s results can be generalized to the population and whether they  suggest correlation or causation.
+* If random sampling has been employed in data collection, the results should be generalizable to the target population.
+* If random assignment has been employed in study design, the results suggest causality.
+* This sample will have convenience bias.
+
+-------------------------------------------------
+
+###  Question 4
+
+An extraneous variable that is related to the explanatory and response variables and that prevents us from deducing causal relationships based on observational studies is called a _______ (use all lower cases in your answer please).
+
+
+Correct: confounding variable
+
+
+-------------------------------------------------
+### Question 5
+For your political science class, you’d like to take a survey from a sample of all the Catholic Church members in your town. Your town is divided into 17 neighborhoods, each with similar socio-economic status distribution and ethnic diversity, and each contains a Catholic Church. Rather than trying to obtain a list of all members of all these churches, you decide to pick 3 churches at random. For these churches, you’ll ask to get a list of all current members and contact 100 members at random. What kind of design have you used?
+
+* simple random sampling
+* ***Incorrect*** systematic sampling
+* quota sampling
+* stratified sampling
+* **Correct** multistage sampling
+
+#### Explanation
+This question refers to the following learning objective(s): 
+
+Distinguish  between simple random, stratified, and cluster sampling, and recognize  the benefits and drawbacks of choosing one sampling scheme over another.
+
+This is not a topic we covered in class, but it has to do with sampling every $n-$th person (could be every third, every fourth, etc. This is not what is described in the question.
+
+-------------------------------------------------
+### Question 6
+Which of the following is not one of the four principles of experimental design?
+
+* **Correct**  cluster
+* ***Incorrect*** replicate
+* block
+* control
+
+Incorrect
+Review the learning objective: Identify the four principles of experimental design and recognize their purposes: control any possible confounders, randomize into treatment and control groups, replicate by using a sufficiently large sample or repeating the experiment, and block any variables that might influence the response. 
+
+-------------------------------------------------
+
+###  Question 7
+
+Which of the following is one of the four principles of experimental design?
+
+* ***Incorrect***  cluster
+* **Correct**  control
+* stratify
+
+#### Explanation 
+
+Review the learning objective: Identify the four principles of experimental design and recognize their purposes: control any possible confounders, randomize into treatment and control groups, replicate by using a sufficiently large sample or repeating the experiment, and block any variables that might influence the response. 
+

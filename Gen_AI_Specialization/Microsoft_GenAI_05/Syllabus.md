@@ -1,0 +1,17 @@
+## MLOps and responsible AI practices
+
+### Module 1: Introduction to MLOps and model lifecycle management
+
+This module introduces the core principles of MLOps (machine learning operations), such as automation and reproducibility. Learners will explore the complete AI model lifecycle, from initial setup to deployment, and learn to manage these stages effectively using Azure ML and tools like MLflow. Important Notice on the Azure Interface: The screencast videos and screenshots were last updated in late 2025. Please be aware that Microsoft may have updated the Azure interface since then. If the steps shown in the course materials look different from your current Azure environment, please follow the most up-to-date interface, as the underlying concepts and learning objectives remain the same.
+
+### Module 2: Version control and CI/CD pipelines
+
+This module focuses on automating the AI development process. You will be introduced to the fundamentals of version control with Git, a critical skill for any professional developer. To support learners who may be new to this tool, this module will provide a practical guide to essential commands and demonstrate their use within Azure Repos. With this foundation, you will then build an end-to-end Continuous Integration/Continuous Deployment (CI/CD) pipeline in Azure to automatically train, validate, and deploy your models, turning your manual workflow into a robust, automated system. Important Notice on the Azure Interface: The screencast videos and screenshots were last updated in late 2025. Please be aware that Microsoft may have updated the Azure interface since then. If the steps shown in the course materials look different from your current Azure environment, please follow the most up-to-date interface, as the underlying concepts and learning objectives remain the same.
+
+### Module 3: Monitoring, logging, and cost optimization
+
+This module addresses the critical post-deployment phase of MLOps. Learners will implement robust monitoring and logging frameworks using tools like Azure Monitor, Application Insights, and MLflow to track model performance and ensure reliability. Additionally, they will explore and apply practical strategies for managing and optimizing the costs associated with training and hosting AI models in Azure. Important Notice on the Azure Interface: The screencast videos and screenshots were last updated in late 2025. Please be aware that Microsoft may have updated the Azure interface since then. If the steps shown in the course materials look different from your current Azure environment, please follow the most up-to-date interface, as the underlying concepts and learning objectives remain the same.
+
+### Module 4: Ethical AI and Microsoft’s responsible AI practices
+
+This module focuses on the critical importance of building trustworthy and ethical AI. Learners will explore foundational ethical principles like fairness and transparency. They will then learn to operationalize these concepts using Microsoft's Responsible AI framework and Azure's built-in tools to assess, track, and mitigate issues like bias in generative models. Important Notice on the Azure Interface: The screencast videos and screenshots were last updated in late 2025. Please be aware that Microsoft may have updated the Azure interface since then. If the steps shown in the course materials look different from your current Azure environment, please follow the most up-to-date interface, as the underlying concepts and learning objectives remain the same.

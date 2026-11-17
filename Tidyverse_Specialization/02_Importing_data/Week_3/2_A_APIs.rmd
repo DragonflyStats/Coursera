@@ -1,0 +1,15 @@
+API
+Application Programming Interfaces (APIs) are, in the most general sense, software that allow different web-based applications to communicate with one another over the Internet. 
+Modern APIs conform to a number of standards. This means that many different applications are using the same approach, so a single package in R is able to take advantage of this and communicate with many different applications, as long as the application’s API adheres to this generally agreed upon set of “rules”.
+
+The R package that we’ll be using to acquire data and take advantage of this is called httr. This package name suggests that this is an “R” package for “HTTP”. So, we know what R is, but what about HTTP?
+
+You’ve probably seen HTTP before at the start of web addresses, (ie http://www.gmail.com), so you may have some intuition that HTTP has something to do with the Internet, which is absolutely correct! HTTP stands for Hypertext Transfer Protocol. In the broadest sense, HTTP transactions allow for messages to be sent between two points on the Internet. You, on your computer can request something from a web page, and the protocol (HTTP) allows you to connect with that webpage’s server, do something, and then return you whatever it is you asked for.
+
+Working with a web API is similar to accessing a website in many ways. When you type a URL (ie www.google.com) into your browser, information is sent from your computer to your browser. 
+Your browser then interprets what you’re asking for and displays the website you’ve requested. Web APIs work similarly. You request some information from the API and the API sends back a response.
+
+The httr package will help you carry out these types of requests within R. Let’s stop talking about it, and see an actual example!
+
+
+Figure: HTTP access via httr

@@ -1,0 +1,20 @@
+**Title: Tree Girth and Height Example**
+
+**Objective:** 
+The example aims to analyze the relationship between tree girth and height by evaluating the linearity of the data, checking for homogeneity of variance, and assessing the normality of residuals.
+
+**Methodology:**
+1. **Linearity Check:**
+   - The Residuals vs Fitted plot is used to check for linearity. A horizontal red line and random distribution of points indicate a linear relationship. In this case, the plot suggests that the data have a linear relationship.
+
+2. **Homogeneity of Variance:**
+   - The Scale-Location plot is used to check for homogeneity of variance. A horizontal red line is desirable, but the plot suggests some heteroscedasticity in the dataset, with points not being equally far from the regression line across observations.
+
+3. **Normality of Residuals:**
+   - QQ Plots and histograms are used to assess the normality of residuals. Normally distributed residuals should fall along the grey dotted line in the QQ Plot. In this example, the residuals are not perfectly normally distributed, but they do not deviate wildly from the line.
+
+4. **Outlier Detection:**
+   - The Residuals vs Leverage plot is used to assess whether outliers are driving the results. Standardized residuals greater than 3 or less than -3 are considered outliers. In this example, no extreme outliers are identified.
+
+**Conclusion:**
+The example highlights the importance of diagnostic plots in linear regression analysis. While the residuals are not perfectly normally distributed and some heteroscedasticity is present, there are no extreme outliers affecting the results. Transformations of the data can be applied if necessary to address nonlinearity or heterogeneous variances.

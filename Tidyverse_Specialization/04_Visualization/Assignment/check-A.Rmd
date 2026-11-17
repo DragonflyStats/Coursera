@@ -1,0 +1,118 @@
+---
+title: "tidyverse_ggplot_week4"
+author: "Paulo Pereira da Silva"
+date: "17 de Fevereiro de 2023"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Packages
+
+
+
+```{r packages, include=FALSE}
+library(tidyverse)
+library(ggrepel)
+
+
+```
+
+## Download files
+
+You can also embed plots, for example:
+
+```{r files, include=FALSE}
+data_fastfood_sales <- read_csv("data_fastfood_sales.csv")
+data_fastfood_calories <- read_csv("data_fastfood_calories.csv")
+
+```
+
+## Question 1
+
+```{r Q1}
+data_fastfood_sales %>% 
+  mutate(prop_franchise=num_franchised_stores/unit_count) %>% 
+  ggplot(aes(x=us_sales, y=unit_count, label=restaurant, color=prop_franchise))+
+  geom_point() +
+  labs(y = "Total number of stores (log 10 scale)", x = "US Sales in millions (log 10 scale)") +
+  scale_y_continuous(trans = "log10") +
+  scale_x_continuous(trans = "log10") +  
+  theme_bw()  +  
+  geom_text_repel(color="black") +
+  guides(color = guide_colourbar(title="Proportion of stores franchised"))                  
+   
+
+
+# 
+```
+
+
+## Question 2
+
+```{r Q2}
+data_fastfood_sales %>% 
+  mutate(restaurant=as.factor(restaurant), restaurant=fct_reorder(.f = restaurant, .x = average_sales,.fun = sum)) %>% 
+  #mutate(average_sales=scales::label_dollar(average_sales))
+  ggplot()+
+  geom_col(aes(x=restaurant, y= average_sales)) +
+  geom_text(aes(x=restaurant, y= average_sales, label = scales::dollar(round(average_sales, digits = 0))),  hjust = -0.2) +
+  scale_y_continuous(labels = scales::label_dollar(), limits = c(0,3000)) +
+  labs(x = "Restaurant", y="Average sales per unit store (in thousands)") +
+  coord_flip() +
+  theme_classic()
+```
+
+## Question 3
+```{r Q3, fig_width= 30, fig_height= 20}
+data_fastfood_calories %>% 
+  ggplot(aes(x=calories, y=sodium, label=item)) +
+  geom_point()+
+    geom_text_repel(data = data_fastfood_calories %>%  filter(sodium>2300),
+        nudge_y = 1000, 
+        hjust = 1,
+        direction = "both") +
+  facet_wrap(~restaurant) +
+  labs(x="Calories", y="Sodium (Mg)") +
+  geom_hline(yintercept = 2300) +
+  theme_bw() 
+
+```
+
+## Question 4
+```{r Q4}
+data_fastfood_calories %>% 
+  mutate(is_salad=str_detect(string=item, pattern ="Salad")) %>% 
+  mutate(restaurant=as.factor(restaurant) %>% fct_reorder(.x = calories, .fun = median)) %>% 
+  ggplot(aes(x=calories, y=restaurant, color=is_salad)) +
+  geom_boxplot(outlier.shape = NA) +
+  geom_jitter() +
+  scale_x_continuous(trans = "log10") +
+  labs(x="Calories (log 10 scale)", y="Restaurant") +
+  #guides(color = guide_legend(title="Is the entry a salad?")) +
+  scale_color_discrete(name = "Is the entry a salad?", labels = c("Not a salad", "Salad")) +
+  theme_bw()
+
+ 
+```
+## Question 5
+
+```{r Q5}
+data_fastfood_calories %>%
+  filter(!restaurant=="Taco Bell") %>% 
+  group_by(restaurant) %>% 
+  summarise(median_sugar=median(sugar)) %>% 
+  inner_join(data_fastfood_sales, by=c("restaurant"="restaurant")) %>% 
+  mutate(restaurant=fct_reorder(restaurant, us_sales, .fun=sum)) %>% 
+  ggplot(aes(x=restaurant, y=us_sales)) +
+  geom_bar(aes(fill=median_sugar), stat="identity")  +
+  labs(x="Restaurant", y="U.S. sales (in millions)") +
+  scale_fill_continuous(name = "Median sugar (grams) in fast food entries") +
+  theme_classic() 
+```
+
+
+
+

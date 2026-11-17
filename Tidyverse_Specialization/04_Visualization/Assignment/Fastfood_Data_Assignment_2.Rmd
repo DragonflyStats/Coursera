@@ -1,0 +1,248 @@
+---
+title: "Fast Food Data Exercise"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+#### Version 2
+
+* add global theme specifications
+
+## Instructions:
+
+In this course, we have learned the importance of data visualization and how to leverage packages in the Tidyverse for data visualization in R. This project will give you the opportunity to practice those skills in greater depth. 
+
+This assignment uses two data sets about fast food restaurants.  Specifically, we will create data visualizations using:
+
+Data set 1: annual sales information and number of stores per fast food restaurants in 2018 (data_fastfood_sales.csv). Source: Data originally from Hubworks. 
+
+Data set 2: nutrition information about entrees from fast food restaurants (data_fastfood_calories.csv). Source: Data originally from the GitHub repository from the Tidy Tuesday project in R4DS online learning community.
+
+
+## Setting Up the R packages and Data
+
+```{r message=FALSE,warning=FALSE}
+library(tidyverse)
+library(magrittr)
+library(ggthemes)
+library(ggrepel)
+library(scales)
+
+options(dplyr.summarise.inform = FALSE)
+```
+
+#### Sales 
+
+Annual sales information and number of stores per fast food restaurants in 2018 
+```{r sales}
+sales <- read_csv('Data_Fastfood_Sales.csv',show_col_types = FALSE)
+```
+#### Calories
+
+Nutrition information about entrees from fast food restaurants
+```{r calories}
+calories <- read_csv('Data_Fastfood_Calories.csv',show_col_types = FALSE)
+```
+
+
+----------------------------------------------
+
+### Set Theme
+
+<tt>theme_bw()</tt> is the classic dark-on-light ggplot2 theme. It is required for use for Plots 1 to 4, and is set as default theme, with appropriate adjustments.
+
+```{r}
+theme_set(theme_bw()+theme(
+    plot.margin = margin(t = 10, r = 5, b = 10, l = 5),
+    legend.position = 'right',
+    axis.title = element_text(size = 24),
+    axis.text  = element_text(size = 18),
+    
+    plot.title = element_text(
+      color = "#2C3E50",
+      face = "bold",
+      size = 16,  
+      margin = margin(t = 10)),
+    
+    plot.subtitle = element_text(
+      color = "#2C3E50",
+      size = 16,  
+      margin = margin(b = 5)),
+    
+    legend.title = element_text(size=24), 
+    legend.text = element_text(size=18),
+    
+    plot.caption = element_text(
+      color = "grey60",
+      size = 16,
+      hjust = .5,
+      margin = margin(t = 15, b = 15)) 
+  ))
+
+```
+----------------------------------------------
+
+## Plots
+
+### Plot 1
+
+```{r Plot1, message=FALSE, warning=FALSE, fig.height = 9, fig.width = 15}
+PlotData <- sales %>% 
+  select(restaurant, us_sales, num_franchised_stores, unit_count) %>%
+  mutate(prop_franchised_stores = (num_franchised_stores/unit_count)) %>% 
+  group_by(restaurant, num_franchised_stores, us_sales, prop_franchised_stores,
+           unit_count) %>%
+  summarise(us_sales = sum(us_sales))
+
+PlotData %>% 
+  ggplot(aes(x = us_sales,
+             y = unit_count,
+             colour = prop_franchised_stores)) + 
+  geom_point(size = 6) + 
+  geom_text_repel(aes(label = restaurant),size=7,
+                  point.padding = 3.50,colour="black") + 
+  scale_x_log10() +
+  scale_y_log10() +
+  labs(
+    title = "Plot 1: US Sales vs. Number of Stores",
+    subtitle = '',
+    x = 'U.S. sales in millions (log10 scale)',
+    y = 'Total number if stores (log10 scale)',
+    colour = "Proportion of stores\nfranchised") 
+
+# theme_bw() set as default at start of script
+
+```
+
+
+----------------------------------------------
+
+### Plot 2
+
+
+```{r Plot2, message=FALSE, warning=FALSE, fig.height = 9, fig.width = 19}
+PlotData <- sales %>% 
+  select(restaurant, average_sales) %>% 
+  group_by(restaurant) %>%
+  summarise(average_sales = sum(average_sales)) %>% 
+  mutate(
+    bar_label = round(average_sales, digits = 0),
+    bar_label = paste0('$', {bar_label})
+    ) %>% 
+  arrange(desc(average_sales)) %>% 
+  mutate(restaurant = restaurant %>% fct_reorder(average_sales)) %>% 
+  ungroup() 
+
+PlotData %>% 
+  ggplot(aes(x = average_sales, y = restaurant)) +
+  geom_col() +
+  scale_x_continuous(labels = scales::dollar_format()) +
+  geom_text(aes(label= dollar(round(average_sales))),
+            hjust=-0.25, vjust=0.25, size=5, 
+            colour="black", angle=360)+ 
+  scale_y_discrete() +
+  coord_cartesian(clip='off') +
+  labs(
+    title = "Plot 2: Average sales per unit store",
+    subtitle = '',
+    x = "Average sales per unit store (in thousands)",
+    y = "Restaurant") 
+
+# theme_bw() set as default at start of script
+
+```
+
+
+----------------------------------------------
+
+### Plot 3
+
+
+```{r Plot3, message=FALSE, warning=FALSE, fig.height = 9, fig.width = 15}
+calories %>% 
+  select(restaurant, item, calories, sodium) %>% 
+  ggplot(aes(x = calories, y = sodium)) + 
+  facet_wrap(~restaurant) +
+  geom_point(size = 2, alpha = 0.5) +
+  geom_hline(yintercept = 2300) + 
+  geom_text_repel(data = calories %>% filter(sodium > 2300),
+                  aes(label = item, direction = 'y'), 
+                  nudge_x = 800, nudge_y = 1000) +
+  labs(
+    title = "Plot 3: Sodium Levels",
+    subtitle = '',
+    x = "Calories",
+    y = "Sodium (mg)"
+    ) 
+
+# theme_bw() set as default at start of script
+```
+
+
+----------------------------------------------
+
+
+## Plot 4
+
+
+```{r Plot4, message=FALSE, warning=FALSE, fig.height = 9, fig.width = 15}
+PlotData <- calories %>% 
+  select(restaurant, item, calories) %>% 
+  mutate(is_salad = str_detect(str_to_lower(item), "salad")) %>% 
+  mutate(restaurant = restaurant %>% fct_reorder(calories))
+
+PlotData %>%  
+  ggplot(aes(x = calories, y = restaurant)) +
+  geom_boxplot(outlier.shape = NA) + 
+  geom_jitter(aes(color = is_salad)) + 
+  scale_x_log10() +
+  scale_y_discrete() +
+  scale_color_discrete(labels=c("Not a salad", "Salad")) +
+  labs(
+    title = "Plot 4: Is Salad part of the Meal? ",
+    subtitle = '',
+    x = 'Calories (log10 scale)',
+    y = 'Restaurant',
+    color = "Is the entree\n a salad?"
+  )
+
+# theme_bw() set as default at start of script
+
+```
+
+----------------------------------------
+
+### Plot 5
+
+
+```{r Plot5, message=FALSE, warning=FALSE, fig.height = 9, fig.width = 15}
+PlotData <- sales %>% 
+  inner_join(calories, by = "restaurant") %>%
+  select(restaurant, item, calories, sugar, us_sales) %>% 
+  filter(restaurant!="Taco Bell") %>%
+  group_by(restaurant, us_sales) %>%
+  summarise(median_sugar = median(sugar)) %>% 
+  ungroup() %>% 
+  arrange(desc(median_sugar)) %>% 
+  mutate(restaurant = restaurant %>% fct_reorder(median_sugar)) 
+
+PlotData %>%  
+  ggplot(aes(x = restaurant, y = us_sales)) +
+  geom_col(aes(fill = median_sugar)) + 
+  scale_x_discrete() + 
+  scale_y_continuous() + 
+  scale_fill_viridis_c() +
+  labs(
+    title = "Plot 5: Sugar Levels ",
+    subtitle = '',
+    x = 'Restaurant',
+    y = 'U.S. sales (in millions)',
+    fill = "Median sugar (grams)\nin fast food entrees" 
+  ) +
+  theme_classic()
+
+# theme_classic() is required for plot 5
+
+```

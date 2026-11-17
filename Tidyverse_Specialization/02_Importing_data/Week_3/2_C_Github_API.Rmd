@@ -1,0 +1,82 @@
+Example 1: GitHub’s API
+========================
+The example is based on a wonderful blogpost from Tyler Clavelle. In this example, we’ll use will take advantage of GitHub’s API, because it’s accessible to anyone. Other APIs, while often freely-accessible, require credentials, called an API key. We’ll talk about those later, but let’s just get started using GitHub’s API now!
+
+API Endpoint
+The URL you’re requesting information from is known as the API endpoint. The documentation from GitHub’s API explains what information can be obtained from their API endpoint: https://api.github.com. That’s the base endpoint, but if you wanted to access a particular individual’s GitHub repositories, you would want to modify this base endpoint to: https://api.github.com/users/username/repos, where you would replace username with your GitHub username.
+
+API request: GET()
+Now that we know what our API endpoint is, we’re ready to make our API request using GET().
+
+The goal of this request is to obtain information about what repositories are available in your GitHub account. To use the example below, you’ll want to change the username janeeverydaydoe to your GitHub username.
+
+<pre><code>
+## load package
+library(httr)
+library(dplyr)
+    
+## Save GitHub username as variable
+username <- 'janeeverydaydoe'
+
+## Save base endpoint as variable
+url_git <- 'https://api.github.com/'
+</code></pre>
+
+Note: In the code above, you see the function paste0(). This function concatenates (links together) each the pieces within the parentheses, where each piece is separated by a comma. This provides GET() with the URL we want to use as our endpoints!
+
+
+Figure: httr code to access GitHub
+
+#### API response: content()
+Let’s first take a look at what other variables are available within the api_response object:
+
+<pre><code>
+## See variables in response
+names(api_response)
+##  [1] "url"         "status_code" "headers"     "all_headers" "cookies"    
+##  [6] "content"     "date"        "times"       "request"     "handle"
+
+
+Figure: httr response
+
+While we see ten different variables within api_response, we should probably first make sure that the request to GitHub’s API was successful. We can do this by checking the status code of the request, where “200” means that everything worked properly:
+
+1234
+## Check Status Code of request
+api_response$status_code
+## [1] 200
+
+But, to be honest, we aren’t really interested in just knowing the request worked. 
+We actually want to see what information is contained on our GitHub account.
+
+To do so we’ll take advantage of httr’s content() function, which as its name suggests, extracts the contents from an API request.
+
+<pre><code>
+## Extract content from API response
+repo_content <- content(api_response)
+</code></pre>
+
+Figure: httr status code and content()
+
+You can see here that the length of repo_content in our case is 6 by looking at the Environment tab. 
+This is because the GitHub account ***janeeverydaydoe*** had six repositories at the time of this API call. 
+We can get some information about each repo by running the function below:
+
+<pre><code>
+## function to get name and URL for each repo
+lapply(repo_content, function(x) {
+  df <- data_frame(repo = x$name,
+                   address = x$html_url)}) %>% 
+  bind_rows()
+## Warning: `data_frame()` is deprecated as of tibble 1.1.0.
+## Please use `tibble()` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_warnings()` to see where this warning was generated.
+## # A tibble: 8 x 2
+</code></pre>
+
+
+Figure: output from API request
+
+Here, we’ve pulled out the name and URL of each repository in Jane Doe’s account; however, there is a lot more information in the repo_content object. To see how to extract more information, check out the rest of Tyler’s wonderful blogpost.
+
