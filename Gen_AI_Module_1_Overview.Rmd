@@ -1,0 +1,86 @@
+---
+title: "Generative AI: Introduction and Applications"
+subtitle: "Module 1"
+output: html_document
+---
+
+# Generative AI: Introduction and Applications
+
+## Module 1
+
+---
+
+# Introduction and Capabilities of Generative AI
+
+**38 min of videos left**  
+**22 min of readings left**  
+**1 graded assessment left**
+
+## Overview
+
+This module introduces the fundamentals of generative artificial intelligence and its evolution over time. You will learn how generative AI differs from discriminative AI and explore the core capabilities of generative models.
+
+The module also examines how generative AI can create text, images, code, speech, video, and other forms of content. Through examples and hands-on practice, you will gain an understanding of how these capabilities are used in real-world scenarios.
+
+---
+
+## Learning Activities
+
+### Introduction to Generative AI
+- **Type:** Video
+- **Duration:** 7 min
+
+### Podcast: History and Evolution of Generative AI
+- **Type:** Ungraded Plugin
+- **Duration:** 3 min
+
+### Capabilities of Generative AI
+- **Type:** Video
+- **Duration:** 8 min
+
+### Lab: Generate Text Using Generative AI
+- **Type:** Ungraded App Item
+- **Duration:** 15 min
+
+### Expert Viewpoints: Generative AI Capabilities
+- **Type:** Video
+- **Duration:** 4 min
+
+### Expert Viewpoints: Exploring the Evolution of Generative AI
+- **Type:** Video
+- **Duration:** 4 min
+
+### Lesson Summary: Generative AI and Its Capabilities
+- **Type:** Reading
+- **Duration:** 10 min
+
+### Podcast: Recap - Generative AI and Its Capabilities
+- **Type:** Ungraded Plugin
+- **Duration:** 2 min
+
+---
+
+## Practice Assessment
+
+### Generative AI and Its Capabilities
+- **Type:** Practice Assignment
+- **Duration:** 10 min
+- **Grade:** Not Applicable
+
+---
+
+## Graded Assessment
+
+### Graded Quiz: Introduction and Capabilities of Generative AI
+- **Type:** Graded Assignment
+- **Duration:** 30 min
+- **Grade:** Pending
+- **Due Date:** 6 October, 11:59 PM IST
+
+---
+
+## Additional Activity
+
+### Exploring What Generative AI Can Do
+- **Type:** Dialogue
+- **Duration:** 15 min
