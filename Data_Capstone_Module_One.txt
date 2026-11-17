@@ -1,0 +1,26 @@
+Data Platform Architecture and OLTP Database
+3 min of videos left
+
+2 graded assessments left
+
+In this module, you will design a data platform that uses MySQL as an OLTP database. You will be using MySQL to store the OLTP data.
+Introduction to Capstone Project
+Video • 3 min
+Reading: Final Project Submission Guidelines and Deliverables
+Ungraded Plugin • 15 min
+Data Platform Architecture
+Ungraded Plugin • 10 min
+Assignment Overview: OLTP Database
+Ungraded Plugin • 15 min
+OLTP Database Requirements and Design
+Ungraded Plugin • 5 min
+Lab: OLTP Database
+Ungraded App Item • 30 min
+Checklist: OLTP Database
+Graded Assignment • 24 min • Grade: -- •
+Status: Due, Oct 26, 11:59 PM GMT
+Due, Oct 26, 11:59 PM GMT
+Graded Quiz: OLTP Database
+Graded Assignment • 12 min • Grade: -- •
+Status: Due, Oct 26, 11:59 PM GMT
+Due, Oct 26, 11:59 PM GMT

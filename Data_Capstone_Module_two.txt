@@ -1,0 +1,18 @@
+Querying Data in NoSQL Databases
+Status: 2 graded assessments left
+2 graded assessments left
+2 graded assessments left
+
+In this module, you will design a data platform that uses MongoDB as a NoSQL database. You will use MongoDB to store the e-commerce catalog data.
+Assignment Overview: Querying Data in NoSQL Databases
+Ungraded Plugin • 15 min
+Hands-on Lab: Querying Data in NoSQL Databases
+Ungraded App Item • 30 min
+Checklist: Querying Data in NoSQL Databases
+Graded Assignment • 10 min • Grade: -- •
+Status: Due, Oct 27, 11:59 PM GMT
+Due, Oct 27, 11:59 PM GMT
+Graded Quiz: Querying Data in NoSQL Databases
+Graded Assignment • 15 min • Grade: -- •
+Status: Due, Oct 27, 11:59 PM GMT
+Due, Oct 27, 11:59 PM GMT

@@ -1,0 +1,289 @@
+## Project Overview: College Admissions Classification Pipeline
+
+This project integrates MLOps best practices with Responsible AI principles to create an automated workflow for deploying a college admissions classification model. The pipeline automates custom environment setup, data migration, model training, registration, Responsible AI (RAI) quality gating, and continuous deployment to an Azure Machine Learning Managed Online Endpoint with Azure Monitor metrics.
+
+---
+
+## 1. MLOps Design & CI/CD Pipeline Architecture
+
+```
++-----------------------------------------------------------------------------------+
+|                                  CI STAGE                                         |
+|                                                                                   |
+|  [Source Code] -> [Azure ML Env] -> [Data Migration] -> [Train] -> [Register Model] |
+|  (GitHub / VS)    (conda.yml)       (ML Tables)          (train.py) (admissions_model)|
+|                                                                     |             |
+|                                                                     v             |
+|                                                          [RAI Quality Gate]       |
+|                                                          (model_analysis.py)      |
++-----------------------------------------------------------------------------------+
+                                                                      |
+                                                          rai_pass == True?
+                                                                      |
+                                                                      v
++-----------------------------------------------------------------------------------+
+|                                  CD STAGE                                         |
+|                                                                                   |
+|  [Managed Online Endpoint] ----> [Deploy Model] ----> [Azure Monitor Alerts]       |
+|  (endpoint.py)                   (deployment.py)      (Action Group / High Latency)|
++-----------------------------------------------------------------------------------+
+
+```
+
+### Stage 1: Continuous Integration (CI)
+
+1. **Environment Setup:** Creates an Azure ML custom environment defined in `create_env/conda.yml` containing the necessary dependencies, including `azureml-inference-server-http`.
+2. **Dataset Migration:** Runs `model_training/command_job.py` to upload local training and test datasets as Azure ML Table Assets.
+3. **Model Training:** Executes `model_training/train_code/train.py` to train the classification model predicting "Accept" (1) or "Don't Accept" (0).
+4. **Model Registration:** Runs `register_model/register.py` to register `admissions_model` within the Azure ML Workspace.
+5. **Responsible AI Quality Gate:** Executes `responsible.py` to generate the Responsible AI Dashboard and `responsible_ai_gate/model_analysis.py` to validate model fairness against strict criteria. Outputs `rai_pass = True/False`.
+
+### Stage 2: Continuous Deployment (CD)
+
+* **Ethical Gate Condition:** The CD stage only executes if the CI stage succeeds **and** `stageDependencies.CI.outputs['TrainJob.raiGate.rai_pass']` equals `'True'`.
+* **Endpoint Creation:** Runs `endpoint.py` to create or update an Azure ML Managed Online Endpoint.
+* **Model Deployment:** Runs `deployment.py` to deploy `admissions_model` to the endpoint using the pre-established custom environment.
+* **Monitoring Setup:** Runs `monitor.py` to configure an Azure Monitor Action Group (`Admission-Alert-Group`) and set metric alerts for `HighServerResponseTime` and `ServerExceptions`.
+
+---
+
+## 2. Ethical Rationale & Responsible AI Safety Measures
+
+College admissions decisions are high-stakes evaluations that directly impact applicants' educational and socio-economic opportunities. Machine learning models trained on historical admissions data risk inheriting and perpetuating historical demographic biases.
+
+### Fairness Criteria & Quality Gate Logic
+
+To prevent systematic bias, the Responsible AI Quality Gate evaluates model predictions using SHAP (SHapley Additive exPlanations) feature importance values derived from the model explanation component:
+
+1. **Race Feature Distribution Check:** Evaluates the standard deviation of SHAP values across all race-related features. If any race feature SHAP value deviates by $\ge 2$ standard deviations from the mean across race features, the gate flags potential privilege/discrimination and fails (`rai_pass = False`).
+2. **SHAP Threshold Check:** Ensures sensitive demographic features do not excessively dictate admissions decisions. If any sensitive feature exhibits an absolute SHAP value greater than $0.4$, the model fails the quality gate (`rai_pass = False`).
+
+Enforcing this quality gate directly in the pipeline ensures that unfair or unsafe model versions are automatically blocked from moving to production endpoints.
+
+---
+
+## 3. Azure DevOps Pipeline YAML (`azure-pipelines.yml`)
+
+Below is the complete Azure Pipelines YAML workflow integrating the CI stage, Responsible AI Quality Gate, and conditional CD stage:
+
+```yaml
+trigger:
+  branches:
+    include:
+      - main
+      - dev
+
+variables:
+  azureResourceGroup: 'ml-workspace-resource-group'
+  azureWorkspaceName: 'ml-workspace-name'
+  alert_email: 'your-email@example.com'
+  azureServiceConnection: 'Azure-ML-Admissions-Connection'
+
+stages:
+- stage: CI
+  displayName: 'Continuous Integration Stage'
+  jobs:
+  - job: TrainJob
+    displayName: 'Train, Register, and RAI Gate'
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - task: AzureCLI@2
+      displayName: '1. Setup Subscription ID'
+      inputs:
+        azureSubscription: '$(azureServiceConnection)'
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          sub_id=$(az account show --query id -o tsv)
+          echo "##vso[task.setvariable variable=SUBSCRIPTION_ID]$sub_id"
+
+    - task: UsePythonVersion@0
+      displayName: '2. Set Python Version'
+      inputs:
+        versionSpec: '3.9'
+
+    - script: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+      displayName: '3. Install Requirements'
+
+    - task: AzureCLI@2
+      displayName: '4. Create Custom Environment'
+      inputs:
+        azureSubscription: '$(azureServiceConnection)'
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          python create_env/custom_env.py --resource_group $(azureResourceGroup) --workspace_name $(azureWorkspaceName)
+
+    - task: AzureCLI@2
+      displayName: '5. Migrate Datasets & Train Model'
+      inputs:
+        azureSubscription: '$(azureServiceConnection)'
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          python model_training/command_job.py --resource_group $(azureResourceGroup) --workspace_name $(azureWorkspaceName)
+
+    - task: AzureCLI@2
+      displayName: '6. Register Model'
+      inputs:
+        azureSubscription: '$(azureServiceConnection)'
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          python register_model/register.py --resource_group $(azureResourceGroup) --workspace_name $(azureWorkspaceName)
+
+    - task: AzureCLI@2
+      displayName: '7. Generate Responsible AI Dashboard'
+      inputs:
+        azureSubscription: '$(azureServiceConnection)'
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          python responsible_ai_gate/responsible.py --resource_group $(azureResourceGroup) --workspace_name $(azureWorkspaceName)
+
+    - task: AzureCLI@2
+      name: raiGate
+      displayName: '8. RAI Gate - Analyze RAI Insights'
+      inputs:
+        azureSubscription: '$(azureServiceConnection)'
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          python responsible_ai_gate/model_analysis.py --resource_group $(azureResourceGroup) --workspace_name $(azureWorkspaceName)
+
+- stage: CD
+  displayName: 'Continuous Deployment Stage'
+  dependsOn: CI
+  condition: and(succeeded(), eq(stageDependencies.CI.TrainJob.outputs['raiGate.rai_pass'], 'True'))
+  jobs:
+  - job: DeployJob
+    displayName: 'Deploy Endpoint & Setup Monitoring'
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - task: AzureCLI@2
+      displayName: '1. Authenticate Azure CLI'
+      inputs:
+        azureSubscription: '$(azureServiceConnection)'
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          az account show
+
+    - task: UsePythonVersion@0
+      displayName: '2. Set Python Version'
+      inputs:
+        versionSpec: '3.9'
+
+    - script: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+      displayName: '3. Install Requirements'
+
+    - task: AzureCLI@2
+      displayName: '4. Create Managed Endpoint'
+      inputs:
+        azureSubscription: '$(azureServiceConnection)'
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          python deployment/endpoint.py --resource_group $(azureResourceGroup) --workspace_name $(azureWorkspaceName)
+
+    - task: AzureCLI@2
+      displayName: '5. Deploy Model to Endpoint'
+      inputs:
+        azureSubscription: '$(azureServiceConnection)'
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          python deployment/deployment.py --resource_group $(azureResourceGroup) --workspace_name $(azureWorkspaceName)
+
+    - task: AzureCLI@2
+      displayName: '6. Configure Azure Monitor & Action Group'
+      inputs:
+        azureSubscription: '$(azureServiceConnection)'
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          python monitoring/monitor.py --resource_group $(azureResourceGroup) --workspace_name $(azureWorkspaceName) --alert_email $(alert_email)
+
+```
+
+---
+
+## 4. Model Verification & Local Inference Test
+
+Once the CD stage successfully completes, the endpoint can be invoked locally via VS Code.
+
+### Environment & Authentication Setup
+
+```bash
+# 1. Sign in to Azure CLI
+az login
+az account show
+
+# 2. Configure .env file
+# WS_NAME="your-azure-ml-workspace"
+# RESOURCE_GROUP="your-resource-group"
+# SUBSCRIPTION_ID="your-subscription-id"
+
+# 3. Install requirements and run inference
+pip install -r requirements.txt
+cd invoke_model
+python predict.py
+
+```
+
+### Response Payload Output
+
+```json
+{
+  "predictions": [1],
+  "request_id": "96274d50-9697-4c60-8ea0-24d0bb4952ac"
+}
+
+```
+
+### Azure ML Endpoint Logs Verification
+
+```text
+2026-01-17 04:35:08 - INFO - [run] - [RequestID: 60a01902-7faa-4328-b358-33981c0266d9] Request received for admissions prediction
+2026-01-17 04:35:08 - INFO - [run] - [RequestID: 60a01902-7faa-4328-b358-33981c0266d9] Input data received - Number of records: 1
+2026-01-17 04:35:08 - INFO - [run] - [RequestID: 60a01902-7faa-4328-b358-33981c0266d9] Predictions generated - Results: [1]
+2026-01-17 04:35:08 - INFO - [run] - [RequestID: 60a01902-7faa-4328-b358-33981c0266d9] Request processed successfully
+
+```
+
+---
+
+## Assessment Answers Verification
+
+### Question 1
+
+**Question:** Which of the following is the primary benefit of version-controlling a model’s training script and environment configuration in a service like Github?
+
+* It automatically deploys the model to a production environment.
+* It provides continuous monitoring for model drift in real-time.
+* **It ensures traceability of the exact code and dependencies used to produce any given model version.**
+* It ensures the training script executes faster by distributing the workload.
+
+### Question 2
+
+**Question:** In an MLOps CI pipeline, what critical step should occur immediately after a model is trained and registered in Azure Machine Learning?
+
+* Scaling down the compute cluster to zero nodes to save cost
+* **Running automated model quality and/or Responsible AI assessments to ensure it meets minimum criteria**
+* Initiating the continuous deployment (CD) stage
+* Sending a daily report to stakeholders via email
+
+### Question 3
+
+**Question:** Prior to deploying the AI model, for this lab specifically what is the main purpose of integrating a Responsible AI check with resources such as Azure Responsible AI Dashboard components to check for fairness issues?
+
+* **To ensure that the model's predictive performance is consistent across all identified sensitive applicant groups.**
+* To reduce the storage size of the registered model artifact in the Azure Machine Learning workspace.
+* To monitor for unauthorized access attempts against the model endpoint.
+* To configure an Azure Machine Learning Data Drift monitor to detect changes in the statistical properties of the input features.

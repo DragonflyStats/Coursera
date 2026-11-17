@@ -1,0 +1,65 @@
+# IBM Data Engineering Capstone Project
+
+## Checklist: OLTP Database
+
+### Question 1
+Have you created a database called **sales**?
+
+- [ ] Yes
+- [ ] No
+
+---
+
+### Question 2
+Have you designed a table named **sales_data**?
+
+- [ ] Yes
+- [ ] No
+
+---
+
+### Question 3
+Have you imported the data in the file **oltpdata.csv**?
+
+- [ ] Yes
+- [ ] No
+
+---
+
+### Question 4
+Have you listed the tables in the database **sales**?
+
+- [ ] Yes
+- [ ] No
+
+---
+
+### Question 5
+Have you written a query to find out the count of records in the table **sales_data**?
+
+- [ ] Yes
+- [ ] No
+
+---
+
+### Question 6
+Have you created an index?
+
+- [ ] Yes
+- [ ] No
+
+---
+
+### Question 7
+Have you listed the indexes?
+
+- [ ] Yes
+- [ ] No
+
+---
+
+### Question 8
+Have you written a bash script to export data?
+
+- [ ] Yes
+- [ ] No

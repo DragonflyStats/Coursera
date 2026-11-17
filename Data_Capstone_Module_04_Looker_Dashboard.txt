@@ -1,0 +1,100 @@
+
+IBM
+Data Engineering Capstone Project
+
+
+OLTP Database
+Assignment Overview: OLTP Database
+
+Checklist: Data Pipelines using Apache Airflow
+
+1.
+Question 1
+Have you defined the task pipeline correctly ?
+
+Yes
+
+No
+
+-----------------------------------------------------------
+2.
+Question 2
+Have you unpaused the DAG correctly ?
+
+
+
+Yes
+
+No
+
+-----------------------------------------------------------
+3.
+Question 3
+Have you created a task to transform the data in the txt file correctly ?
+
+
+Yes
+
+No
+
+-----------------------------------------------------------
+4.
+Question 4
+Have you created a task to load the data correctly ?
+
+
+
+Yes
+
+No
+
+-----------------------------------------------------------
+5.
+Question 5
+Have you defined the DAG arguments correctly ?
+
+Yes
+
+No
+
+-----------------------------------------------------------
+6.
+Question 6
+Have you defined the DAG correctly ?
+
+
+Yes
+
+No
+
+-----------------------------------------------------------
+7.
+Question 7
+Have you monitored the DAG correctly ?
+
+Yes
+
+No
+
+-----------------------------------------------------------
+8.
+Question 8
+Have you submitted the DAG correctly ?
+
+
+Yes
+
+No
+
+-----------------------------------------------------------
+9.
+Question 9
+Have you created a task to extract data correctly?
+
+
+Yes
+
+No
+
+-----------------------------------------------------------
+
