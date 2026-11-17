@@ -1,0 +1,24 @@
+Summary & Highlights
+Congratulations! You have completed this lesson. At this point in the course, you know:  
+
+If statements use comparison and logical operators to test conditions in code. 
+
+For loops perform an operation for each item in a list, vector, or data frame column. 
+
+While loops perform an operation until a condition is no longer true. 
+
+Functions can be pre-defined or user-defined. 
+
+In user-defined functions, you can control the return value of a function, add logic using if statements, and call other functions. 
+
+You can define global variables using the <<- variable assignment operator. 
+
+You can use R functions to manipulate the characters in a string, split a string into a vector, and retrieve specific substrings from within a string. 
+
+Regular expressions are used to match patterns in strings and text. 
+
+You can convert dates from one format to another using the as.POSIXct() and as.Date() functions. 
+
+You can perform operations on Data objects using functions, like Sys.Date(), Sys.Time(), date(), and as.Date(). 
+
+You can intercept errors in R code and provide custom error and warning handling using tryCatch() statements.

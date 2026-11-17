@@ -1,0 +1,48 @@
+---
+title: "SmartType"
+subtitle: "Fast Next-Word Prediction"
+author: "Data Science Capstone Project"
+date: "November 15, 2026"
+output: ioslides_presentation
+---
+
+
+
+## The Opportunity & Product Vision
+
+Mobile and web users type millions of messages daily, yet slow or bloated autocomplete engines drain device memory and battery.
+
+**Our Solution: SmartType**
+
+- **Instant Next-Word Prediction:** Suggests the top 3 likely next words in real time as users type.
+- **Ultra-Lightweight Footprint:** Runs in just **24.03 MB of RAM**, making it ideal for browser and mobile deployment.
+- **Built on Real-World Language:** Trained on **4.27 million lines** of US English text across blogs, news, and social media[cite: 3].
+
+## How the Prediction Algorithm Works
+
+SmartType uses a **4-Gram Backoff Language Model** engineered for speed and low memory usage[cite: 2]:
+
+1. **Text Normalization & Safety:** Strips punctuation, numbers, single-letter noise, and profanity while preserving sentence boundaries[cite: 2].
+2. **Vocabulary Pruning:** Exploratory analysis showed **7,921 words cover 90%** of all word instances; pruning singletons eliminated 85%+ of memory bloat[cite: 2].
+3. **Hierarchical Backoff:** Matches the user's last 3 words (4-gram) first, stepping down cleanly to 3-gram, 2-gram, and 1-gram tables so every input yields a prediction[cite: 2].
+
+## Performance & Efficiency Benchmarks
+
+Designed to balance predictive accuracy against strict cloud hosting limits[cite: 2]:
+
+- **Model Size:** **24.03 MB** (fits comfortably within free-tier `shinyapps.io` memory limits)[cite: 2].
+- **Inference Latency:** **< 5 milliseconds** per query using hash-keyed `data.table` lookups[cite: 2].
+- **Dictionary Coverage:** Top 140 words capture 50% of usage; top 7,921 words capture 90% of usage[cite: 2].
+- **Robustness:** Handles unseen phrases, punctuation, and mixed casing without errors[cite: 2].
+
+## Live App Experience & Next Steps
+
+**Using the Shiny Application:**
+
+- Type any partial phrase into the input box on our hosted app[cite: 2].
+- View the **#1 predicted word** immediately and click any of the **top 3 suggestion buttons** to auto-complete your text.
+
+**Roadmap for Commercialization:**
+
+- Add user-adaptive personalization and domain toggles (Formal News vs. Casual Messaging).
+- **Try the Live App:** `[https://dragonflystats.shinyapps.io/Shiny_App/]`

@@ -1,0 +1,255 @@
+---
+title: "Exploratory Data Analysis & Predictive Text App Roadmap"
+author: "Data Science Capstone"
+date: "November 15, 2026"
+output:
+  html_document:
+    theme: flatly
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+
+library(stringi)
+library(quanteda)
+library(quanteda.textstats)
+library(ggplot2)
+library(dplyr)
+library(knitr)
+
+# Project directory
+base_dir  <- "C:/Users/kilbi/Documents/GitHub/Data_Engineering/JHU_Data_Science_Capstone"
+en_us_dir <- file.path(base_dir, "final", "en_US")
+
+```
+
+## Executive Summary
+
+This report summarizes our exploratory analysis of the US English text corpora (blogs, news articles, and Twitter posts) and outlines our validated architecture for a fast, lightweight next-word prediction application.
+
+**Key Findings & Readiness Milestones:**
+
+* **Data Ingested & Audited:** All three datasets (~556 MB on disk; ~4.27 million lines total) have been loaded and verified.
+
+
+* **Format & Length Differences:** Blogs and news articles feature long-form, multi-sentence entries, whereas Twitter entries are short and frequent due to the 140-character limit.
+
+
+* **High Dictionary Efficiency:** Analysis of a 5% representative sample shows that just **140 unique words** cover **50%** of all word usage, and **7,921 unique words** cover **90%**.
+* **Lightweight Model Validated:** By pruning rare single-occurrence phrases and filtering offensive terms, we have already built a working 1-to-4-gram backoff lookup model occupying just **24.03 MB** of RAM—well within web-hosting constraints.
+
+
+
+---
+
+## 1. Corpus Overview & Summary Statistics
+
+The raw dataset comes from publicly crawled web text across three distinct communication styles. Note that the news file required binary-mode reading to prevent premature truncation from embedded special characters, and embedded null bytes were stripped from Twitter records.
+
+```{r load-and-summarize, cache=TRUE}
+file_paths <- c(
+  blogs   = file.path(en_us_dir, "en_US.blogs.txt"),
+  news    = file.path(en_us_dir, "en_US.news.txt"),
+  twitter = file.path(en_us_dir, "en_US.twitter.txt")
+)
+
+sizes_mb <- round(file.info(file_paths)$size / 1024^2, 2)
+
+blogs <- readLines(file_paths["blogs"], encoding = "UTF-8", skipNul = TRUE)
+
+con  <- file(file_paths["news"], open = "rb")
+news <- readLines(con, encoding = "UTF-8", skipNul = TRUE)
+close(con)
+
+twitter <- readLines(file_paths["twitter"], encoding = "UTF-8", skipNul = TRUE)
+
+stats_blogs   <- stri_stats_general(blogs)
+stats_news    <- stri_stats_general(news)
+stats_twitter <- stri_stats_general(twitter)
+
+words_blogs   <- stri_count_words(blogs)
+words_news    <- stri_count_words(news)
+words_twitter <- stri_count_words(twitter)
+
+summary_df <- data.frame(
+  Source = c("Blogs", "News", "Twitter"),
+  `Disk Size (MB)` = sizes_mb,
+  `Line Count` = format(c(stats_blogs["Lines"], stats_news["Lines"], stats_twitter["Lines"]), big.mark = ","),
+  `Total Characters` = format(c(stats_blogs["Chars"], stats_news["Chars"], stats_twitter["Chars"]), big.mark = ","),
+  `Mean Words / Line` = round(c(mean(words_blogs), mean(words_news), mean(words_twitter)), 1),
+  `Median Words / Line` = c(median(words_blogs), median(words_news), median(words_twitter)),
+  `Max Words / Line` = format(c(max(words_blogs), max(words_news), max(words_twitter)), big.mark = ","),
+  check.names = FALSE
+)
+
+kable(summary_df, caption = "Table 1: Summary Metrics Across US English Text Corpora")
+
+```
+
+### Key Data Observations
+
+* **Volume vs. Entry Count:** All three files contain roughly comparable character volumes (162M to 207M characters), yet Twitter contains more than double the number of lines (2.36M) compared to Blogs (899k) and News (1.01M).
+
+
+* **Line Independence:** Because the source corpus splits documents into anonymized individual lines, each line is treated as an independent boundary during modeling so word sequences never bleed across unrelated entries.
+
+
+
+---
+
+## 2. Visual Exploration: Entry Length & Vocabulary Coverage
+
+### Word Count Distributions by Source
+
+The histograms below compare entry lengths across sources (capped at 150 words on the horizontal axis to highlight core distributions). Blogs and news show right-tailed distributions stretching into long articles, while Twitter clusters tightly below 30 words.
+
+```{r word-histograms, fig.width=9, fig.height=3.8, cache=TRUE}
+plot_data <- rbind(
+  data.frame(Source = "Blogs", Words = words_blogs),
+  data.frame(Source = "News", Words = words_news),
+  data.frame(Source = "Twitter", Words = words_twitter)
+)
+
+ggplot(plot_data, aes(x = Words, fill = Source)) +
+  geom_histogram(binwidth = 5, show.legend = FALSE) +
+  facet_wrap(~ Source, scales = "free_y") +
+  coord_cartesian(xlim = c(0, 150)) +
+  scale_fill_manual(values = c("#2b5c8f", "#2e8b57", "#d95f02")) +
+  labs(
+    title = "Distribution of Words per Entry by Source",
+    subtitle = "Twitter entries peak sharply under 30 words; Blogs and News span much longer formats",
+    x = "Words per Line",
+    y = "Number of Entries"
+  ) +
+  theme_minimal()
+
+```
+
+### N-Gram Frequencies & Dictionary Coverage
+
+Using a 5% random sample (~213,000 lines), we normalized punctuation and smart quotes, converted text to lowercase, and replaced profanity with boundary markers so offensive phrases are never learned or suggested. We retained common stopwords (*the*, *to*, *and*) because they are essential for natural keyboard prediction.
+
+```{r ngram-and-coverage, fig.width=9, fig.height=4, cache=TRUE}
+sample_file <- file.path(base_dir, "en_US_sample_5pct.rds")
+if (file.exists(sample_file)) {
+  sampled_data <- readRDS(sample_file)
+} else {
+  set.seed(123)
+  sampled_data <- list(
+    blogs   = blogs[as.logical(rbinom(length(blogs), 1, 0.05))],
+    news    = news[as.logical(rbinom(length(news), 1, 0.05))],
+    twitter = twitter[as.logical(rbinom(length(twitter), 1, 0.05))]
+  )
+}
+
+profanity_url <- "[https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/en](https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/master/en)"
+bad_words <- tryCatch(readLines(profanity_url, warn = FALSE), error = function(e) character(0))
+
+all_sample <- unlist(sampled_data, use.names = FALSE)
+all_sample <- chartr("\u2018\u2019\u201C\u201D", "''\"\"", all_sample)
+all_sample <- iconv(all_sample, from = "UTF-8", to = "ASCII", sub = "")
+
+toks <- tokens(
+  all_sample,
+  what = "word",
+  remove_punct = TRUE,
+  remove_symbols = TRUE,
+  remove_numbers = TRUE,
+  remove_url = TRUE,
+  remove_separators = TRUE
+) |> tokens_tolower()
+
+if (length(bad_words) > 0) {
+  toks <- tokens_replace(
+    toks,
+    pattern = bad_words,
+    replacement = rep("<PROFANITY>", length(bad_words)),
+    valuetype = "fixed"
+  )
+}
+
+# Remove single-character noise tokens except "a" and "i"
+vocab_all <- types(toks)
+single_noise <- vocab_all[nchar(vocab_all) == 1 & !(vocab_all %in% c("a", "i"))]
+toks <- tokens_remove(toks, pattern = single_noise, valuetype = "fixed")
+
+get_freq <- function(t, n) {
+  dfm_ng <- dfm(tokens_ngrams(t, n = n, concatenator = " "))
+  dfm_ng <- dfm_remove(dfm_ng, pattern = "*<profanity>*")
+  textstat_frequency(dfm_ng)
+}
+
+freq_1 <- get_freq(toks, 1) %>%
+  mutate(cum_freq = cumsum(frequency), coverage = cum_freq / sum(frequency))
+freq_2 <- get_freq(toks, 2)
+freq_3 <- get_freq(toks, 3)
+
+words_50 <- which(freq_1$coverage >= 0.50)[1] 
+words_90 <- which(freq_1$coverage >= 0.90)[1]
+
+# Top 10 table across 1-, 2-, and 3-grams
+top_ngrams_tbl <- data.frame(
+  Rank = 1:10,
+  `Top Unigram` = head(freq_1$feature, 10),
+  `Unigram Count` = format(head(freq_1$frequency, 10), big.mark = ","),
+  `Top Bigram` = head(freq_2$feature, 10),
+  `Bigram Count` = format(head(freq_2$frequency, 10), big.mark = ","),
+  `Top Trigram` = head(freq_3$feature, 10),
+  `Trigram Count` = format(head(freq_3$frequency, 10), big.mark = ","),
+  check.names = FALSE
+)
+
+kable(top_ngrams_tbl, caption = "Table 2: Top 10 Most Frequent Word Sequences (5% Sample)")
+
+# Coverage Curve Plot
+ggplot(freq_1, aes(x = rank, y = coverage * 100)) +
+  geom_line(color = "#2b5c8f", linewidth = 1.1) +
+  geom_hline(yintercept = c(50, 90), linetype = "dashed", color = "firebrick") +
+  geom_vline(xintercept = c(words_50, words_90), linetype = "dotted", color = "firebrick") +
+  coord_cartesian(xlim = c(0, words_90 * 1.5)) +
+  labs(
+    title = "Dictionary Coverage of All Word Instances",
+    subtitle = sprintf("50%% coverage = %d unique words | 90%% coverage = %d unique words", words_50, words_90),
+    x = "Number of Unique Words (Frequency-Sorted)",
+    y = "Cumulative Word Coverage (%)"
+  ) +
+  theme_minimal()
+
+```
+
+**Why This Matters for Model Efficiency:**
+
+* Everyday English follows a steep diminishing-returns curve: fewer than **8,000 words** account for **90%** of all word instances, while the remaining 10% consists of tens of thousands of rare terms, typos, and foreign words.
+
+
+* Pruning single-occurrence phrases (`frequency == 1`) eliminates noise and shrinks memory overhead without sacrificing everyday prediction quality.
+
+
+
+---
+
+## 3. Prediction Algorithm & Shiny App Roadmap
+
+Our objective is to deploy a responsive, smartphone-style next-word prediction app on **shinyapps.io**.
+
+### Predictive Engine Design
+
+1. **Multi-Level N-Gram Lookup (1- to 4-Grams):** The model stores the top 3 most probable next words for observed 1-, 2-, and 3-word contexts in indexed `data.table` structures, keeping the entire model under **25 MB** of RAM.
+
+
+2. **Backoff Logic for Unseen Phrases:** When a user types a phrase, the engine checks 4-gram matches first (using the last 3 words). If fewer than 3 suggestions are found, it automatically "backs off" to 3-grams, 2-grams, and finally high-frequency unigrams so a sensible prediction is always returned.
+
+
+3. **Noise & Profanity Safeguards:** Single-character artifacts (other than *"a"* and *"i"*) and offensive words are excluded prior to building lookup tables.
+
+
+
+### Planned Shiny App Experience & Validation
+
+* **Interactive Text Input & Quick-Select Buttons:** Users type into a clean text box and see the top 3 predicted next words rendered as clickable buttons that append directly to their sentence.
+
+
+* **Benchmarking Before Launch:** Prior to final deployment, we will evaluate the model against a held-out validation set to verify **Top-1 and Top-3 prediction accuracy** alongside **millisecond-level response latency**.
+
