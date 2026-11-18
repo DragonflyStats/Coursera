@@ -1,0 +1,323 @@
+1.
+Question 1
+Apply your machine learning algorithm to the 20 test cases available in the test data. 
+What is your predicted complaint class for the consumer complaint labeled `problem_id` 1?
+
+ 
+ .
+
+Credit card or prepaid card
+
+Mortgage
+
+Student loan
+
+Vehicle loan or lease
+
+ ------------------------------------------------------
+2.
+Question 2
+Apply your machine learning algorithm to the 20 test cases available in the test data. 
+What is your predicted complaint class for the consumer complaint labeled `problem_id` 2?
+
+ 
+ .
+
+Credit card or prepaid card
+
+Mortgage
+
+Student loan
+
+Vehicle loan or lease
+
+ ------------------------------------------------------
+3.
+Question 3
+Apply your machine learning algorithm to the 20 test cases available in the test data. 
+What is your predicted complaint class for the consumer complaint labeled `problem_id` 3?
+
+ 
+ .
+
+Credit card or prepaid card
+
+Mortgage
+
+Student loan
+
+Vehicle loan or lease
+
+ ------------------------------------------------------
+4.
+Question 4
+Apply your machine learning algorithm to the 20 test cases available in the test data. 
+What is your predicted complaint class for the consumer complaint labeled `problem_id` 4?
+
+ 
+ .
+
+Credit card or prepaid card
+
+Mortgage
+
+Student loan
+
+Vehicle loan or lease
+
+ ------------------------------------------------------
+5.
+Question 5
+Apply your machine learning algorithm to the 20 test cases available in the test data. 
+What is your predicted complaint class for the consumer complaint labeled `problem_id` 5?
+
+ 
+ .
+
+Credit card or prepaid card
+
+Mortgage
+
+Student loan
+
+Vehicle loan or lease
+
+ ------------------------------------------------------
+6.
+Question 6
+Apply your machine learning algorithm to the 20 test cases available in the test data. What is your predicted complaint class for the consumer complaint labeled `problem_id` 6?
+
+ 
+ .
+
+Credit card or prepaid card
+
+Mortgage
+
+Student loan
+
+Vehicle loan or lease
+
+ ------------------------------------------------------
+7.
+Question 7
+Apply your machine learning algorithm to the 20 test cases available in the test data. What is your predicted complaint class for the consumer complaint labeled `problem_id` 7?
+
+ 
+ .
+
+Credit card or prepaid card
+
+Mortgage
+
+Student loan
+
+Vehicle loan or lease
+
+ ------------------------------------------------------
+8.
+Question 8
+Apply your machine learning algorithm to the 20 test cases available in the test data. What is your predicted complaint class for the consumer complaint labeled `problem_id` 8?
+
+ 
+ .
+
+Credit card or prepaid card
+
+Mortgage
+
+Student loan
+
+Vehicle loan or lease
+
+ ------------------------------------------------------
+9.
+Question 9
+Apply your machine learning algorithm to the 20 test cases available in the test data. What is your predicted complaint class for the consumer complaint labeled `problem_id` 9?
+
+ 
+ .
+
+Credit card or prepaid card
+
+Mortgage
+
+Student loan
+
+Vehicle loan or lease
+
+ ------------------------------------------------------
+10.
+Question 10
+Apply your machine learning algorithm to the 20 test cases available in the test data. What is your predicted complaint class for the consumer complaint labeled `problem_id` 10?
+
+ 
+ .
+
+Credit card or prepaid card
+
+Mortgage
+
+Student loan
+
+Vehicle loan or lease
+
+ ------------------------------------------------------
+11.
+Question 11
+Apply your machine learning algorithm to the 20 test cases available in the test data. What is your predicted complaint class for the consumer complaint labeled `problem_id` 11?
+
+ 
+ .
+
+Credit card or prepaid card
+
+Mortgage
+
+Student loan
+
+Vehicle loan or lease
+
+ ------------------------------------------------------
+12.
+Question 12
+Apply your machine learning algorithm to the 20 test cases available in the test data. What is your predicted complaint class for the consumer complaint labeled `problem_id` 12?
+
+ 
+ .
+
+Credit card or prepaid card
+
+Mortgage
+
+Student loan
+
+Vehicle loan or lease
+
+ ------------------------------------------------------
+13.
+Question 13
+Apply your machine learning algorithm to the 20 test cases available in the test data. What is your predicted complaint class for the consumer complaint labeled `problem_id` 13?
+
+ 
+ .
+
+Credit card or prepaid card
+
+Mortgage
+
+Student loan
+
+Vehicle loan or lease
+
+ ------------------------------------------------------
+14.
+Question 14
+Apply your machine learning algorithm to the 20 test cases available in the test data. What is your predicted complaint class for the consumer complaint labeled `problem_id` 14?
+
+ 
+ .
+
+Credit card or prepaid card
+
+Mortgage
+
+Student loan
+
+Vehicle loan or lease
+
+ ------------------------------------------------------
+15.
+Question 15
+Apply your machine learning algorithm to the 20 test cases available in the test data. What is your predicted complaint class for the consumer complaint labeled `problem_id` 15?
+
+ 
+ .
+
+Credit card or prepaid card
+
+Mortgage
+
+Student loan
+
+Vehicle loan or lease
+
+ ------------------------------------------------------
+16.
+Question 16
+Apply your machine learning algorithm to the 20 test cases available in the test data. What is your predicted complaint class for the consumer complaint labeled `problem_id` 16?
+
+ 
+ .
+
+Credit card or prepaid card
+
+Mortgage
+
+Student loan
+
+Vehicle loan or lease
+
+ ------------------------------------------------------
+17.
+Question 17
+Apply your machine learning algorithm to the 20 test cases available in the test data. What is your predicted complaint class for the consumer complaint labeled `problem_id` 17?
+
+ 
+ .
+
+Credit card or prepaid card
+
+Mortgage
+
+Student loan
+
+Vehicle loan or lease
+
+ ------------------------------------------------------
+18.
+Question 18
+Apply your machine learning algorithm to the 20 test cases available in the test data. What is your predicted complaint class for the consumer complaint labeled `problem_id` 18?
+
+ 
+ .
+
+Credit card or prepaid card
+
+Mortgage
+
+Student loan
+
+Vehicle loan or lease
+
+ ------------------------------------------------------
+19.
+Question 19
+Apply your machine learning algorithm to the 20 test cases available in the test data. What is your predicted complaint class for the consumer complaint labeled `problem_id` 19?
+
+ 
+ .
+
+Credit card or prepaid card
+
+Mortgage
+
+Student loan
+
+Vehicle loan or lease
+
+ ------------------------------------------------------
+20.
+Question 20
+Apply your machine learning algorithm to the 20 test cases available in the test data. What is your predicted complaint class for the consumer complaint labeled `problem_id` 20?
+
+ 
+ .
+
+Credit card or prepaid card
+
+Mortgage
+
+Student loan
+
+Vehicle loan or lease

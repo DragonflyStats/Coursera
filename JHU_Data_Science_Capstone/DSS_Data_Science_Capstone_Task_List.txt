@@ -1,0 +1,201 @@
+## Task 0 - Understanding the Problem
+
+The first step in analyzing any new data set is figuring out:
+
+1. What data you have
+2. What standard tools and models are used for that type of data
+
+Make sure to download the data from Coursera before starting the exercises. This exercise uses files named `LOCALE.blogs.txt`, where `LOCALE` represents each of the four locales: `en_US`, `de_DE`, `ru_RU`, and `fi_FI`. The data originates from the HC Corpora collection. See the "About the Corpora" reading for additional details. The files have been language-filtered, though some foreign text may remain.
+
+In this capstone, data science principles apply directly to natural language processing (NLP). As a first step, familiarize yourself with NLP, text mining, and the associated tooling in R. Useful resources include:
+
+* [Natural language processing Wikipedia page](https://en.wikipedia.org/wiki/Natural_language_processing)
+* [Text mining infrastructure in R](https://www.jstatsoft.org/v25/i05/)
+* [CRAN Task View: Natural Language Processing](https://cran.r-project.org/web/views/NaturalLanguageProcessing.html)
+
+### Dataset
+
+This training data serves as the foundation for most of the capstone project. Download this data directly from Coursera rather than external sources.
+
+### Capstone Dataset
+
+Initial data exploration and modeling steps should run against this dataset. Later in the capstone, additional useful datasets may supplement your model.
+
+### Tasks to Accomplish
+
+* **Obtaining the data:** Download, load, and manipulate the data in R.
+* **Familiarizing yourself with NLP and text mining:** Learn basic NLP concepts and understand how they fit into the broader Data Science Specialization workflow.
+
+### Questions to Consider
+
+* What does the data look like?
+* Where does the data come from?
+* What other data sources might assist this project?
+* What are the standard steps in natural language processing?
+* What common issues arise when analyzing text data?
+* How does NLP relate to the concepts covered throughout the Specialization?
+
+---
+
+## Task 1 - Getting and Cleaning the Data
+
+Large text databases in a target language commonly train language models for various applications. In this exercise, focus primarily on the English database, though three additional databases exist in German, Russian, and Finnish.
+
+The goal of this task is to explore the databases and execute necessary cleaning steps. By the end of this exercise, you should understand real-world data characteristics and the effort needed to clean it properly. When developing for a new language, the priority is understanding language-specific traits relative to your target. You can learn to read, speak, and write the language, or analyze existing linguistic patterns via literature and web resources. At minimum, understand how the language is written: script, input methods, phonetic structures, etc.
+
+*Note: The data contains offensive and profane words. These remain intentionally to highlight real-world developer content moderation needs.*
+
+### Tasks to Accomplish
+
+* **Tokenization:** Identify appropriate tokens (words, punctuation, numbers) and write an R function that accepts a file as input and returns its tokenized representation.
+* **Profanity filtering:** Remove profanity and other non-predictive terms.
+
+### Tips, Tricks, and Hints
+
+* **Loading the data:** The dataset is fairly large. You do not need to load the entire dataset to build algorithms. Initially, work with a smaller subset. Reading chunks or lines using R's `readLines()` or `scan()` functions is effective. Loop over lines using `readLines()` within a `for` or `while` loop, though reading larger chunks at once performs faster. Processing pieces at a time requires an R file connection:
+
+```R
+con <- file("en_US.twitter.txt", "r") 
+readLines(con, 1) # Read the first line of text 
+readLines(con, 1) # Read the next line of text 
+readLines(con, 5) # Read in the next 5 lines of text 
+close(con)        # Always close the connection when finished
+
+```
+
+* **Sampling:** Building models does not require loading all data. A small, randomly selected set of rows or chunks often yields an accurate approximation of full-dataset results. Use representative sampling concepts from statistical inference to draw conclusions about the broader population. Consider writing a random sample to a standalone file to avoid recreating it repeatedly. The `rbinom()` function can simulate a "biased coin flip" to determine line inclusion.
+
+---
+
+## Task 2 - Exploratory Data Analysis
+
+Building a predictive text model requires understanding word, token, and phrase distributions and relationships. This task focuses on identifying basic data patterns to prepare for linguistic modeling.
+
+### Tasks to Accomplish
+
+* **Exploratory analysis:** Perform a detailed exploratory analysis of the data to understand word distributions and relationships across the corpora.
+* **Understand frequencies:** Build figures and tables to examine variations in word and word-pair frequencies.
+
+### Questions to Consider
+
+* Some words occur far more frequently than others—what does the overall frequency distribution look like?
+* What are the relative frequencies of 2-grams (bigrams) and 3-grams (trigrams)?
+* How many unique words in a frequency-sorted dictionary are required to cover 50% of all word instances in the language? How many for 90%?
+* How can you evaluate the proportion of words originating from foreign languages?
+* How can coverage be increased—either by identifying missing words outside the corpora or using a compact dictionary to cover identical phrase volumes?
+
+---
+
+## Task 3 - Modeling
+
+The objective of this task is to build an initial model capturing relationships between words. This forms the basis of a predictive text application. You will explore basic models before moving to advanced techniques.
+
+### Tasks to Accomplish
+
+* **Build a basic n-gram model:** Utilize exploratory analysis findings to build an n-gram model that predicts the next word based on the preceding 1, 2, or 3 words.
+* **Handle unseen n-grams:** Account for cases where user inputs contain word combinations absent from the training corpora.
+
+### Questions to Consider
+
+* How can you efficiently store an n-gram model (e.g., Markov Chains)?
+* How can word frequency knowledge optimize model size and execution speed?
+* How many parameters are required (i.e., what is the optimal $n$ in your n-gram model)?
+* How can probability estimation be smoothed (e.g., assigning non-zero probabilities to unobserved n-grams)?
+* How do you evaluate model accuracy and effectiveness?
+* How do backoff models estimate unobserved n-gram probabilities?
+
+### Tips, Tricks, and Hints
+
+Two key performance factors require ongoing balance throughout model development:
+
+* **Size:** The physical RAM required to run the model in R.
+* **Runtime:** The time taken to return a prediction given an input.
+
+Predictive text algorithms frequently operate on mobile devices with restricted memory and CPU capacity. Carefully manage object memory consumption and inference execution time. Ultimately, the model must run efficiently within a Shiny application hosted on [shinyapps.io](https://www.shinyapps.io/).
+
+Useful optimization tools in R include:
+
+* `object.size()`: Reports memory occupied by an R object in bytes.
+* `Rprof()`: Runs the native R profiler to identify code bottlenecks. The `profr` package on CRAN helps visualize profiling metrics.
+* `gc()`: Triggers garbage collection to reclaim unallocated RAM and displays current overall memory usage.
+
+---
+
+## Task 4 - Prediction Model
+
+Combine your n-gram and backoff models to construct and evaluate a complete predictive engine, balancing accuracy and runtime efficiency.
+
+### Tasks to Accomplish
+
+* **Build a predictive model:** Combine prior data modeling techniques into a unified pipeline.
+* **Evaluate efficiency and accuracy:** Benchmark computational runtime and measure predictive performance using metrics such as perplexity alongside top-1, top-2, and top-3 word accuracy.
+
+### Questions to Consider
+
+* How does model performance vary across different parameter choices and size constraints?
+* What is the runtime latency cost relative to performance gains?
+* Does perplexity directly correlate with top-$k$ accuracy metrics?
+* Can parameter counts be reduced without degrading predictive performance?
+
+---
+
+## Task 5 - Creative Exploration
+
+Expand beyond standard techniques using tools from the Data Science Specialization, external research, or custom approaches to improve predictive accuracy while minimizing memory usage and computational overhead. Maintain a dedicated test set to evaluate experimental models objectively.
+
+### Tasks to Accomplish
+
+* **Explore novel models and datasets:** Test creative strategies to improve overall predictive quality.
+* **Evaluate trade-offs:** Measure new iterations against both accuracy and efficiency benchmarks.
+
+### Questions to Consider
+
+* What alternative or supplementary datasets could enhance predictions?
+* Where do traditional n-gram models encounter inefficiencies?
+* What are the most common mispredictions, why do they occur, and how can they be mitigated?
+* What approaches have proven effective in similar research or industry applications?
+* Can prediction uncertainty or confidence scores be reliably estimated?
+
+---
+
+## Task 6 - Data Product
+
+Develop a user-facing Shiny application that exposes the prediction algorithm through an interactive web interface.
+
+### Tasks to Accomplish
+
+* **Create a data product:** Deploy a Shiny app that accepts an n-gram input string and displays the predicted next word.
+
+### Questions to Consider
+
+* What are the most effective visual representations for demonstrating the algorithm?
+* Would supplementary data visualizations enhance the user experience (e.g., dashboard layouts similar to commercial mobile keyboards)?
+* How should the application documentation be structured so end-users can quickly operate and deploy it?
+
+### Tips, Tricks, and Hints
+
+Keep the underlying predictive model compact. Sacrificing a small amount of theoretical accuracy is often necessary to ensure fast load times and responsive performance on the Shiny server.
+
+---
+
+## Task 7 - Slide Deck
+
+Create a short presentation pitching your data product to stakeholders or investors. The presentation is limited to **5 slides or fewer** and must:
+
+1. Explain how the model functions
+2. Describe predictive performance using quantitative metrics
+3. Demonstrate the Shiny application interface and functionality
+
+### Tasks to Accomplish
+
+* **Create a presentation:** Author a 5-slide presentation using RStudio Presenter to showcase the product.
+
+### Questions to Consider
+
+* How can the core predictive model be explained clearly and concisely?
+* What quantitative metrics best summarize performance?
+* How can user interaction and application features be clearly demonstrated?
+
+### Tips, Tricks, and Hints
+
+Refer to the official documentation on [Authoring R Presentations](https://support.rstudio.com/hc/en-us/articles/200486468-Authoring-R-Presentations) for formatting guidelines.
