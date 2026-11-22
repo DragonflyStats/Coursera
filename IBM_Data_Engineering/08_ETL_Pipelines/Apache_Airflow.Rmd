@@ -1,6 +1,9 @@
-### Apache Airflow
+## Apache Airflow
 
-Apache Airflow is an open-source platform designed to programmatically author, schedule, and monitor workflows. It's particularly useful for data engineering pipelines, helping you automate complex data processing tasks.
+Apache Airflow is an open-source platform designed to programmatically author, schedule, and monitor workflows. 
+It's particularly useful for data engineering pipelines, helping you automate complex data processing tasks.
+
+----
 
 **Key Features:**
 
@@ -9,6 +12,8 @@ Apache Airflow is an open-source platform designed to programmatically author, s
 * **Monitoring and Alerting:** Airflow provides a user-friendly interface to monitor the status of workflows, track progress, and receive alerts for failures or delays.
 * **Extensibility:** You can customize Airflow by creating custom operators and hooks to integrate with different technologies and services.
 * **Scalability:** Airflow can handle large-scale workflows and can be scaled horizontally to meet increasing demands.
+
+---
 
 **Benefits:**
 
