@@ -1,5 +1,5 @@
 
-COURSE 4:Introduction to R Programming for Data Science
+COURSE 5: Introduction to R Programming for Data Science
 ==========================================================
 When working in the data science field you will definitely become acquainted with the R language and the role it plays in data analysis. This course introduces you to the basics of the R language such as data types, techniques for manipulation, and how to implement fundamental programming tasks. 
 
