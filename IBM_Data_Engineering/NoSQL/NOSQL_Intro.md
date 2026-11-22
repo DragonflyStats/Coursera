@@ -1,3 +1,5 @@
+# NoSQL databases
+
 NoSQL databases are a diverse category of database systems that don't adhere to the traditional relational database model. They offer flexibility, scalability, and high performance, making them suitable for various modern applications. Here are some of the most common types:
 
 **1. Document Databases:**
