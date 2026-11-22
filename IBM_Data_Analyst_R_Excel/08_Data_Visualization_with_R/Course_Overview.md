@@ -1,4 +1,4 @@
-COURSE 7: Data Visualization with R
+COURSE 8: Data Visualization with R
 ==================================================
 In this course, you will learn the Grammar of Graphics, a system for describing and building graphs, and how the ***ggplot2*** data visualization package for R applies this concept to basic bar charts, histograms, pie charts, scatter plots, line plots, and box plots. You will also learn how to further customize your charts and plots using themes and other techniques. 
 
@@ -17,10 +17,12 @@ Data without a way to convey the story behind it to yourself or others is just n
 In this module, you will learn the basics of data visualization using R, including the fundamental components that are shared by all charts and plots, and how to bring those components to life using the ggplot2 package for R. You will also learn how to create three common chart types, including bar, histogram, and pie charts, from the qualitative and quantitative data.
 
 ### Module 2 - Basic Plots, Maps, and Customization
+
 In this module, you will take your data visualization skills to the next level! You will learn how to create three plot types, including scatter plots, line, plots, and box plots, using the ggplot2 library and then customize the visualizations using annotations and customized axis titles and text labels. You will also learn about faceting, a way to visualize each level of a discrete or categorical variable, and different ways to work with themes. Finally, you will learn about a unique chart type called a map that you can create using geolocation data and the Leaflet library.
 
 
 ### Module 3 - Dashboards
+
 Your data tells a story. You have built the charts and plots that show important relationships between variables, identify outliers and anomalies, and see the trends that can help you predict what the future might bring. Now you want to put these insightful data visualizations at the fingertips of your stakeholders and make it easy to interact with and explore the data. You need a dashboard!
 
 In this module, you will learn why dashboards are important and then build interactive dashboards using the Shiny package for R. You will learn how Shiny dashboards are structured into user interface and server components and then build out these components and develop the logic to make them work together. You will also learn how to deploy your dashboards and provide a way to generate informative reports with R Markdown.
